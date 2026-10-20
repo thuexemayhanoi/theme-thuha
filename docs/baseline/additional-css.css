@@ -1,0 +1,41 @@
+/* Rentbike live audit fixes — 2026-10-07: RBH-01, RBH-08 */
+.lwptoc.lwptoc-notInherit .lwptoc_i a,
+.lwptoc.lwptoc-notInherit .lwptoc_i a:visited,
+.lwptoc.lwptoc-notInherit .lwptoc_i a:hover,
+.lwptoc.lwptoc-notInherit .lwptoc_i a:active,
+.lwptoc.lwptoc-notInherit .lwptoc_i a:focus {
+  color: var(--rbh-accent, #ae252c);
+  border-color: currentColor;
+}
+.lwptoc.lwptoc-notInherit .lwptoc_i a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+.site-footer .footer-business address,
+.site-footer .footer-business > p:not(.footer-brand),
+.site-footer .footer-business .contact-links a,
+.site-footer .footer-group nav a {
+  font-size: 0.8125rem;
+  line-height: 1.65;
+}
+.site-footer .footer-business .contact-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+}
+.site-footer .footer-bottom {
+  font-size: 0.75rem;
+  line-height: 1.65;
+}
+@media (max-width: 1000px) {
+  .site-footer .footer-group summary,
+  .site-footer .footer-group nav a {
+    min-height: 44px;
+  }
+}
+
+/* RBH-06: Keep the approved monochrome logo visible in dark mode. */
+html[data-theme="dark"] .site-header img.custom-logo {
+  filter: invert(1);
+}

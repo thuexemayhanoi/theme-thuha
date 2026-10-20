@@ -1,0 +1,22 @@
+/* Shared design values: frontend and block editor. No build tool required. */
+:root{
+ --rbh-accent-light:#ae252c;--rbh-accent-dark:#f08286;
+ --rbh-ink-light:#181a1d;--rbh-muted-light:#66696d;--rbh-paper-light:#fafaf8;--rbh-surface-light:#fff;--rbh-soft-light:#f0f0eb;--rbh-neutral-light:#eaeae6;--rbh-line-light:#dedfd8;--rbh-shadow-light:0 16px 50px rgba(20,22,25,.07);
+ --rbh-ink-dark:#f1f1ec;--rbh-muted-dark:#b2b3b5;--rbh-paper-dark:#131516;--rbh-surface-dark:#1b1e20;--rbh-soft-dark:#24282b;--rbh-neutral-dark:#2b2f31;--rbh-line-dark:#363b3e;--rbh-shadow-dark:0 16px 50px rgba(0,0,0,.18);
+ --rbh-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+ --rbh-font-base:17px;--rbh-line-height:1.65;--rbh-heading-weight:650;--rbh-heading-leading:1.12;
+ --rbh-font-h1:clamp(2.3rem,4.5vw,4.3rem);--rbh-font-h2:clamp(1.9rem,3.2vw,3.1rem);--rbh-font-h3:1.4rem;
+ --rbh-space-xs:8px;--rbh-space-sm:12px;--rbh-space-md:20px;--rbh-space-lg:24px;--rbh-space-xl:40px;--rbh-section-space:85px;
+ --rbh-page-width:1240px;--rbh-reading-width:740px;--rbh-wide-width:1200px;--rbh-gutter:40px;
+ --radius:18px;--rbh-button-radius:7px;--header-height:86px;
+ --rbh-button-bg:var(--rbh-accent-light);--rbh-button-hover:color-mix(in srgb,var(--rbh-button-bg) 80%,#000);--rbh-button-text:#fff;
+ --rbh-button-height:52px;--rbh-button-padding:13px 23px;--rbh-button-font-size:.88rem;
+ --rbh-accent:var(--rbh-accent-light);--ink:var(--rbh-ink-light);--muted:var(--rbh-muted-light);--paper:var(--rbh-paper-light);--surface:var(--rbh-surface-light);--soft:var(--rbh-soft-light);--line:var(--rbh-line-light);--shadow:var(--rbh-shadow-light);color-scheme:light
+}
+:root[data-theme=dark],:root:has(.appearance-input:checked){--rbh-accent:var(--rbh-accent-dark);--ink:var(--rbh-ink-dark);--muted:var(--rbh-muted-dark);--paper:var(--rbh-paper-dark);--surface:var(--rbh-surface-dark);--soft:var(--rbh-soft-dark);--line:var(--rbh-line-dark);--shadow:var(--rbh-shadow-dark);color-scheme:dark}
+@media(prefers-color-scheme:dark){:root:not([data-theme]):not([data-appearance=light]){--rbh-accent:var(--rbh-accent-dark);--ink:var(--rbh-ink-dark);--muted:var(--rbh-muted-dark);--paper:var(--rbh-paper-dark);--surface:var(--rbh-surface-dark);--soft:var(--rbh-soft-dark);--line:var(--rbh-line-dark);--shadow:var(--rbh-shadow-dark);color-scheme:dark}}
+:root:has(.appearance-input:not(:checked)){--rbh-accent:var(--rbh-accent-light);--ink:var(--rbh-ink-light);--muted:var(--rbh-muted-light);--paper:var(--rbh-paper-light);--surface:var(--rbh-surface-light);--soft:var(--rbh-soft-light);--line:var(--rbh-line-light);--shadow:var(--rbh-shadow-light);color-scheme:light}
+@media(max-width:1190px){:root{--rbh-gutter:24px}}
+@media(max-width:1000px){:root{--rbh-section-space:60px}}
+@media(max-width:760px){:root{--rbh-gutter:18px;--header-height:72px}}
+@media(max-width:560px){:root{--rbh-section-space:48px;--rbh-button-font-size:.81rem}}

@@ -1,0 +1,415 @@
+{
+  "site": "https://rentbikehanoi.com",
+  "captured_on": "2026-10-18",
+  "reference_only": true,
+  "auto_import": false,
+  "theme_slug": "rentbike-hanoi",
+  "theme_mods": {
+    "nav_menu_locations": {
+      "primary": 23,
+      "footer": 22
+    },
+    "custom_css_post_id": 1805,
+    "sidebars_widgets": {
+      "time": 1792314020,
+      "data": {
+        "wp_inactive_widgets": [
+          "block-25",
+          "block-14",
+          "block-16",
+          "block-21",
+          "block-2",
+          "block-3",
+          "block-4",
+          "block-5",
+          "block-6",
+          "block-23",
+          "block-7",
+          "block-18",
+          "block-20",
+          "block-22",
+          "block-26",
+          "block-27",
+          "block-28",
+          "nav_menu-2"
+        ],
+        "rbh-sidebar": [
+          "block-29"
+        ]
+      }
+    },
+    "custom_logo": 1807
+  },
+  "menus": {
+    "primary": [
+      {
+        "db_id": 100,
+        "type": "post_type",
+        "object": "page",
+        "object_id": 67,
+        "title": "Home",
+        "link": "https://rentbikehanoi.com/",
+        "position": 1,
+        "parent": 0
+      },
+      {
+        "db_id": 63,
+        "type": "post_type",
+        "object": "page",
+        "object_id": 48,
+        "title": "About Motorbike Nguyen Ha",
+        "link": "https://rentbikehanoi.com/about-us/",
+        "position": 2,
+        "parent": 0
+      },
+      {
+        "db_id": 1511,
+        "type": "post_type",
+        "object": "post",
+        "object_id": 211,
+        "title": "Rental Prices",
+        "link": "https://rentbikehanoi.com/motorbike-rental-prices-in-hanoi/",
+        "position": 3,
+        "parent": 0
+      },
+      {
+        "db_id": 1512,
+        "type": "post_type",
+        "object": "post",
+        "object_id": 289,
+        "title": "Scooter Rental",
+        "link": "https://rentbikehanoi.com/hanoi-scooter-rental/",
+        "position": 4,
+        "parent": 0
+      },
+      {
+        "db_id": 1513,
+        "type": "post_type",
+        "object": "post",
+        "object_id": 239,
+        "title": "Rental Rules",
+        "link": "https://rentbikehanoi.com/motorbike-renting-in-hanoi-requirements/",
+        "position": 5,
+        "parent": 0
+      },
+      {
+        "db_id": 1514,
+        "type": "post_type",
+        "object": "post",
+        "object_id": 227,
+        "title": "Bike Delivery",
+        "link": "https://rentbikehanoi.com/motorbike-rental-hanoi-delivery-and-pickup-guide-complete-service-overview-2025/",
+        "position": 6,
+        "parent": 0
+      },
+      {
+        "db_id": 139,
+        "type": "taxonomy",
+        "object": "category",
+        "object_id": 39,
+        "title": "Rental Blog",
+        "link": "https://rentbikehanoi.com/blog/",
+        "position": 7,
+        "parent": 0
+      },
+      {
+        "db_id": 309,
+        "type": "taxonomy",
+        "object": "category",
+        "object_id": 59,
+        "title": "Travel Guide",
+        "link": "https://rentbikehanoi.com/blog/travel-guide/",
+        "position": 8,
+        "parent": 139
+      },
+      {
+        "db_id": 308,
+        "type": "taxonomy",
+        "object": "category",
+        "object_id": 60,
+        "title": "Rental Tips",
+        "link": "https://rentbikehanoi.com/blog/tips-resources/",
+        "position": 9,
+        "parent": 139
+      },
+      {
+        "db_id": 187,
+        "type": "post_type",
+        "object": "page",
+        "object_id": 182,
+        "title": "Hanoi Motorbike Rental FAQ",
+        "link": "https://rentbikehanoi.com/faq/",
+        "position": 10,
+        "parent": 0
+      },
+      {
+        "db_id": 64,
+        "type": "post_type",
+        "object": "page",
+        "object_id": 59,
+        "title": "Contact Us",
+        "link": "https://rentbikehanoi.com/contact-us/",
+        "position": 11,
+        "parent": 0
+      },
+      {
+        "db_id": 175,
+        "type": "post_type",
+        "object": "page",
+        "object_id": 173,
+        "title": "Privacy Policy",
+        "link": "https://rentbikehanoi.com/privacy-police/",
+        "position": 12,
+        "parent": 0
+      },
+      {
+        "db_id": 180,
+        "type": "post_type",
+        "object": "page",
+        "object_id": 178,
+        "title": "Terms",
+        "link": "https://rentbikehanoi.com/terms-of-use/",
+        "position": 13,
+        "parent": 0
+      },
+      {
+        "db_id": 1849,
+        "type": "taxonomy",
+        "object": "category",
+        "object_id": 113,
+        "title": "Rental Guides",
+        "link": "https://rentbikehanoi.com/blog/tips-resources/motorbike-rental-guides/",
+        "position": 14,
+        "parent": 139
+      },
+      {
+        "db_id": 1850,
+        "type": "taxonomy",
+        "object": "category",
+        "object_id": 114,
+        "title": "Bike Setup",
+        "link": "https://rentbikehanoi.com/blog/tips-resources/bike-setup-everyday-use/",
+        "position": 15,
+        "parent": 139
+      },
+      {
+        "db_id": 1851,
+        "type": "taxonomy",
+        "object": "category",
+        "object_id": 115,
+        "title": "Parking & Breakdowns",
+        "link": "https://rentbikehanoi.com/blog/tips-resources/parking-weather-breakdowns/",
+        "position": 16,
+        "parent": 139
+      },
+      {
+        "db_id": 1852,
+        "type": "taxonomy",
+        "object": "category",
+        "object_id": 116,
+        "title": "Day Trips from Hanoi",
+        "link": "https://rentbikehanoi.com/blog/travel-guide/day-trips-from-hanoi/",
+        "position": 17,
+        "parent": 139
+      },
+      {
+        "db_id": 1853,
+        "type": "taxonomy",
+        "object": "category",
+        "object_id": 117,
+        "title": "Hanoi Routes",
+        "link": "https://rentbikehanoi.com/blog/travel-guide/hanoi-routes-sightseeing/",
+        "position": 18,
+        "parent": 139
+      }
+    ],
+    "footer": [
+      {
+        "db_id": 1515,
+        "type": "post_type",
+        "object": "page",
+        "object_id": 48,
+        "title": "About Motorbike Nguyen Ha",
+        "link": "https://rentbikehanoi.com/about-us/",
+        "position": 1,
+        "parent": 0
+      },
+      {
+        "db_id": 1516,
+        "type": "post_type",
+        "object": "page",
+        "object_id": 59,
+        "title": "Contact Us",
+        "link": "https://rentbikehanoi.com/contact-us/",
+        "position": 2,
+        "parent": 0
+      },
+      {
+        "db_id": 1517,
+        "type": "post_type",
+        "object": "page",
+        "object_id": 182,
+        "title": "Hanoi Motorbike Rental FAQ",
+        "link": "https://rentbikehanoi.com/faq/",
+        "position": 3,
+        "parent": 0
+      },
+      {
+        "db_id": 1518,
+        "type": "post_type",
+        "object": "page",
+        "object_id": 173,
+        "title": "Privacy Policy",
+        "link": "https://rentbikehanoi.com/privacy-police/",
+        "position": 4,
+        "parent": 0
+      },
+      {
+        "db_id": 1519,
+        "type": "post_type",
+        "object": "page",
+        "object_id": 178,
+        "title": "Terms of Use",
+        "link": "https://rentbikehanoi.com/terms-of-use/",
+        "position": 5,
+        "parent": 0
+      },
+      {
+        "db_id": 1854,
+        "type": "taxonomy",
+        "object": "category",
+        "object_id": 113,
+        "title": "Rental Guides",
+        "link": "https://rentbikehanoi.com/blog/tips-resources/motorbike-rental-guides/",
+        "position": 6,
+        "parent": 0
+      },
+      {
+        "db_id": 1855,
+        "type": "taxonomy",
+        "object": "category",
+        "object_id": 114,
+        "title": "Bike Setup",
+        "link": "https://rentbikehanoi.com/blog/tips-resources/bike-setup-everyday-use/",
+        "position": 7,
+        "parent": 0
+      },
+      {
+        "db_id": 1856,
+        "type": "taxonomy",
+        "object": "category",
+        "object_id": 115,
+        "title": "Parking & Breakdowns",
+        "link": "https://rentbikehanoi.com/blog/tips-resources/parking-weather-breakdowns/",
+        "position": 8,
+        "parent": 0
+      },
+      {
+        "db_id": 1857,
+        "type": "taxonomy",
+        "object": "category",
+        "object_id": 116,
+        "title": "Day Trips from Hanoi",
+        "link": "https://rentbikehanoi.com/blog/travel-guide/day-trips-from-hanoi/",
+        "position": 9,
+        "parent": 0
+      },
+      {
+        "db_id": 1858,
+        "type": "taxonomy",
+        "object": "category",
+        "object_id": 117,
+        "title": "Hanoi Routes",
+        "link": "https://rentbikehanoi.com/blog/travel-guide/hanoi-routes-sightseeing/",
+        "position": 10,
+        "parent": 0
+      }
+    ]
+  },
+  "sidebar_widget_block_29": {
+    "content": "<!-- wp:group -->\n<div class=\"wp-block-group\"><!-- wp:heading -->\n<h2 class=\"wp-block-heading\">Latest Posts</h2>\n<!-- /wp:heading -->\n\n<!-- wp:latest-posts /--></div>\n<!-- /wp:group -->"
+  },
+  "plugin_inventory": [
+    {
+      "name": "Advanced Editor Tools",
+      "status": "active",
+      "version": "5.10.1"
+    },
+    {
+      "name": "AI Provider for Google",
+      "status": "active",
+      "version": "1.1.1"
+    },
+    {
+      "name": "AI Provider for OpenAI",
+      "status": "active",
+      "version": "1.1.0"
+    },
+    {
+      "name": "Classic Editor",
+      "status": "active",
+      "version": "1.7.0"
+    },
+    {
+      "name": "Contact Form 7",
+      "status": "active",
+      "version": "6.1.7"
+    },
+    {
+      "name": "GTranslate",
+      "status": "active",
+      "version": "5.0.1"
+    },
+    {
+      "name": "LiteSpeed Cache",
+      "status": "active",
+      "version": "7.9.1"
+    },
+    {
+      "name": "LuckyWP Table of Contents",
+      "status": "active",
+      "version": "2.1.14"
+    },
+    {
+      "name": "Moto QuickCall Pro+ Social (Flatsome Safe v4 – Pro Motion Glass Blue iOS)",
+      "status": "active",
+      "version": "4.0.0"
+    },
+    {
+      "name": "Site Kit by Google",
+      "status": "active",
+      "version": "1.189.0"
+    },
+    {
+      "name": "Wordfence Security",
+      "status": "inactive",
+      "version": "8.1.0"
+    },
+    {
+      "name": "WPCode Lite",
+      "status": "active",
+      "version": "2.3.9"
+    },
+    {
+      "name": "WPVibe – MCP Server for WordPress, works with Claude, ChatGPT & other AI MCP agents",
+      "status": "active",
+      "version": "1.20.5"
+    },
+    {
+      "name": "YLabs AI Assistant Connector",
+      "status": "active",
+      "version": "0.9.14"
+    },
+    {
+      "name": "Yoast SEO",
+      "status": "active",
+      "version": "28.1"
+    },
+    {
+      "name": "Yoast SEO Premium",
+      "status": "active",
+      "version": "20.12"
+    }
+  ],
+  "excluded": "Credentials, license keys, private options, whole database and uploads"
+}

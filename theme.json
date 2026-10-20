@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "settings": {
+    "appearanceTools": true,
+    "layout": {"contentSize": "var(--rbh-reading-width)", "wideSize": "var(--rbh-wide-width)"},
+    "color": {
+      "palette": [
+        {"slug": "red", "color": "var(--rbh-accent-light)", "name": "Rental red"},
+        {"slug": "ink", "color": "var(--rbh-ink-light)", "name": "Ink"},
+        {"slug": "paper", "color": "var(--rbh-paper-light)", "name": "Paper"},
+        {"slug": "neutral", "color": "var(--rbh-neutral-light)", "name": "Neutral"}
+      ]
+    },
+    "typography": {
+      "fontFamilies": [
+        {"slug": "system", "name": "System sans", "fontFamily": "var(--rbh-font-family)"}
+      ]
+    }
+  },
+  "styles": {"typography": {"fontFamily": "var:preset|font-family|system"}}
+}

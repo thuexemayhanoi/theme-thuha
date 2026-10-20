@@ -1,0 +1,128 @@
+{
+  "date": "2026-10-20",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "site": "https://rentbikehanoi.com/",
+  "published": true,
+  "stylesheet": "wp-theme",
+  "theme_backup": "wp-theme-wpvibe-backup",
+  "site_backup": "Owner confirmed weekly automatic hosting backups",
+  "merge_commit": "c15bd0909d044ef2510e972f7556d54444014967",
+  "samples": [
+    {
+      "key": "home",
+      "chars": 107279,
+      "title": "Hanoi Motorbike Rental | Daily, Weekly &amp; Monthly - Nguyen Ha",
+      "canonical": "https://rentbikehanoi.com/",
+      "description": "Rent a motorbike in Hanoi with Nguyen Ha. Explore daily, weekly and monthly options, compare reference prices, and book via phone, Zalo or WhatsApp.",
+      "h1Count": 1,
+      "oldIndex": false,
+      "newScript": true,
+      "previewBanner": false,
+      "invalidJsonLd": 0,
+      "breadcrumb": [
+        "Home"
+      ],
+      "errors": null
+    },
+    {
+      "key": "rentalHub",
+      "chars": 48434,
+      "title": "Motorbike Rental Guides Nguyen Ha Motorbike Rental",
+      "canonical": "https://rentbikehanoi.com/blog/tips-resources/motorbike-rental-guides/",
+      "description": "Understand Hanoi motorbike rental quotes, requirements, deposits, handover and extensions before choosing a bike and agreeing on the rental terms.",
+      "h1Count": 1,
+      "oldIndex": false,
+      "newScript": true,
+      "previewBanner": false,
+      "invalidJsonLd": 0,
+      "breadcrumb": [
+        "Home",
+        "Blog",
+        "Tips &amp; Resources",
+        "Motorbike Rental Guides"
+      ],
+      "errors": null
+    },
+    {
+      "key": "toolkit",
+      "chars": 65045,
+      "title": "A Rental Scooter&#039;s Tool Kit: Identify What Is Present and What Requires the Shop",
+      "canonical": "https://rentbikehanoi.com/a-rental-scooters-tool-kit-identify-what-is-present-and-what-requires-the-shop/",
+      "description": "Inventory a rental scooter tool kit at pickup, match it to the exact manual, photograph damage and ask the shop what use is authorised.",
+      "h1Count": 1,
+      "oldIndex": false,
+      "newScript": true,
+      "previewBanner": false,
+      "invalidJsonLd": 0,
+      "breadcrumb": [
+        "Home",
+        "Blog",
+        "Tips &amp; Resources",
+        "Bike Setup &amp; Everyday Use",
+        "A Rental Scooter&#8217;s Tool Kit: Identify What Is Present and What Requires the Shop"
+      ],
+      "errors": null
+    }
+  ],
+  "assistant_ui": {
+    "fee": "20,000 VND/hour; more than 6 hours charged as one rental day",
+    "lookup": "tool kit returned the existing toolkit article",
+    "tested_on": "public homepage"
+  },
+  "pagespeed": {
+    "done": true,
+    "report": {
+      "DESKTOP": {
+        "status": "ok",
+        "lab_metrics": {
+          "First Contentful Paint": "447 ms",
+          "Time to Interactive": "629 ms",
+          "Total Blocking Time": "0 ms",
+          "Speed Index": "1.6 s",
+          "Largest Contentful Paint": "627 ms",
+          "Cumulative Layout Shift": "0"
+        },
+        "opportunities": [
+          {
+            "opportunity": "Redirects",
+            "estimated_savings": "190 ms",
+            "size_reduction_kb": null
+          },
+          {
+            "opportunity": "Unused Css Rules",
+            "estimated_savings": "0 ms",
+            "size_reduction_kb": 23
+          }
+        ]
+      },
+      "MOBILE": {
+        "status": "ok",
+        "lab_metrics": {
+          "Time to Interactive": "2.4 s",
+          "First Contentful Paint": "1.5 s",
+          "Largest Contentful Paint": "2.4 s",
+          "Total Blocking Time": "0 ms",
+          "Speed Index": "4.3 s",
+          "Cumulative Layout Shift": "0"
+        },
+        "opportunities": [
+          {
+            "opportunity": "Unused Css Rules",
+            "estimated_savings": "150 ms",
+            "size_reduction_kb": 22
+          },
+          {
+            "opportunity": "Redirects",
+            "estimated_savings": "630 ms",
+            "size_reduction_kb": null
+          }
+        ]
+      }
+    }
+  },
+  "limitations": [
+    "One lab run per phase; no controlled benchmark",
+    "No field/INP data returned",
+    "Not a full-site crawl or Rich Results Test"
+  ]
+}

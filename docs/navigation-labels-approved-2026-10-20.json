@@ -1,0 +1,319 @@
+{
+  "site_url": "https://rentbikehanoi.com",
+  "owner_approval_required": true,
+  "frozen_on": "2026-10-20",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "scope": "Menu and footer navigation label wording, capitalization and punctuation",
+  "label_word_range": [
+    2,
+    3
+  ],
+  "reference_only": true,
+  "automatic_restore": false,
+  "menus": {
+    "primary": [
+      {
+        "db_id": 100,
+        "type": "post_type",
+        "object": "page",
+        "object_id": 67,
+        "title": "Home Page",
+        "link": "https://rentbikehanoi.com/",
+        "position": 1,
+        "parent": 0
+      },
+      {
+        "db_id": 3255,
+        "type": "taxonomy",
+        "object": "category",
+        "object_id": 121,
+        "title": "Hanoi Museums",
+        "link": "https://rentbikehanoi.com/blog/travel-guide/hanoi-routes-sightseeing/hanoi-museums-collections/",
+        "position": 2,
+        "parent": 1853
+      },
+      {
+        "db_id": 63,
+        "type": "post_type",
+        "object": "page",
+        "object_id": 48,
+        "title": "About Us",
+        "link": "https://rentbikehanoi.com/about-us/",
+        "position": 3,
+        "parent": 0
+      },
+      {
+        "db_id": 1511,
+        "type": "post_type",
+        "object": "post",
+        "object_id": 211,
+        "title": "Rental Prices",
+        "link": "https://rentbikehanoi.com/motorbike-rental-prices-in-hanoi/",
+        "position": 4,
+        "parent": 0
+      },
+      {
+        "db_id": 1512,
+        "type": "post_type",
+        "object": "post",
+        "object_id": 289,
+        "title": "Scooter Rental",
+        "link": "https://rentbikehanoi.com/hanoi-scooter-rental/",
+        "position": 5,
+        "parent": 0
+      },
+      {
+        "db_id": 1513,
+        "type": "post_type",
+        "object": "post",
+        "object_id": 239,
+        "title": "Rental Rules",
+        "link": "https://rentbikehanoi.com/motorbike-renting-in-hanoi-requirements/",
+        "position": 6,
+        "parent": 0
+      },
+      {
+        "db_id": 1514,
+        "type": "post_type",
+        "object": "post",
+        "object_id": 227,
+        "title": "Bike Delivery",
+        "link": "https://rentbikehanoi.com/motorbike-rental-hanoi-delivery-and-pickup-guide-complete-service-overview-2025/",
+        "position": 7,
+        "parent": 0
+      },
+      {
+        "db_id": 139,
+        "type": "taxonomy",
+        "object": "category",
+        "object_id": 39,
+        "title": "Rental Blog",
+        "link": "https://rentbikehanoi.com/blog/",
+        "position": 8,
+        "parent": 0
+      },
+      {
+        "db_id": 309,
+        "type": "taxonomy",
+        "object": "category",
+        "object_id": 59,
+        "title": "Travel Guide",
+        "link": "https://rentbikehanoi.com/blog/travel-guide/",
+        "position": 9,
+        "parent": 139
+      },
+      {
+        "db_id": 308,
+        "type": "taxonomy",
+        "object": "category",
+        "object_id": 60,
+        "title": "Rental Tips",
+        "link": "https://rentbikehanoi.com/blog/tips-resources/",
+        "position": 10,
+        "parent": 139
+      },
+      {
+        "db_id": 187,
+        "type": "post_type",
+        "object": "page",
+        "object_id": 182,
+        "title": "Rental FAQ",
+        "link": "https://rentbikehanoi.com/faq/",
+        "position": 11,
+        "parent": 0
+      },
+      {
+        "db_id": 64,
+        "type": "post_type",
+        "object": "page",
+        "object_id": 59,
+        "title": "Contact Us",
+        "link": "https://rentbikehanoi.com/contact-us/",
+        "position": 12,
+        "parent": 0
+      },
+      {
+        "db_id": 175,
+        "type": "post_type",
+        "object": "page",
+        "object_id": 173,
+        "title": "Privacy Policy",
+        "link": "https://rentbikehanoi.com/privacy-police/",
+        "position": 13,
+        "parent": 0
+      },
+      {
+        "db_id": 180,
+        "type": "post_type",
+        "object": "page",
+        "object_id": 178,
+        "title": "Rental Terms",
+        "link": "https://rentbikehanoi.com/terms-of-use/",
+        "position": 14,
+        "parent": 0
+      },
+      {
+        "db_id": 1849,
+        "type": "taxonomy",
+        "object": "category",
+        "object_id": 113,
+        "title": "Rental Guides",
+        "link": "https://rentbikehanoi.com/blog/tips-resources/motorbike-rental-guides/",
+        "position": 15,
+        "parent": 139
+      },
+      {
+        "db_id": 1850,
+        "type": "taxonomy",
+        "object": "category",
+        "object_id": 114,
+        "title": "Bike Setup",
+        "link": "https://rentbikehanoi.com/blog/tips-resources/bike-setup-everyday-use/",
+        "position": 16,
+        "parent": 139
+      },
+      {
+        "db_id": 1851,
+        "type": "taxonomy",
+        "object": "category",
+        "object_id": 115,
+        "title": "Parking & Breakdowns",
+        "link": "https://rentbikehanoi.com/blog/tips-resources/parking-weather-breakdowns/",
+        "position": 17,
+        "parent": 139
+      },
+      {
+        "db_id": 1852,
+        "type": "taxonomy",
+        "object": "category",
+        "object_id": 116,
+        "title": "Hanoi Day Trips",
+        "link": "https://rentbikehanoi.com/blog/travel-guide/day-trips-from-hanoi/",
+        "position": 18,
+        "parent": 139
+      },
+      {
+        "db_id": 1853,
+        "type": "taxonomy",
+        "object": "category",
+        "object_id": 117,
+        "title": "Hanoi Routes",
+        "link": "https://rentbikehanoi.com/blog/travel-guide/hanoi-routes-sightseeing/",
+        "position": 19,
+        "parent": 139
+      }
+    ],
+    "footer": [
+      {
+        "db_id": 1515,
+        "type": "post_type",
+        "object": "page",
+        "object_id": 48,
+        "title": "About Us",
+        "link": "https://rentbikehanoi.com/about-us/",
+        "position": 1,
+        "parent": 0
+      },
+      {
+        "db_id": 1516,
+        "type": "post_type",
+        "object": "page",
+        "object_id": 59,
+        "title": "Contact Us",
+        "link": "https://rentbikehanoi.com/contact-us/",
+        "position": 2,
+        "parent": 0
+      },
+      {
+        "db_id": 1517,
+        "type": "post_type",
+        "object": "page",
+        "object_id": 182,
+        "title": "Rental FAQ",
+        "link": "https://rentbikehanoi.com/faq/",
+        "position": 3,
+        "parent": 0
+      },
+      {
+        "db_id": 1518,
+        "type": "post_type",
+        "object": "page",
+        "object_id": 173,
+        "title": "Privacy Policy",
+        "link": "https://rentbikehanoi.com/privacy-police/",
+        "position": 4,
+        "parent": 0
+      },
+      {
+        "db_id": 1519,
+        "type": "post_type",
+        "object": "page",
+        "object_id": 178,
+        "title": "Rental Terms",
+        "link": "https://rentbikehanoi.com/terms-of-use/",
+        "position": 5,
+        "parent": 0
+      },
+      {
+        "db_id": 3256,
+        "type": "taxonomy",
+        "object": "category",
+        "object_id": 121,
+        "title": "Hanoi Museums",
+        "link": "https://rentbikehanoi.com/blog/travel-guide/hanoi-routes-sightseeing/hanoi-museums-collections/",
+        "position": 6,
+        "parent": 1858
+      },
+      {
+        "db_id": 1854,
+        "type": "taxonomy",
+        "object": "category",
+        "object_id": 113,
+        "title": "Rental Guides",
+        "link": "https://rentbikehanoi.com/blog/tips-resources/motorbike-rental-guides/",
+        "position": 7,
+        "parent": 0
+      },
+      {
+        "db_id": 1855,
+        "type": "taxonomy",
+        "object": "category",
+        "object_id": 114,
+        "title": "Bike Setup",
+        "link": "https://rentbikehanoi.com/blog/tips-resources/bike-setup-everyday-use/",
+        "position": 8,
+        "parent": 0
+      },
+      {
+        "db_id": 1856,
+        "type": "taxonomy",
+        "object": "category",
+        "object_id": 115,
+        "title": "Parking & Breakdowns",
+        "link": "https://rentbikehanoi.com/blog/tips-resources/parking-weather-breakdowns/",
+        "position": 9,
+        "parent": 0
+      },
+      {
+        "db_id": 1857,
+        "type": "taxonomy",
+        "object": "category",
+        "object_id": 116,
+        "title": "Hanoi Day Trips",
+        "link": "https://rentbikehanoi.com/blog/travel-guide/day-trips-from-hanoi/",
+        "position": 10,
+        "parent": 0
+      },
+      {
+        "db_id": 1858,
+        "type": "taxonomy",
+        "object": "category",
+        "object_id": 117,
+        "title": "Hanoi Routes",
+        "link": "https://rentbikehanoi.com/blog/travel-guide/hanoi-routes-sightseeing/",
+        "position": 11,
+        "parent": 0
+      }
+    ]
+  }
+}
