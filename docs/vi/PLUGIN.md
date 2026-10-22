@@ -61,3 +61,14 @@ Mọi nút dùng nonce + kiểm tra quyền; thông báo lỗi bằng tiếng Vi
 - Logo tùy chỉnh trên trang Việt dẫn về `/vi/`, chữ thay thế (alt) là tên tiếng Việt của cửa hàng.
 - Trên trang Việt chỉ gỡ script của trợ lý tiếng Anh; giữ `assistant.css` của theme vì tệp này chứa quy tắc hiển thị dải giờ/điện thoại trên điện thoại.
 - Nâng cấp từ 1.0.0: không cần chạy lại "Tạo bộ trang", không cần bật/tắt lại `/vi/`; cài đặt cũ được giữ.
+
+## Bổ sung ở 1.1.1 (chưa triển khai; thay cho 1.1.0 chưa từng cài)
+
+| Tệp | Vai trò |
+| --- | --- |
+| `includes/class-rbhvi-seo.php` | Tiêu đề tiếng Việt cho trang tìm kiếm, 404 và chuyên mục Việt (`wpseo_title`, `wpseo_opengraph_title`, `wpseo_twitter_title`, tên WebPage qua `wpseo_schema_webpage`); breadcrumb "Kết quả tìm kiếm: “…”", "Không tìm thấy trang", "Trang N" |
+| `includes/core-strings-vi.php` | Bảng chữ tiếng Việt dự phòng cho chuỗi lõi WordPress hiện trên trang Việt (form/danh sách bình luận, điều hướng bài viết/bình luận) |
+| `includes/class-rbhvi-theme-integration.php` | Áp bảng trên qua `gettext_default` / `gettext_with_context_default`, chỉ trên trang Việt và chỉ khi WordPress chưa có bản dịch tiếng Việt cho chuỗi đó |
+
+- Chuyên mục Việt đã có title riêng trong Yoast → giữ title đó. Trang Anh không bị ảnh hưởng.
+- Muốn thêm chuỗi lõi khác: thêm vào `core-strings-vi.php`, giữ nguyên `%s`, `%1$s` và thẻ HTML (kiểm thử tĩnh kiểm tra).

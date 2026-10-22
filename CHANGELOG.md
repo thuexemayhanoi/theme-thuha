@@ -2,10 +2,36 @@
 
 All notable changes to this repository. Dates use Asia/Ho_Chi_Minh.
 
-## [Theme 1.4.0 + plugin rentbikehanoi-native-vi 1.1.0] — 2026-10-23 — not deployed
+## [Plugin rentbikehanoi-native-vi 1.1.1 + theme 1.4.0] — 2026-10-23 — not deployed
+
+Status: code, tests and packages only. Supersedes plugin 1.1.0 (never installed; its ZIP was removed from `dist/`). Theme 1.4.0 is
+unchanged (same files, same ZIP checksum). Install from 1.0.0 directly: docs/vi/UPDATE-1.4.0-1.1.1.md.
+
+### Fixed (Vietnamese pages only)
+- Search results, 404 and Vietnamese category archives showed the English defaults Yoast stores in its options ("You searched for …",
+  "Page not found", "%%term_title%% Archives") in `<title>`, `og:title`, `twitter:title` (search results) and the WebPage schema
+  name, and the visible breadcrumb ended with "You searched for …" or "Page N". They are now Vietnamese:
+  "Kết quả tìm kiếm cho “…” | <brand>", "Không tìm thấy trang | <brand>", "<category> – Trang N | <brand>"; crumbs
+  "Kết quả tìm kiếm: “…”" and "Trang N" (paged search: "Kết quả tìm kiếm: “…” » Trang N"; "Không tìm thấy trang" should a template
+  print breadcrumbs on a 404). The search term is escaped exactly as Yoast escapes it in English titles. A title the owner set for a
+  Vietnamese category in Yoast is kept. Filters: `wpseo_title`, `wpseo_opengraph_title`, `wpseo_twitter_title`,
+  `wpseo_schema_webpage`, `wpseo_breadcrumb_links`, all scoped to Vietnamese requests.
+- WordPress core strings on Vietnamese posts (comment form and list, comment/post navigation labels) fall back to Vietnamese
+  (`includes/core-strings-vi.php`, filters `gettext_default` / `gettext_with_context_default`) only when no Vietnamese translation is
+  installed; an installed language pack always wins.
+- English output unchanged: byte comparison with `main` (1.2.0) and the deployed `e81fbd7` (1.3.0/1.0.0) still passes.
+
+### Tests
+- Integration: Vietnamese search (incl. page 2)/404/category/paged titles, og:title, twitter:title, schema name and breadcrumbs; a
+  search term with markup is escaped as in English and never printed raw; Vietnamese comment form; an installed translation takes
+  precedence; English search/404 titles and comment form unchanged. Upgrade test: after the in-place upgrade from the deployed ZIPs,
+  `/vi/?s=…` and a `/vi/` 404 switch from English to Vietnamese titles (incl. twitter:title). Static: every entry of the two
+  translation maps keeps its printf placeholders and HTML tags.
+
+## [Theme 1.4.0 + plugin rentbikehanoi-native-vi 1.1.0] — 2026-10-23 — not deployed, superseded by plugin 1.1.1
 
 Status: code, tests and packages only. According to the latest record (docs/vi/DEPLOYMENT-2026-10-23.md) production runs theme 1.3.0 + plugin 1.0.0; this was not re-verified (no WordPress access).
-Install: docs/vi/UPDATE-1.4.0-1.1.0.md.
+Plugin 1.1.1 contains every change below; install guide: docs/vi/UPDATE-1.4.0-1.1.1.md.
 
 ### Added
 - Theme `template-parts/landing.php`: data-driven copy of the English homepage layout (same markup/classes as `front-page.php`). The English

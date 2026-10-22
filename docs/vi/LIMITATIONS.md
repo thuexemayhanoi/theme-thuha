@@ -4,12 +4,16 @@
 
 Người thực hiện **không** có quyền truy cập WordPress production, wp-admin, hosting, cơ sở dữ liệu hay Google Search Console. Vì vậy:
 
-## Bản cập nhật theme 1.4.0 + plugin 1.1.0 (trang chủ /vi/ cùng bố cục)
+## Bản cập nhật theme 1.4.0 + plugin 1.1.1 (trang chủ /vi/ cùng bố cục, tiêu đề hệ thống tiếng Việt)
 
 - Chưa cài lên website; kiểm thử chạy trên WordPress cục bộ với ảnh giả lập có tên tệp giống quy tắc của theme (`Honda-Vision`, `Honda-Wave`, `Honda-Cub-50cc`). Chưa xác minh tên tệp ảnh thật trên production; nếu không khớp, thẻ xe vẫn hiển thị nhưng thiếu ảnh (giống hành vi của trang Anh, nơi khối xe sẽ ẩn).
 - Chú thích ảnh (figcaption) của ảnh lớn được lấy nguyên từ trang chủ Anh (thường là ghi công ảnh) nên có thể là tiếng Anh.
 - Phần "Toàn bộ chi tiết" hiển thị lại nội dung trang đang lưu (có bảng giá và nút liên hệ), nên trang có hai bảng giá, giống cách trang chủ Anh đang làm.
 - Chưa kiểm tra trên điện thoại thật, Safari/Firefox, PageSpeed và cache LiteSpeed thật.
+- Bảng chữ dự phòng `core-strings-vi.php` chỉ gồm các chuỗi lõi đã thấy trên trang Việt của theme này (bình luận, điều hướng). Plugin khác (ví dụ Contact Form 7, LuckyWP TOC, Moto QuickCall) có thể vẫn in chữ tiếng Anh trên trang Việt; chưa kiểm tra với các plugin thật.
+- Bài viết Việt chưa có title riêng trong Yoast sẽ dùng mẫu mặc định của Yoast, kết thúc bằng Site Name tiếng Anh "Motorbike Nguyen Ha" (Site Name đã đóng băng, không đổi). Cách xử lý: đặt title tiếng Việt cho từng bài.
+- Bong bóng trợ lý/liên hệ nổi tiếng Anh của theme không hiển thị trên trang Việt (trợ lý chỉ có tiếng Anh); trang Việt dùng các nút Gọi/Zalo trong trang và dải giờ/điện thoại.
+- Thẻ `<link rel="alternate" type="application/rss+xml">` mà WordPress in trong `<head>` (không hiển thị trên trang) vẫn như bản 1.0.0: tiêu đề tiếng Anh ("… Feed", "Comments Feed", "Search Results for …"), và nguồn cấp chung `/feed/`, `/comments/feed/` là nguồn cấp tiếng Anh; nguồn cấp chuyên mục và bình luận của bài Việt nằm dưới `/vi/`. Chưa đổi để không động tới URL nguồn cấp.
 
 ## Chưa làm / chưa kiểm chứng trên website thật
 
@@ -19,7 +23,7 @@ Người thực hiện **không** có quyền truy cập WordPress production, w
 4. Chưa kiểm tra cache LiteSpeed với `/vi/` (cần xóa cache sau khi bật/tắt; cache không được dùng chung giữa `/` và `/vi/` vì URL khác nhau).
 5. Chưa kiểm tra Search Console, Rich Results Test, Schema Validator trên URL thật.
 6. Chưa kiểm tra trên thiết bị/trình duyệt thật ngoài Chromium headless (Safari iOS, Firefox).
-7. Bản dịch lõi WordPress/Yoast tiếng Việt có thể chưa được cài trên website: một số chuỗi của Yoast (ví dụ tiêu đề trang tìm kiếm mặc định) có thể vẫn tiếng Anh.
+7. Bản dịch lõi WordPress/Yoast tiếng Việt có thể chưa được cài trên website. Từ plugin 1.1.1, tiêu đề/breadcrumb trang tìm kiếm, 404, chuyên mục Việt và form bình luận đã có chữ tiếng Việt dự phòng; các chuỗi khác của lõi hoặc plugin khác vẫn có thể là tiếng Anh.
 8. Đoạn mã SEO Engine 06 (WPCode) có thể đang bổ sung LocalBusiness cho Organization của Yoast trên mọi trang, kể cả trang Việt — chưa xác minh trạng thái bật.
 
 ## Cần chủ website quyết định / xác nhận

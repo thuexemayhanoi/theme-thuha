@@ -35,6 +35,6 @@ Theme 1.3.0 không ghi dữ liệu mới. Dùng bản sao thư mục theme `wp-t
 
 Chỉ khi cần: dùng bản sao lưu toàn website của hosting. Việc này đưa cả cơ sở dữ liệu về thời điểm sao lưu (mọi thay đổi sau đó sẽ mất) — cần chủ website đồng ý.
 
-## G. Chỉ bỏ bố cục trang chủ mới (1.1.0)
+## G. Chỉ bỏ bố cục trang chủ mới (plugin 1.1.0 trở lên)
 
 *Tiếng Việt /vi/ → 5. Cài đặt → Bố cục trang chủ /vi/ → Trang thường* → Lưu → xóa cache. `/vi/` trở lại bố cục trang thường của 1.0.0; nội dung, URL, cặp, SEO không đổi. Muốn quay hẳn về bản đã triển khai: cài lại `dist/previous/wp-theme-1.3.0.zip` và `dist/previous/rentbikehanoi-native-vi-1.0.0.zip`.

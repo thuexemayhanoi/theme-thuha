@@ -6,11 +6,12 @@ https://rentbikehanoi.com
 > the 11 Vietnamese core pages and enabled `/vi/`. See [the live deployment record](docs/vi/DEPLOYMENT-2026-10-23.md)
 > for page IDs, measured checks, remaining limitations and rollback. Do not reseed or deploy over these pages blindly.
 >
-> **Pending update (not deployed):** theme **1.4.0** + plugin **1.1.0** on branch `feature/native-vietnamese-section` give `/vi/`
-> the same homepage layout as the English homepage and fix the logo link/alt and sidebar widgets on Vietnamese pages.
-> Install guide (Vietnamese): [docs/vi/UPDATE-1.4.0-1.1.0.md](docs/vi/UPDATE-1.4.0-1.1.0.md). Packages in `dist/`.
+> **Pending update (not deployed):** theme **1.4.0** + plugin **1.1.1** on branch `feature/native-vietnamese-section` give `/vi/`
+> the same homepage layout as the English homepage and fix the logo link/alt, sidebar widgets, search/404/category titles and
+> breadcrumbs, and the comment form on Vietnamese pages.
+> Install guide (Vietnamese): [docs/vi/UPDATE-1.4.0-1.1.1.md](docs/vi/UPDATE-1.4.0-1.1.1.md). Packages in `dist/`.
 
-## Vietnamese home page layout (theme 1.4.0, plugin 1.1.0 — not deployed)
+## Vietnamese home page layout (theme 1.4.0, plugin 1.1.1 — not deployed)
 
 - `/vi/` (page 3454 in production) renders with the English homepage's design: hero with the existing hero photo, quick links,
   three bike cards reusing the English homepage's bike photos, reference-price table, three steps, short FAQ, and the saved
@@ -20,6 +21,9 @@ https://rentbikehanoi.com
   are unchanged. Plugin: `RBHVI_Home` loads it only for the managed `/vi/` home page; setting "Bố cục trang chủ /vi/" switches back.
 - Also fixed on all Vietnamese pages: custom logo links to `/vi/` with a Vietnamese alt; a separate Vietnamese widget area replaces
   the English "Article sidebar" widgets; the mobile hours/phone utility bar is shown as on English pages.
+- Plugin 1.1.1: Vietnamese titles, `og:title`, `twitter:title`, schema name and breadcrumbs for `/vi/` search, 404 and category
+  archives (Yoast's stored defaults are English); Vietnamese fallback for the WordPress core comment form and navigation labels when no Vietnamese
+  language pack is installed.
 - No database writes, no change to saved content, IDs, URLs, pairs, canonical, hreflang, sitemap or schema.
 
 ## English + Vietnamese (theme 1.3.0, plugin 1.0.0)
@@ -43,7 +47,7 @@ https://rentbikehanoi.com
 | Locked business data | [docs/vi/BUSINESS-DATA.md](docs/vi/BUSINESS-DATA.md) |
 | Unverified items and limits | [docs/vi/LIMITATIONS.md](docs/vi/LIMITATIONS.md) |
 | QA report of this release candidate | [dist/QA-REPORT.md](dist/QA-REPORT.md) |
-| Update to theme 1.4.0 + plugin 1.1.0 | [docs/vi/UPDATE-1.4.0-1.1.0.md](docs/vi/UPDATE-1.4.0-1.1.0.md) |
+| Update to theme 1.4.0 + plugin 1.1.1 | [docs/vi/UPDATE-1.4.0-1.1.1.md](docs/vi/UPDATE-1.4.0-1.1.1.md) |
 | Changes | [CHANGELOG.md](CHANGELOG.md) |
 
 ### Test and package

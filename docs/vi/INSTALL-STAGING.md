@@ -1,6 +1,7 @@
 # Cài đặt và triển khai thử (staging) — dành cho AI/người có quyền WordPress
 
 > Trạng thái hiện tại: đã triển khai production ngày 23/10/2026; xem `DEPLOYMENT-2026-10-23.md`. Quy trình dưới đây vẫn dành cho các lần triển khai/kiểm thử tiếp theo, không phải yêu cầu tạo lại những trang đã có.
+> Cập nhật website đang chạy lên theme 1.4.0 + plugin 1.1.1: làm theo `UPDATE-1.4.0-1.1.1.md`. Các gói 1.3.0/1.0.0 nhắc tới bên dưới nay nằm trong `dist/previous/`.
 
 Tại thời điểm bàn giao mã ngày 22/10/2026, repository **chưa** cài lên website thật. Người viết mã không có quyền wp-admin, hosting, cơ sở dữ liệu hay Search Console. Các bước triển khai phải do người/AI có quyền WordPress thực hiện và không mặc định rằng Claude có các quyền đó. Bản ghi production ngày 23/10/2026 ghi rõ thao tác thực tế và các giới hạn kiểm chứng của lần triển khai đầu.
 

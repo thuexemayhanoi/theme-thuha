@@ -67,7 +67,21 @@ Trang Việt có WebPage, WebSite, BreadcrumbList (trừ `/vi/` chỉ có một 
 
 ## Breadcrumb
 
-Bộ lọc `wpseo_breadcrumb_links` thay mục đầu bằng "Trang chủ" → `/vi/`, bỏ mục trùng trang gốc `/vi/`, thêm "Blog" cho bài viết Việt. BreadcrumbList JSON-LD của Yoast dùng cùng danh sách này.
+Bộ lọc `wpseo_breadcrumb_links` thay mục đầu bằng "Trang chủ" → `/vi/`, bỏ mục trùng trang gốc `/vi/`, thêm "Blog" cho bài viết Việt. BreadcrumbList JSON-LD của Yoast dùng cùng danh sách này. Từ plugin 1.1.1, mục cuối của trang tìm kiếm Việt là "Kết quả tìm kiếm: “…”", của trang phân trang là "Trang N", của trang 404 (nếu template in breadcrumb) là "Không tìm thấy trang" — thay cho chữ tiếng Anh Yoast lưu trong cài đặt.
+
+## Tiêu đề trang tìm kiếm, 404 và chuyên mục (plugin 1.1.1)
+
+Yoast lưu mẫu tiêu đề mặc định bằng tiếng Anh ("You searched for %%searchphrase%%", "Page not found", "%%term_title%% Archives") và dùng chung cho mọi ngôn ngữ. Trên URL `/vi/` plugin thay bằng tiếng Việt qua `wpseo_title`, `wpseo_opengraph_title`, `wpseo_twitter_title` (Yoast chỉ in thẻ này trên trang kết quả tìm kiếm) và `wpseo_schema_webpage` (tên WebPage). Từ khóa tìm kiếm được mã hóa HTML giống hệt cách Yoast làm với tiêu đề tiếng Anh:
+
+| Trang | Tiêu đề |
+| --- | --- |
+| `/vi/?s=xe` | Kết quả tìm kiếm cho “xe” \| Thuê xe máy Nguyễn Hà |
+| `/vi/<không tồn tại>/` | Không tìm thấy trang \| Thuê xe máy Nguyễn Hà |
+| `/vi/chuyen-muc/kinh-nghiem/` | Kinh nghiệm \| Thuê xe máy Nguyễn Hà |
+| `/vi/chuyen-muc/kinh-nghiem/page/2/` | Kinh nghiệm – Trang 2 \| Thuê xe máy Nguyễn Hà |
+| `/vi/page/2/?s=xe` | Kết quả tìm kiếm cho “xe” – Trang 2 \| Thuê xe máy Nguyễn Hà (breadcrumb: Trang chủ » Kết quả tìm kiếm: “xe” » Trang 2) |
+
+Tên cửa hàng lấy từ `config/business.php`. Chuyên mục Việt có title riêng trong Yoast → giữ nguyên title đó. Trang Anh (`/?s=…`, 404, chuyên mục Anh) và "Site Name" đã đóng băng không đổi. Bài/trang Việt vẫn dùng title đã lưu trong Yoast; bài Việt chưa có title riêng sẽ nhận mẫu mặc định của Yoast (kết thúc bằng Site Name tiếng Anh) — hãy đặt title tiếng Việt cho từng bài (xem `AI-WRITER.md`).
 
 ## Tìm kiếm nội bộ
 

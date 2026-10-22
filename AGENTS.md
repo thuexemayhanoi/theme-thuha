@@ -11,13 +11,15 @@ Source of the active WordPress theme of https://rentbikehanoi.com (theme "Rentbi
 - Claude must still be assumed to have GitHub-only access to the two project repos, not WordPress or a reliable crawler. The live publishing work was done separately by an authorized administrator. `/thuha-writer` was not modified in this deployment.
 - Follow `docs/vi/ROLLBACK.md` before deactivation. Never substitute a raw `rbhvi_enabled` option write for the plugin's preflight/enable action.
 
-## Pending release — theme 1.4.0 + plugin 1.1.0 (not deployed)
-- Purpose: `/vi/` uses the English homepage's layout (hero, quick links, bike cards, price table, steps, FAQ, collapsible saved content). Details and install steps: docs/vi/UPDATE-1.4.0-1.1.0.md.
+## Pending release — theme 1.4.0 + plugin 1.1.1 (not deployed)
+- Purpose: `/vi/` uses the English homepage's layout (hero, quick links, bike cards, price table, steps, FAQ, collapsible saved content). Details and install steps: docs/vi/UPDATE-1.4.0-1.1.1.md. Plugin 1.1.0 was never installed and is superseded by 1.1.1.
 - Theme part `template-parts/landing.php` is presentation only and is used **only** by the plugin for the managed Vietnamese home page (registry key `home`, production ID 3454). `front-page.php`, `inc/content.php`, CSS and JS must stay identical to the deployed release unless the owner asks for an English change; `tests/static/repo-check.mjs` enforces this against `e81fbd7`.
 - Vietnamese homepage copy lives in `plugins/rentbikehanoi-native-vi/config/home-vi.php` (placeholders only for prices/NAP/fees). Photos are reused read-only from the English homepage's existing media (same file-name tokens as `rbh_home_data()`); never upload or invent images.
 - The landing never writes to the database and never replaces `post_content`; the saved page content is rendered in the details area. Setting "Bố cục trang chủ /vi/ → Trang thường" restores the 1.0.0 page layout without code.
 - On Vietnamese pages the custom logo links to `/vi/` with a Vietnamese alt, and the widget area "Thanh bên bài viết tiếng Việt (/vi/)" replaces the English "Article sidebar" (empty until an admin adds Vietnamese widgets).
 - The plugin's preflight refuses to enable `/vi/` while Polylang, WPML, TranslatePress, GTranslate or Weglot is active. Never re-enable GTranslate or add translation APIs.
+- Vietnamese search, 404 and Vietnamese category titles/`og:title`/`twitter:title`/WebPage name/breadcrumbs are set by `RBHVI_SEO` through Yoast's public filters, only on Vietnamese requests (a Yoast title saved for a Vietnamese category wins). Never change the English ones or the frozen Site Name.
+- WordPress core strings shown on Vietnamese pages (comment form/list, post and comment navigation) fall back to `includes/core-strings-vi.php` only when no Vietnamese translation is installed. Keep printf placeholders and HTML tags identical (static test); add strings there rather than editing core output.
 - Install order does not matter (each package degrades safely without the other), but both are needed for the new layout.
 
 ## Existing rules (unchanged)

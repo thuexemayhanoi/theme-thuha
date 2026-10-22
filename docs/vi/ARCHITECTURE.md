@@ -67,9 +67,9 @@ URL tiếng Anh không đi qua nhánh này nên không bị ảnh hưởng. Nộ
 ## Giao diện tiếng Việt
 
 Trang Việt dùng nguyên template của theme (page.php, single.php, index.php, 404.php). Plugin chỉ đổi phần chữ:
-chuỗi giao diện (gettext cho text domain `rentbike-hanoi`), tên/giờ/địa chỉ cửa hàng (bộ lọc `theme_mod_rbh_*` lấy từ `config/business.php`), menu tiếng Việt (vị trí menu `rbhvi_primary`/`rbhvi_footer`, hoặc menu dự phòng tự sinh từ các trang Việt đã xuất bản), định dạng ngày số `d/m/Y`, `lang="vi"`, `og:locale=vi_VN`. Trợ lý website tiếng Anh của theme không hiển thị trên trang Việt.
+chuỗi giao diện (gettext cho text domain `rentbike-hanoi`; từ 1.1.1 thêm chữ dự phòng cho vài chuỗi lõi WordPress như form bình luận, chỉ khi chưa có bản dịch đã cài), tên/giờ/địa chỉ cửa hàng (bộ lọc `theme_mod_rbh_*` lấy từ `config/business.php`), menu tiếng Việt (vị trí menu `rbhvi_primary`/`rbhvi_footer`, hoặc menu dự phòng tự sinh từ các trang Việt đã xuất bản), định dạng ngày số `d/m/Y`, `lang="vi"`, `og:locale=vi_VN`. Trợ lý website tiếng Anh của theme không hiển thị trên trang Việt.
 
-## Trang chủ tiếng Việt cùng bố cục trang chủ Anh (theme 1.4.0 + plugin 1.1.0, chưa triển khai)
+## Trang chủ tiếng Việt cùng bố cục trang chủ Anh (theme 1.4.0 + plugin 1.1.0 trở lên, chưa triển khai)
 
 ```
 /vi/ (trang quản lý "home", production ID 3454)
