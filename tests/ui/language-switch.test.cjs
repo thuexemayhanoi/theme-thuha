@@ -157,6 +157,17 @@ async function check(name, fn) {
     });
   }
 
+  await check('mobile utility bar (hours + phone) shows on Vietnamese pages exactly like on English pages', async () => {
+    for (const width of [320, 360, 390, 768, 1280]) {
+      const page = await browser.newPage({ viewport: { width, height: 800 } });
+      const bar = async path => { await page.goto(BASE + path); return page.evaluate(() => { const b = document.querySelector('.utility-bar'); const tel = b.querySelector('a[href^="tel:"]'); return { display: getComputedStyle(b).display, tel: !!tel && tel.getBoundingClientRect().height >= (innerWidth <= 760 ? 44 : 1) }; }); };
+      const en = await bar('/'), viHome = await bar('/vi/'), viPage = await bar('/vi/lien-he/');
+      assert.deepEqual(viHome, en, `${width}px /vi/`); assert.deepEqual(viPage, en, `${width}px /vi/lien-he/`);
+      assert.notEqual(en.display, 'none', `${width}px utility bar visible`);
+      await page.close();
+    }
+  });
+
   await check('Vietnamese home: logo/brand goes to /vi/, switch goes to the English home and back', async () => {
     const page = await browser.newPage({ viewport: { width: 390, height: 800 } });
     await page.goto(BASE + '/vi/lien-he/');

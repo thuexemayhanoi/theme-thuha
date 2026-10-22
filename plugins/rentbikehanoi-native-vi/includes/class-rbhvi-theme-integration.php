@@ -251,14 +251,16 @@ class RBHVI_Theme_Integration {
 	}
 
 	/**
-	 * Remove assistant assets on Vietnamese pages.
+	 * Remove the English assistant's script on Vietnamese pages. Its stylesheet
+	 * stays: besides inert #rbh-assistant rules it carries the theme's mobile
+	 * utility-bar rules (hours/phone strip), so Vietnamese pages keep the same
+	 * mobile header as English pages.
 	 */
 	public static function dequeue_assistant() {
 		if ( 'vi' !== RBHVI_Language::current() ) {
 			return;
 		}
 		wp_dequeue_script( 'rbh-assistant' );
-		wp_dequeue_style( 'rbh-assistant' );
 	}
 
 	/**

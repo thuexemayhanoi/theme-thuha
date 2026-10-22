@@ -295,6 +295,8 @@ const graphTypes = p => p.jsonld.flatMap(d => (d['@graph'] || [d]).map(n => [].c
       const r = await get(p); const text = visibleText(r.html);
       for (const e of english) assert.ok(!text.includes(e), `${p}: "${e}"`);
       assert.ok(!r.html.includes('wp-block-search'), `${p}: English sidebar search widget`);
+      assert.ok(!r.html.includes('id="rbh-assistant"') && !/id=['"]rbh-assistant-js['"]/.test(r.html), `${p}: English assistant markup/script`);
+      assert.match(r.html, /id=['"]rbh-assistant-css['"]/, `${p}: theme stylesheet with the mobile utility-bar rules must stay`);
       assert.ok(!/<form[^>]*action="http:\/\/127\.0\.0\.1:\d+\/"/.test(r.html), `${p}: a form posts to the English home`);
     }
     assert.ok((await get('/?s=rental')).html.includes('wp-block-search'), 'English sidebar widgets unchanged');
