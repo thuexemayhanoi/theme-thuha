@@ -30,7 +30,7 @@ Môi trường: PHP 8.3.6, Node 22.22.0, WordPress 7.1.3 + SQLite integration, Y
 | Bộ kiểm thử | Kết quả |
 | --- | --- |
 | `node --check assets/js/assistant-seo-20261019.js` + `node tests/assistant.cjs` (bắt buộc theo AGENTS.md) | PASS |
-| `tests/static/repo-check.mjs` — php -l 39 tệp, node --check, JSON hợp lệ, không secret, không gọi HTTP ra ngoài, không tài nguyên bên thứ ba, không cookie/JS đổi ngôn ngữ, không chuyển hướng IP/ngôn ngữ, NAP/giá chỉ ở config, không workflow deploy | 21/21 |
+| `tests/static/repo-check.mjs` — php -l 51 tệp, node --check, JSON hợp lệ, không secret, không gọi HTTP ra ngoài, không tài nguyên bên thứ ba, không cookie/JS đổi ngôn ngữ, không chuyển hướng IP/ngôn ngữ, NAP/giá chỉ ở config, không workflow deploy | 21/21 |
 | `tests/static/content-test.php` — dữ liệu khóa, bảng giá, 11 trang (độ dài, không H1, không placeholder, không lorem, liên kết nội bộ ≥ 2, chỉ liên kết /vi/), title/mô tả/từ khóa/nhãn menu duy nhất, chống ăn thịt từ khóa, chặn tuyên bố không có cơ sở, FAQ, chuỗi giao diện | 276/276 |
 | WPCS (WordPress, WordPress-Extra, Docs) cho plugin | 0 lỗi, 0 cảnh báo |
 | PHPCompatibilityWP 7.4+ cho toàn repo | 0 lỗi |
