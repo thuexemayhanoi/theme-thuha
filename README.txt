@@ -1,4 +1,4 @@
-Rentbike Hanoi 1.3.0
+Rentbike Hanoi 1.4.0
 ===================
 Independent classic WordPress theme. No parent theme, page builder, remote font,
 CDN script, framework, analytics or custom post type is required.

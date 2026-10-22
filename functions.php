@@ -1,6 +1,6 @@
 <?php
 defined( 'ABSPATH' ) || exit;
-define( 'RBH_VERSION', '1.3.0' );
+define( 'RBH_VERSION', '1.4.0' );
 foreach ( array( 'settings', 'navigation', 'content', 'components', 'upgrade', 'assistant', 'seo' ) as $rbh_module ) {
 	require_once get_template_directory() . '/inc/' . $rbh_module . '.php';
 }
