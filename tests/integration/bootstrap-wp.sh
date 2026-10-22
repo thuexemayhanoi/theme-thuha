@@ -75,8 +75,19 @@ chmod +x "$ROOT/wp"
 cat > "$ROOT/router.php" <<'PHP'
 <?php
 $path = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
-if ( '/' !== $path && is_file( __DIR__ . '/site' . $path ) && ! preg_match( '/\.php$/', $path ) ) {
-	return false;
+$file = __DIR__ . '/site' . $path;
+if ( is_dir( $file ) && is_file( rtrim( $file, '/' ) . '/index.php' ) ) {
+	$file = rtrim( $file, '/' ) . '/index.php';
+}
+if ( '/' !== $path && is_file( $file ) ) {
+	if ( ! preg_match( '/\.php$/', $file ) ) {
+		return false; // Static asset.
+	}
+	chdir( dirname( $file ) );
+	$_SERVER['SCRIPT_NAME'] = $_SERVER['PHP_SELF'] = substr( $file, strlen( __DIR__ . '/site' ) );
+	$_SERVER['SCRIPT_FILENAME'] = $file;
+	require $file;
+	return;
 }
 chdir( __DIR__ . '/site' );
 $_SERVER['SCRIPT_NAME'] = '/index.php';

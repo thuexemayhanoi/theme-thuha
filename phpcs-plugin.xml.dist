@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<ruleset name="rentbikehanoi-native-vi">
+	<description>Full WordPress Coding Standards for plugins/rentbikehanoi-native-vi.</description>
+	<arg name="extensions" value="php"/>
+	<arg value="sp"/>
+	<config name="testVersion" value="7.4-"/>
+	<config name="minimum_wp_version" value="6.5"/>
+	<file>plugins/rentbikehanoi-native-vi</file>
+	<rule ref="WordPress">
+		<!-- Class files use the class-{name}.php convention; config/content are data files. -->
+		<exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
+	</rule>
+	<rule ref="PHPCompatibilityWP"/>
+	<rule ref="WordPress.WP.I18n">
+		<properties><property name="text_domain" type="array"><element value="rentbikehanoi-native-vi"/></property></properties>
+	</rule>
+</ruleset>

@@ -334,5 +334,53 @@ const graphTypes = p => p.jsonld.flatMap(d => (d['@graph'] || [d]).map(n => [].c
   await check('Vietnamese content is kept after deactivation', () => assert.equal(php(`echo count(get_posts(array('post_type'=>array('post','page'),'post_status'=>'any','posts_per_page'=>-1,'meta_key'=>'_rbhvi_managed')));`), '11'));
   wp('plugin', 'activate', 'rentbikehanoi-native-vi');
 
+  // ---------------------------------------------------------------- 10. admin over HTTP
+  console.log('10. Admin screen and buttons (real login, nonces, capabilities)');
+  const login = async (user, pass) => {
+    const res = await fetch(BASE + '/wp-login.php', { method: 'POST', redirect: 'manual', headers: { 'content-type': 'application/x-www-form-urlencoded', cookie: 'wordpress_test_cookie=WP%20Cookie%20check' }, body: new URLSearchParams({ log: user, pwd: pass, testcookie: '1' }) });
+    return res.headers.getSetCookie().map(c => c.split(';')[0]).join('; ');
+  };
+  const admin = await login('admin', 'admin');
+  const screen = await get('/wp-admin/admin.php?page=rbhvi', { headers: { cookie: admin } });
+  await check('admin screen renders in Vietnamese with status, preflight, seed, pairing, audit, history', () => {
+    assert.equal(screen.status, 200);
+    for (const t of ['Phần tiếng Việt (/vi/)', '1. Trạng thái', 'Kiểm tra trước khi bật', '2. Bộ trang tiếng Việt', '3. Ghép cặp trang/bài Anh–Việt', '4. Kiểm tra nội dung tiếng Việt', '6. Lịch sử bật/tắt', 'Tắt /vi/', 'Hoàn tác lần chuyển gần nhất'])
+      assert.ok(screen.html.includes(t), t);
+    assert.ok(!/(Warning|Notice|Fatal error|Deprecated)<\/b>:/.test(screen.html), 'PHP notice on screen');
+  });
+  const post = async (action, cookie, extra = {}) => {
+    const nonce = (screen.html.match(new RegExp(`value="rbhvi_${action}">\\s*<input type="hidden" id="_wpnonce" name="_wpnonce" value="([0-9a-f]+)"`)) || [])[1];
+    const res = await fetch(BASE + '/wp-admin/admin-post.php', { method: 'POST', redirect: 'manual', headers: { cookie, 'content-type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams({ action: `rbhvi_${action}`, _wpnonce: nonce || 'missing', ...extra }) });
+    return { status: res.status, location: res.headers.get('location'), nonce };
+  };
+  await check('"Tắt /vi/" button turns the section OFF and reports in Vietnamese', async () => {
+    const r = await post('disable', admin); assert.equal(r.status, 302); assert.ok(r.nonce);
+    assert.equal(php(`echo RBHVI_State::is_enabled() ? 'on' : 'off';`), 'off');
+    const after = await get('/wp-admin/admin.php?page=rbhvi', { headers: { cookie: admin } });
+    assert.ok(after.html.includes('Đã tắt /vi/. Phần tiếng Anh vẫn hoạt động bình thường'));
+  });
+  await check('"Hoàn tác" button turns it back ON', async () => {
+    const r = await post('undo', admin); assert.equal(r.status, 302);
+    assert.equal(php(`echo RBHVI_State::is_enabled() ? 'on' : 'off';`), 'on');
+  });
+  await check('"Tạo bộ trang" button is idempotent', async () => {
+    await post('seed', admin);
+    assert.equal(php(`echo count(get_posts(array('post_type'=>'page','post_status'=>'any','posts_per_page'=>-1,'meta_key'=>'_rbhvi_managed')));`), '11');
+  });
+  await check('anonymous or low-privilege users cannot switch state; bad nonce is rejected', async () => {
+    const anon = await post('disable', '');
+    php(`if (!get_user_by('login','sub')) wp_insert_user(array('user_login'=>'sub','user_pass'=>'sub','role'=>'subscriber'));`);
+    const sub = await post('disable', await login('sub', 'sub'));
+    const forged = await fetch(BASE + '/wp-admin/admin-post.php', { method: 'POST', redirect: 'manual', headers: { cookie: admin, 'content-type': 'application/x-www-form-urlencoded' }, body: 'action=rbhvi_disable&_wpnonce=deadbeef' });
+    assert.ok(!(anon.location || '').includes('page=rbhvi'), 'anonymous request must not reach the handler');
+    assert.equal(sub.status, 403); assert.equal(forged.status, 403);
+    assert.equal(php(`echo RBHVI_State::is_enabled() ? 'on' : 'off';`), 'on');
+  });
+  await check('no PHP warnings/notices from the theme or plugin in debug.log', () => {
+    const log = path.join(process.env.RBH_WP_ROOT, 'site/debug.log');
+    const lines = fs.existsSync(log) ? fs.readFileSync(log, 'utf8').split('\n').filter(l => /themes\/wp-theme\/|plugins\/rentbikehanoi-native-vi\//.test(l)) : [];
+    assert.deepEqual(lines, []);
+  });
+
   summary();
 })().catch(e => { console.error(e); process.exitCode = 1; });
