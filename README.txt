@@ -1,4 +1,4 @@
-Rentbike Hanoi 1.2.0
+Rentbike Hanoi 1.3.0
 ===================
 Independent classic WordPress theme. No parent theme, page builder, remote font,
 CDN script, framework, analytics or custom post type is required.
@@ -103,3 +103,13 @@ Context links come from WordPress menu objects, maximum 3, excluding self and
 destinations already linked in saved content. Nothing is injected into saved text.
 The TOC master switch controls LuckyWP through its public lwptoc_active filter;
 when on, LuckyWP settings apply. Its stored configuration is never changed.
+
+Language hooks (1.3)
+--------------------
+1.3.0 adds presentation hooks for the project's own Vietnamese plugin
+(rentbikehanoi-native-vi): rbh_header_actions (after the Light/Dark toggle),
+rbh_home_url(), rbh_menu_items, rbh_menu_group, rbh_assistant_enabled and
+rbh_language_switch_enabled (loads assets/css/language-switch.css only while the
+VI | EN switch is shown). Without that plugin the output is unchanged. The hooks
+never rename, reorder or save the frozen English menu items. Yoast remains the
+only metadata/schema owner.

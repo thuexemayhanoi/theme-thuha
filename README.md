@@ -1,6 +1,43 @@
 # wp-theme
 https://rentbikehanoi.com
 
+> **Deployment status (22 Oct 2026):** theme 1.3.0 and the plugin `rentbikehanoi-native-vi` 1.0.0 on branch
+> `feature/native-vietnamese-section` are **not deployed**. They exist as source, tests and release candidates in `dist/` only.
+> According to docs/publish-qa-2026-10-20.json, production runs theme 1.2.0 (published 20 Oct 2026). Install only through docs/vi/INSTALL-STAGING.md.
+
+## English + Vietnamese (theme 1.3.0, plugin 1.0.0)
+
+- English keeps every current URL at the root; native Vietnamese lives under `/vi/` (11 core pages, written in Vietnamese, created as drafts).
+- `plugins/rentbikehanoi-native-vi/` — the project's own bilingual plugin (no WPML/Polylang/TranslatePress): `/vi/` routing, pairing, hreflang, Yoast integration, sitemap exclusions, VI | EN switch next to Light/Dark, Vietnamese admin screen with preflight, ON/OFF/undo.
+- Theme changes are presentation hooks only; Yoast stays the single SEO/schema owner.
+- Locked NAP and reference prices: `plugins/rentbikehanoi-native-vi/config/business.php`.
+
+| Topic | Document |
+| --- | --- |
+| Rules for agents | [AGENTS.md](AGENTS.md) |
+| Architecture | [docs/vi/ARCHITECTURE.md](docs/vi/ARCHITECTURE.md) |
+| Plugin | [docs/vi/PLUGIN.md](docs/vi/PLUGIN.md) |
+| Install, staging, production checks | [docs/vi/INSTALL-STAGING.md](docs/vi/INSTALL-STAGING.md) |
+| Rollback | [docs/vi/ROLLBACK.md](docs/vi/ROLLBACK.md) |
+| SEO, canonical, hreflang, sitemap | [docs/vi/SEO-HREFLANG-SITEMAP.md](docs/vi/SEO-HREFLANG-SITEMAP.md) |
+| Pairing English–Vietnamese content | [docs/vi/PAIRING.md](docs/vi/PAIRING.md) |
+| Guide for the AI Writer | [docs/vi/AI-WRITER.md](docs/vi/AI-WRITER.md) |
+| Locked business data | [docs/vi/BUSINESS-DATA.md](docs/vi/BUSINESS-DATA.md) |
+| Unverified items and limits | [docs/vi/LIMITATIONS.md](docs/vi/LIMITATIONS.md) |
+| QA report of this release candidate | [dist/QA-REPORT.md](dist/QA-REPORT.md) |
+| Changes | [CHANGELOG.md](CHANGELOG.md) |
+
+### Test and package
+
+```bash
+composer install                       # dev tools only (PHPCS, WPCS, PHPCompatibilityWP)
+scripts/test-all.sh                    # static checks
+RBH_WP_ROOT=/tmp/rbh-wp RBH_BASELINE_REF=main scripts/test-all.sh --integration --bootstrap   # local WordPress + Yoast + browser
+python3 scripts/package.py && python3 tests/static/package-test.py                          # dist/ ZIPs, manifest, SHA256SUMS
+```
+
+The integration tests build a disposable WordPress on 127.0.0.1; they never contact the live site.
+
 ## Live-theme preservation baseline
 
 The complete active **Rentbike Hanoi 1.2.0** theme was imported from `rentbike-hanoi` on 18 October 2026: 40 source files, with no redesign, fixes, feature removal or production writes.
