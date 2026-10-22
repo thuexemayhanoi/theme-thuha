@@ -51,7 +51,30 @@ $p = function ( $type, $slug, $title, $content, $cat = 0, $date = '2026-01-01 10
 	);
 };
 $para  = '<!-- wp:paragraph --><p>%s</p><!-- /wp:paragraph -->';
-$home  = $p( 'page', 'home-page', 'Hanoi Motorbike Rental', sprintf( $para, 'Rent a motorbike in Hanoi with Nguyen Ha. This English fixture paragraph is long enough to be detected as the introduction text.' )
+// Homepage images, named like the production media the theme detects (Honda-Vision, Honda-Wave, Honda-Cub-50cc).
+require_once ABSPATH . 'wp-admin/includes/image.php';
+$img = function ( $name, $w, $h, $rgb ) {
+	$found = get_page_by_path( sanitize_title( $name ), OBJECT, 'attachment' );
+	if ( $found ) {
+		return (int) $found->ID;
+	}
+	$upload = wp_upload_dir();
+	$file   = trailingslashit( $upload['path'] ) . $name . '.png';
+	$image  = imagecreatetruecolor( $w, $h );
+	imagefill( $image, 0, 0, imagecolorallocate( $image, $rgb[0], $rgb[1], $rgb[2] ) );
+	imagestring( $image, 5, 20, 20, $name . ' (test image)', imagecolorallocate( $image, 255, 255, 255 ) );
+	imagepng( $image, $file );
+	$id = wp_insert_attachment( array( 'post_mime_type' => 'image/png', 'post_title' => $name, 'post_name' => sanitize_title( $name ), 'post_status' => 'inherit' ), $file );
+	wp_update_attachment_metadata( $id, wp_generate_attachment_metadata( $id, $file ) );
+	return (int) $id;
+};
+$figure = function ( $id, $caption = '' ) {
+	return '<figure class="wp-block-image size-large"><img src="' . esc_url( wp_get_attachment_url( $id ) ) . '" alt="" class="wp-image-' . $id . '"/>' . ( $caption ? '<figcaption class="wp-element-caption">' . $caption . '</figcaption>' : '' ) . '</figure>';
+};
+$hero_img = $img( 'Hanoi-Old-Quarter-street', 1200, 1150, array( 70, 80, 90 ) );
+$bike_img = array( $img( 'Honda-Vision-2024', 800, 600, array( 174, 37, 44 ) ), $img( 'Honda-Wave-Alpha', 800, 600, array( 40, 90, 140 ) ), $img( 'Honda-Cub-50cc', 800, 600, array( 60, 120, 60 ) ) );
+$home  = $p( 'page', 'home-page', 'Hanoi Motorbike Rental', $figure( $hero_img, 'Photo: test fixture credit' ) . sprintf( $para, 'Rent a motorbike in Hanoi with Nguyen Ha. This English fixture paragraph is long enough to be detected as the introduction text.' )
+	. '<h2>Our bikes</h2>' . $figure( $bike_img[0] ) . $figure( $bike_img[1] ) . $figure( $bike_img[2] )
 	. '<h2 id="rates">Rental rates</h2><table><tr><th>Rental Duration</th><th>Price</th><th>Deposit</th></tr><tr><td>Daily</td><td>Ask the shop</td><td>Ask the shop</td></tr></table>'
 	. '<h2>FAQ</h2><table><tr><th>Question</th><th>Answer</th></tr><tr><td>Q1: Where is the shop?</td><td>Near Gia Lam Bus Station.</td></tr></table>' );
 $ids   = array(

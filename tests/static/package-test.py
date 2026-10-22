@@ -43,9 +43,10 @@ FORBIDDEN = re.compile(r'/(tests|docs|dist|scripts|node_modules|vendor|\.git|\.g
 SECRET = re.compile(r'AKIA[0-9A-Z]{16}|-----BEGIN [A-Z ]*PRIVATE KEY|gh[pousr]_[A-Za-z0-9]{30,}|sk-[A-Za-z0-9]{32,}')
 REQUIRED = {
     'theme': ['style.css', 'functions.php', 'header.php', 'footer.php', 'README.txt', 'theme.json', 'inc/navigation.php',
-              'assets/css/language-switch.css', 'assets/js/assistant-seo-20261019.js', 'template-parts/menu.php'],
+              'assets/css/language-switch.css', 'assets/js/assistant-seo-20261019.js', 'template-parts/menu.php', 'template-parts/landing.php'],
     'plugin': ['rentbikehanoi-native-vi.php', 'uninstall.php', 'readme.txt', 'config/business.php', 'config/pages.php',
-               'includes/class-rbhvi-router.php', 'includes/class-rbhvi-admin.php', 'content/home.txt', 'content/faq-items.php'],
+               'includes/class-rbhvi-router.php', 'includes/class-rbhvi-admin.php', 'content/home.txt', 'content/faq-items.php',
+               'includes/class-rbhvi-home.php', 'config/home-vi.php', 'templates/home-vi.php'],
 }
 
 for artifact in manifest['artifacts']:

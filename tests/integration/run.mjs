@@ -40,7 +40,29 @@ function diffSnap(a, b, allow = () => false) {
   return bad;
 }
 const tableHash = () => php(`global $wpdb; $h=''; foreach (array('posts','postmeta','terms','term_taxonomy','term_relationships','termmeta') as $t) { $h .= md5(wp_json_encode($wpdb->get_results("SELECT * FROM {$wpdb->prefix}$t ORDER BY 1, 2", ARRAY_N))); } echo md5($h . wp_json_encode($wpdb->get_results("SELECT option_name, option_value FROM {$wpdb->options} WHERE option_name LIKE 'rbhvi_%' OR option_name IN ('permalink_structure','page_on_front','show_on_front') ORDER BY 1", ARRAY_N)));`);
-const englishHash = () => php(`global $wpdb; echo md5(wp_json_encode($wpdb->get_results("SELECT ID, post_title, post_name, post_content, post_status, post_modified, post_parent FROM {$wpdb->posts} WHERE post_type IN ('post','page','nav_menu_item') AND ID NOT IN (SELECT tr.object_id FROM {$wpdb->term_relationships} tr JOIN {$wpdb->term_taxonomy} tt USING (term_taxonomy_id) WHERE tt.taxonomy='rbhvi_language') ORDER BY ID", ARRAY_N)) . wp_json_encode($wpdb->get_results("SELECT post_id, meta_key, meta_value FROM {$wpdb->postmeta} WHERE post_id NOT IN (SELECT tr.object_id FROM {$wpdb->term_relationships} tr JOIN {$wpdb->term_taxonomy} tt USING (term_taxonomy_id) WHERE tt.taxonomy='rbhvi_language') AND meta_key NOT LIKE '\\\\_edit%' ORDER BY meta_id", ARRAY_N)));`);
+const englishHash = () => php(`global $wpdb; echo md5(wp_json_encode($wpdb->get_results("SELECT ID, post_title, post_name, post_content, post_status, post_modified, post_parent FROM {$wpdb->posts} WHERE post_type IN ('post','page','nav_menu_item') AND ID NOT IN (SELECT tr.object_id FROM {$wpdb->term_relationships} tr JOIN {$wpdb->term_taxonomy} tt USING (term_taxonomy_id) WHERE tt.taxonomy='rbhvi_language') ORDER BY ID", ARRAY_N)) . wp_json_encode($wpdb->get_results("SELECT post_id, meta_key, meta_value FROM {$wpdb->postmeta} WHERE post_id IN (SELECT ID FROM {$wpdb->posts} WHERE post_type IN ('post','page','nav_menu_item')) AND post_id NOT IN (SELECT tr.object_id FROM {$wpdb->term_relationships} tr JOIN {$wpdb->term_taxonomy} tt USING (term_taxonomy_id) WHERE tt.taxonomy='rbhvi_language') AND meta_key NOT LIKE '\\\\_edit%' ORDER BY meta_id", ARRAY_N)));`);
+// Run fn while the site's theme (and plugin) are switched to the files of a git ref.
+async function withRef(ref, fn) {
+  const dir = path.join(process.env.RBH_WP_ROOT, 'baseline-' + ref.replace(/[^a-z0-9]/gi, '_'));
+  fs.rmSync(dir, { recursive: true, force: true });
+  execFileSync('git', ['-C', REPO, 'worktree', 'add', '--force', '--detach', dir, ref], { stdio: 'ignore' });
+  const theme = path.join(process.env.RBH_WP_ROOT, 'site/wp-content/themes/wp-theme');
+  const plugin = path.join(process.env.RBH_WP_ROOT, 'site/wp-content/plugins/rentbikehanoi-native-vi');
+  const hasPlugin = fs.existsSync(path.join(dir, 'plugins/rentbikehanoi-native-vi'));
+  fs.rmSync(theme); fs.symlinkSync(dir, theme);
+  if (hasPlugin) { fs.rmSync(plugin); fs.symlinkSync(path.join(dir, 'plugins/rentbikehanoi-native-vi'), plugin); }
+  try { return await fn(); } finally {
+    fs.rmSync(theme); fs.symlinkSync(REPO, theme);
+    if (hasPlugin) { fs.rmSync(plugin); fs.symlinkSync(path.join(REPO, 'plugins/rentbikehanoi-native-vi'), plugin); }
+    execFileSync('git', ['-C', REPO, 'worktree', 'remove', '--force', dir], { stdio: 'ignore' });
+  }
+}
+// Visible text + accessibility attributes of <body>, without scripts/styles.
+const visibleText = html => {
+  const body = html.slice(html.indexOf('<body')).replace(/<(script|style)\b[\s\S]*?<\/\1>/gi, ' ');
+  const attrs = [...body.matchAll(/(?:aria-label|title|placeholder|alt)="([^"]*)"/g)].map(m => m[1]).join(' | ');
+  return (body.replace(/<[^>]+>/g, ' ') + ' ' + attrs).replace(/&#8217;/g, '’').replace(/&amp;/g, '&');
+};
 const graphTypes = p => p.jsonld.flatMap(d => (d['@graph'] || [d]).map(n => [].concat(n['@type']).join('+')));
 
 (async () => {
@@ -50,20 +72,11 @@ const graphTypes = p => p.jsonld.flatMap(d => (d['@graph'] || [d]).map(n => [].c
   const E0 = await snapshot();
   const H0 = englishHash();
 
-  if (process.env.RBH_BASELINE_REF) {
-    await check(`English output identical to theme at ${process.env.RBH_BASELINE_REF} (plugin inactive)`, async () => {
-      const dir = path.join(process.env.RBH_WP_ROOT, 'baseline-theme');
-      fs.rmSync(dir, { recursive: true, force: true });
-      execFileSync('git', ['-C', REPO, 'worktree', 'add', '--force', '--detach', dir, process.env.RBH_BASELINE_REF], { stdio: 'ignore' });
-      const link = path.join(process.env.RBH_WP_ROOT, 'site/wp-content/themes/wp-theme');
-      fs.rmSync(link); fs.symlinkSync(dir, link);
-      try {
-        const old = await snapshot();
-        assert.deepEqual(diffSnap(old, E0), []);
-      } finally {
-        fs.rmSync(link); fs.symlinkSync(REPO, link);
-        execFileSync('git', ['-C', REPO, 'worktree', 'remove', '--force', dir], { stdio: 'ignore' });
-      }
+  const REFS = (process.env.RBH_BASELINE_REF || '').split(',').map(r => r.trim()).filter(Boolean);
+  for (const ref of REFS) {
+    await check(`English output identical to theme at ${ref} (plugin inactive)`, async () => {
+      const old = await withRef(ref, () => snapshot());
+      assert.deepEqual(diffSnap(old, E0), []);
     });
   }
 
@@ -205,6 +218,88 @@ const graphTypes = p => p.jsonld.flatMap(d => (d['@graph'] || [d]).map(n => [].c
     assert.match(parse(r.html).robots.join(), /noindex/); assert.equal(parse(r.html).lang, 'vi');
   });
 
+  // ---------------------------------------------------------------- 4b. Vietnamese home landing
+  console.log('4b. Vietnamese home page in the English homepage layout');
+  const home = viPages[''].html;
+  const enHome = (await get('/')).html;
+  const mainClasses = h => [...(h.match(/<main[\s\S]*<\/main>/) || [''])[0].matchAll(/<(?:section|div) class="([^"]+)"/g)].map(m => m[1])
+    .filter(c => /^(hero container|container quick-links|section container|rates-section|section container plan-section|section container faq-layout|section container source-sections)$/.test(c));
+  await check('same section sequence as the English homepage (hero, quick links, bikes, rates, steps, FAQ, details)', () => {
+    assert.match(home, /<main id="main" class="home-main rbh-landing">/);
+    const vi = mainClasses(home), en = mainClasses(enHome).slice(0, vi.length);
+    assert.deepEqual(vi, ['hero container', 'container quick-links', 'section container', 'rates-section', 'section container plan-section', 'section container faq-layout', 'section container source-sections']);
+    assert.deepEqual(vi, en);
+  });
+  await check('hero: page title is the only H1; Vietnamese lede, call/Zalo buttons, hours; English hero image reused', () => {
+    const x = parse(home); assert.equal(x.h1, 1);
+    const title = php(`echo get_the_title(RBHVI_State::page_id('home'));`);
+    assert.ok(home.includes(`<h1>${title}</h1>`), title);
+    assert.ok(home.includes('href="tel:+84334699969">Gọi 0334\u00a0699\u00a0969'), 'call button keeps the number on one line');
+    assert.ok(home.includes('href="https://zalo.me/0334699969">Nhắn Zalo'));
+    assert.ok(home.includes('<span>09:00–21:00 hằng ngày</span>'));
+    const heroSrc = (s) => (s.match(/<img[^>]*class="hero-photo"[^>]*src="([^"]+)"|<img[^>]*src="([^"]+)"[^>]*class="hero-photo"/) || []).slice(1).find(Boolean);
+    assert.ok(heroSrc(home) && heroSrc(home) === heroSrc(enHome), 'same hero image file as the English homepage');
+    assert.ok(home.includes(`class="hero-photo" alt="${title}"`), 'hero alt = Vietnamese page title (English rule: hero title)');
+    assert.ok(home.includes('<div class="container image-credit"><figcaption'), 'image credit kept');
+  });
+  await check('bike cards reuse the English homepage photos with Vietnamese labels/alt and link to /vi/ pages', () => {
+    const imgs = h => [...h.matchAll(/<div class="bike-card-image">[\s\S]*?<img[^>]*src="([^"]+)"[^>]*alt="([^"]*)"/g)].map(m => [m[1], m[2]]);
+    const viImgs = imgs(home), enImgs = imgs(enHome);
+    assert.equal(viImgs.length, 3); assert.deepEqual(viImgs.map(i => i[0]), enImgs.map(i => i[0]));
+    assert.deepEqual(viImgs.map(i => i[1]), ['Xe ga Honda Vision', 'Xe số Honda Wave', 'Xe 50cc Honda Cub']);
+    assert.deepEqual([...home.matchAll(/<div class="bike-card-body"><h3>([^<]+)<\/h3>/g)].map(m => m[1]), ['Xe ga', 'Xe số', 'Xe 50cc']);
+    for (const href of [...(home.match(/<div class="bike-grid">[\s\S]*?<\/section>/) || [''])[0].matchAll(/href="([^"]+)"/g)].map(m => m[1])) assert.ok(href.startsWith(vi('')), href);
+  });
+  await check('rates table = locked reference prices; quick links and FAQ link stay in /vi/', () => {
+    const rates = (home.match(/<section class="rates-section">[\s\S]*?<\/section>/) || [''])[0];
+    for (const row of ['<td>Xe số</td><td>150.000–200.000đ</td><td>700.000–800.000đ</td><td>1.000.000–1.200.000đ</td>', '<td>Xe điện</td><td>Tùy mẫu xe – hỏi trước</td>', '<td>Honda Air Blade</td><td>200.000đ</td><td>900.000đ</td><td>1.500.000đ</td>'])
+      assert.ok(rates.includes(row), row);
+    assert.ok(rates.includes('20.000đ/giờ'));
+    const quick = [...(home.match(/<div class="container quick-links">[\s\S]*?<\/div>/) || [''])[0].matchAll(/href="([^"]+)"/g)].map(m => m[1]);
+    assert.deepEqual(quick, ['bang-gia-thue-xe-may-ha-noi', 'thu-tuc-thue-xe-may-ha-noi', 'giao-nhan-xe-may-ha-noi', 'cau-hoi-thuong-gap'].map(p => vi(p)));
+    assert.equal([...home.matchAll(/<div class="faq-list">[\s\S]*?<\/div>/g)].length, 1);
+    assert.equal(graphTypes(parse(home)).some(t => t.includes('FAQPage')), false, 'no FAQPage schema on the home page');
+  });
+  await check('saved /vi/ page content is kept, shown in the details section, and not modified', () => {
+    const before = php(`echo md5(get_post_field('post_content', RBHVI_State::page_id('home')) . get_post_field('post_modified', RBHVI_State::page_id('home')));`);
+    const h2 = Number(php(`echo substr_count(get_post_field('post_content', RBHVI_State::page_id('home')), '<h2');`));
+    const sections = [...home.matchAll(/<details class="source-section"[^>]*><summary><h3>([^<]+)<\/h3><\/summary>/g)].map(m => m[1]);
+    assert.equal(sections.length, h2 + 1); assert.equal(sections[0], 'Về dịch vụ cho thuê xe');
+    assert.ok(sections.includes('Địa chỉ và giờ mở cửa'));
+    assert.ok(home.includes('Trang này tóm tắt những gì bạn cần biết'), 'saved intro paragraph is rendered');
+    assert.equal(php(`echo md5(get_post_field('post_content', RBHVI_State::page_id('home')) . get_post_field('post_modified', RBHVI_State::page_id('home')));`), before);
+  });
+  await check('"page" layout setting restores the regular page template (1.0.0 behaviour)', async () => {
+    php(`RBHVI_State::save_settings(array('sitemap_pairs_only'=>true,'home_layout'=>'page'));`);
+    const plain = await get('/vi/');
+    php(`RBHVI_State::save_settings(array('sitemap_pairs_only'=>true,'home_layout'=>'landing'));`);
+    assert.equal(plain.status, 200); assert.match(plain.html, /<main id="main" class="container page-shell">/); assert.equal(parse(plain.html).h1, 1);
+    assert.deepEqual(parse(plain.html).canonicals, parse(home).canonicals); assert.deepEqual(parse(plain.html).hreflang, parse(home).hreflang);
+    assert.match((await get('/vi/')).html, /rbh-landing/);
+  });
+  await check('logo and brand link to /vi/ on every Vietnamese page, to / on English pages', async () => {
+    for (const r of Object.values(viPages)) assert.match(r.html, new RegExp(`<a class="brand" href="${vi('')}"`));
+    wp('eval-file', path.join(REPO, 'tests/integration/fixture-logo.php'));
+    try {
+      for (const p of [...VI_PATHS.map(p => `/vi/${p ? p + '/' : ''}`), '/vi/?s=xe', '/vi/khong-co/']) {
+        const h = (await get(p)).html;
+        assert.match(h, new RegExp(`<a href="${vi('')}" class="custom-logo-link"`), p);
+        assert.match(h, /class="custom-logo" alt="Thuê xe máy Nguyễn Hà"/, p);
+      }
+      for (const p of ['/', '/about-us/', '/?s=rental']) assert.match((await get(p)).html, new RegExp(`<a href="${BASE}/" class="custom-logo-link"`), p);
+    } finally { wp('eval-file', path.join(REPO, 'tests/integration/fixture-logo.php'), 'remove'); }
+  });
+  await check('Vietnamese pages show no English interface text, widget or English search form', async () => {
+    const english = ['Skip to content', 'Primary navigation', 'Book a bike', 'Search guides', 'Search this site', 'Back to top', 'Back to homepage', 'Go to homepage', 'Nothing found yet', 'Read guide', 'Related guides', 'Share this guide', 'Copy link', 'Previous article', 'Next article', 'Quick contact', 'Close menu', 'Toggle light', 'Dark mode', 'Rental essentials', 'Plan your ride', 'Find what you need', 'Have a question', 'Latest Posts', 'Recent Posts', 'Website assistant', 'Contact options', 'Explore Hanoi', 'The reading room', 'This road ends here', 'Motorbike Nguyen Ha', 'Your next ride'];
+    for (const p of [...VI_PATHS.map(p => `/vi/${p ? p + '/' : ''}`), '/vi/?s=xe', '/vi/?s=khongcoketqua', '/vi/khong-ton-tai/']) {
+      const r = await get(p); const text = visibleText(r.html);
+      for (const e of english) assert.ok(!text.includes(e), `${p}: "${e}"`);
+      assert.ok(!r.html.includes('wp-block-search'), `${p}: English sidebar search widget`);
+      assert.ok(!/<form[^>]*action="http:\/\/127\.0\.0\.1:\d+\/"/.test(r.html), `${p}: a form posts to the English home`);
+    }
+    assert.ok((await get('/?s=rental')).html.includes('wp-block-search'), 'English sidebar widgets unchanged');
+  });
+
   // ---------------------------------------------------------------- 5. posts
   console.log('5. Vietnamese posts, categories, search, pagination');
   const ids = phpJson(`
@@ -271,6 +366,12 @@ const graphTypes = p => p.jsonld.flatMap(d => (d['@graph'] || [d]).map(n => [].c
     assert.ok(xml.includes(BASE + '/hanoi-scooter-rental/'));
     const cat = (await get('/category-sitemap.xml')).html; assert.ok(cat.includes(vi('chuyen-muc/kinh-nghiem')));
   });
+  for (const ref of (process.env.RBH_DEPLOYED_REF || '').split(',').map(r => r.trim()).filter(Boolean)) {
+    await check(`English output (plugin ON, Vietnamese content published) identical to the deployed release ${ref}`, async () => {
+      const deployed = await withRef(ref, () => snapshot());
+      assert.deepEqual(diffSnap(deployed, await snapshot()), []);
+    });
+  }
   await check('page views do not write to the database', async () => {
     const before = tableHash();
     for (const u of [...ENGLISH, ...VI_PATHS.map(p => `/vi/${p ? p + '/' : ''}`), '/vi/blog/page/2/', '/vi/?s=xe', '/vi/meo-di-xe-3/', '/vi/x/']) await get(u);
@@ -299,6 +400,8 @@ const graphTypes = p => p.jsonld.flatMap(d => (d['@graph'] || [d]).map(n => [].c
   await check('broken /vi/ home slug → enable refused, no state change', () => assert.deepEqual(slugBroken, [false, false]));
   const rolled = phpJson(`$id = RBHVI_State::page_id('contact'); $parent = wp_get_post_parent_id($id); wp_update_post(array('ID'=>$id, 'post_parent'=>0)); $r = RBHVI_State::enable(); $h = RBHVI_State::history(); $last = end($h); $o = array($r['ok'], (bool) $r['verify'], RBHVI_State::is_enabled(), $last['action']); wp_update_post(array('ID'=>$id, 'post_parent'=>$parent)); return $o;`);
   await check('post-enable verification failure → automatic rollback to OFF', () => assert.deepEqual(rolled, [false, true, false, 'rollback']));
+  const gtranslate = phpJson(`$dir = WP_PLUGIN_DIR . '/gtranslate'; wp_mkdir_p($dir); file_put_contents($dir . '/gtranslate.php', "<?php\n/* Plugin Name: GTranslate (local test stub, does nothing) */\n"); $a = activate_plugin('gtranslate/gtranslate.php'); RBHVI_State::disable(); $r = RBHVI_State::enable(); $o = array(is_wp_error($a) ? $a->get_error_message() : 'active', $r['ok'], RBHVI_State::is_enabled(), wp_list_pluck(array_values(array_filter($r['checks'], function($c){return 'error'===$c['level'];})), 'id')); deactivate_plugins('gtranslate/gtranslate.php'); unlink($dir . '/gtranslate.php'); rmdir($dir); return $o;`);
+  await check('an active GTranslate plugin blocks enabling /vi/ (no outside translation alongside)', () => assert.deepEqual(gtranslate, ['active', false, false, ['multilingual']]));
   const ok = phpJson(`$r = RBHVI_State::enable(); return $r['ok'];`);
   await check('enable works again after fixing the conflict', () => assert.equal(ok, true));
 

@@ -55,5 +55,19 @@ check('no automatic deploy workflow or webhook', !files.some(f => /^\.github\/wo
 check('no -wpvibe-draft theme activation in code', !text.some(f => !f.endsWith('.md') && f !== 'tests/static/repo-check.mjs' && /switch_theme\(|activate.*wpvibe-draft/.test(read(f))));
 check('theme still has no metadata/schema output of its own', !['functions.php', 'header.php', 'inc/navigation.php', 'inc/seo.php'].some(f => /rel="canonical"|og:title|application\/ld\+json"\s*>/.test(read(f).replace(/~<script\[\^>\]\+application\/ld\\\+json/g, ''))));
 
+console.log('English presentation unchanged since the deployed release');
+// Theme 1.3.0 / plugin 1.0.0 were deployed from this commit (docs/vi/DEPLOYMENT-2026-10-23.md).
+const DEPLOYED = process.env.RBH_DEPLOYED_REF || 'e81fbd7';
+let deployedKnown = true;
+try { execFileSync('git', ['-C', REPO, 'cat-file', '-e', DEPLOYED + '^{commit}'], { stdio: 'ignore' }); } catch { deployedKnown = false; }
+if (deployedKnown) {
+  const changed = execFileSync('git', ['-C', REPO, 'diff', '--name-only', DEPLOYED, '--', 'front-page.php', 'header.php', 'footer.php', 'index.php', 'page.php', 'single.php', '404.php',
+    'searchform.php', 'sidebar.php', 'inc', 'assets', 'template-parts', 'theme.json'], { encoding: 'utf8' }).split('\n').filter(Boolean)
+    .filter(f => f !== 'template-parts/landing.php');
+  check(`English templates, CSS and JS identical to deployed ${DEPLOYED} (only the new landing part added)`, !changed.length, changed.join(', '));
+} else {
+  check(`deployed commit ${DEPLOYED} available for comparison`, false, 'fetch full history (git fetch --unshallow)');
+}
+
 console.log(`\n${passed} passed, ${failed} failed`);
 if (failed) process.exitCode = 1;

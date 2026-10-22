@@ -33,6 +33,7 @@ function check( $name, $ok, $detail = '' ) {
 function words( $html ) {
 	return count( preg_split( '/\s+/u', trim( html_entity_decode( strip_tags( preg_replace( '/<!--.*?-->/s', ' ', $html ) ) ) ), -1, PREG_SPLIT_NO_EMPTY ) );
 }
+function wp_list_pluck_stub( $list, $field ) { return array_map( function ( $row ) use ( $field ) { return $row[ $field ]; }, $list ); }
 function lower( $s ) { return mb_strtolower( html_entity_decode( $s, ENT_QUOTES, 'UTF-8' ), 'UTF-8' ); }
 
 echo "Locked business data\n";
@@ -141,6 +142,36 @@ check( 'FAQ block attributes are valid JSON with ≥ 8 questions', is_array( $at
 foreach ( (array) ( $attrs ? $attrs['questions'] : array() ) as $q ) {
 	check( 'visible FAQ contains: ' . $q['jsonQuestion'], false !== strpos( $faq, '<strong class="schema-faq-question">' . $q['jsonQuestion'] . '</strong>' ) && false !== strpos( $faq, $q['jsonAnswer'] ) );
 }
+
+echo "Vietnamese home page (landing) copy\n";
+$home_cfg = require RBHVI_DIR . 'config/home-vi.php';
+$strings  = array();
+array_walk_recursive(
+	$home_cfg,
+	function ( $value, $key ) use ( &$strings ) {
+		if ( is_string( $value ) && ! in_array( $key, array( 'token', 'link' ), true ) ) {
+			$strings[] = $value;
+		}
+	}
+);
+$home_text = lower( implode( ' ', array_map( array( 'RBHVI_Config', 'render' ), $strings ) ) );
+check( 'home copy: every placeholder resolves', false === strpos( $home_text, '{{' ) );
+check( 'home copy: no price, phone or address typed literally (placeholders only)', ! preg_match( '/\d{3}\.000|0334|nguyễn văn cừ|09:00/u', lower( implode( ' ', $strings ) ) ) );
+foreach ( array( 'miễn cọc', 'không cần cọc', 'không cần đặt cọc', 'giảm giá', 'ưu đãi', 'khuyến mãi', 'năm kinh nghiệm', 'bảo hiểm', '5 sao', 'rẻ nhất', 'tốt nhất', 'uy tín', 'cam kết', 'miễn phí', 'luôn có xe', 'giao tận nơi miễn phí' ) as $claim ) {
+	check( "home copy: no unsupported claim \"$claim\"", false === strpos( $home_text, $claim ) );
+}
+check( 'home copy: e-bike daily price is not stated', false !== strpos( $home_text, 'xe điện có giá ngày tùy mẫu' ) );
+check( 'home copy: shows the extension fee from config', false !== strpos( $home_text, lower( $b['extension_fee'] ) ) );
+$keys = array_merge( $home_cfg['quick_links'], wp_list_pluck_stub( $home_cfg['bikes']['items'], 'link' ), array( $home_cfg['rates']['link'], $home_cfg['faq']['link'], $home_cfg['guides']['link'] ) );
+check( 'home copy: every link points to a managed /vi/ page', ! array_diff( $keys, array_keys( $pages ) ), implode( ', ', array_diff( $keys, array_keys( $pages ) ) ) );
+$faq_items = require RBHVI_DIR . 'content/faq-items.php';
+check( 'home copy: FAQ excerpts exist in content/faq-items.php', ! array_diff( $home_cfg['faq']['items'], array_keys( $faq_items ) ) );
+$front_page = file_get_contents( dirname( __DIR__, 2 ) . '/inc/content.php' ); // rbh_home_data() picks the English homepage bike photos.
+foreach ( $home_cfg['bikes']['items'] as $item ) {
+	check( "home copy: bike photo token {$item['token']} is the one the English homepage uses", false !== strpos( $front_page, "'" . $item['token'] . "'" ) );
+}
+check( 'home copy: 3 bike cards like the English homepage, 3 steps, 2 hero buttons', 3 === count( $home_cfg['bikes']['items'] ) && 3 === count( $home_cfg['steps']['items'] ) && 2 === count( $home_cfg['buttons'] ) );
+check( 'landing template part exists and prints exactly one <h1>', 1 === substr_count( file_get_contents( dirname( __DIR__, 2 ) . '/template-parts/landing.php' ), '<h1>' ) );
 
 echo "Theme interface strings\n";
 $theme   = '';

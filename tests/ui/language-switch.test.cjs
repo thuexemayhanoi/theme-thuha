@@ -126,6 +126,66 @@ async function check(name, fn) {
     await page.close();
   });
 
+  for (const width of [320, 360, 390, 768, 1280]) {
+    await check(`Vietnamese home at ${width}px: landing layout, one H1, photos loaded, phone number unbroken, no overflow`, async () => {
+      const page = await browser.newPage({ viewport: { width, height: 900 } });
+      await page.goto(BASE + '/vi/', { waitUntil: 'load' });
+      for (const img of await page.$$('.bike-card-image img, .hero-photo')) await img.scrollIntoViewIfNeeded();
+      await page.waitForFunction(() => [...document.querySelectorAll('.bike-card-image img, .hero-photo')].every(i => i.complete));
+      const m = await page.evaluate(() => {
+        const phone = document.querySelector('.hero .button-row a[href^="tel:"]');
+        const node = [...phone.childNodes].find(n => n.nodeType === 3);
+        const start = node.textContent.indexOf('0334');
+        const range = document.createRange(); range.setStart(node, start); range.setEnd(node, start + '0334 699 969'.length);
+        const lines = new Set([...range.getClientRects()].map(r => Math.round(r.top))).size;
+        const vw = document.documentElement.clientWidth;
+        const outside = [...document.querySelectorAll('main *')].filter(e => { const r = e.getBoundingClientRect(); return r.width && (r.right > vw + 1 || r.left < -1) && !e.closest('.rate-table'); }).map(e => e.className || e.tagName).slice(0, 3);
+        const table = document.querySelector('.rate-table').getBoundingClientRect();
+        return {
+          landing: !!document.querySelector('main.rbh-landing'), h1: document.querySelectorAll('h1').length,
+          images: [...document.querySelectorAll('.bike-card-image img, .hero-photo')].map(i => i.naturalWidth > 0),
+          lines, overflow: document.documentElement.scrollWidth - vw, outside, tableInside: table.left >= 0 && table.right <= vw + 1,
+          buttonsVisible: [...document.querySelectorAll('.hero .button-row a')].every(a => a.getBoundingClientRect().height >= 44),
+        };
+      });
+      assert.ok(m.landing, 'landing layout'); assert.equal(m.h1, 1);
+      assert.deepEqual(m.images, [true, true, true, true], 'hero + 3 bike photos loaded');
+      assert.equal(m.lines, 1, 'phone number on one line'); assert.ok(m.overflow <= 0, `overflow ${m.overflow}`);
+      assert.deepEqual(m.outside, [], 'elements outside the viewport'); assert.ok(m.tableInside, 'price table container inside the viewport');
+      assert.ok(m.buttonsVisible, 'hero buttons ≥ 44px tall');
+      await page.close();
+    });
+  }
+
+  await check('Vietnamese home: logo/brand goes to /vi/, switch goes to the English home and back', async () => {
+    const page = await browser.newPage({ viewport: { width: 390, height: 800 } });
+    await page.goto(BASE + '/vi/lien-he/');
+    await Promise.all([page.waitForNavigation(), page.click('.site-branding a')]);
+    assert.equal(page.url(), BASE + '/vi/');
+    await Promise.all([page.waitForNavigation(), page.click('.rbh-lang-switch')]);
+    assert.equal(page.url(), BASE + '/');
+    await Promise.all([page.waitForNavigation(), page.click('.rbh-lang-switch')]);
+    assert.equal(page.url(), BASE + '/vi/');
+    await page.close();
+  });
+
+  await check('Vietnamese home in dark mode: theme switches, hero text and price table stay readable (≥ 4.5:1)', async () => {
+    const ctx = await browser.newContext({ colorScheme: 'light', viewport: { width: 390, height: 900 } });
+    const page = await ctx.newPage();
+    await page.goto(BASE + '/vi/');
+    await page.click('.appearance-toggle');
+    assert.equal(await page.evaluate(() => document.documentElement.dataset.theme), 'dark');
+    const c = await page.evaluate(() => {
+      const bg = getComputedStyle(document.body).backgroundColor;
+      const pick = s => getComputedStyle(document.querySelector(s)).color;
+      const table = document.querySelector('.rate-table');
+      return { bg, h1: pick('.hero h1'), lede: pick('.hero-lede'), td: pick('.rate-table td'), tableBg: getComputedStyle(table).backgroundColor, step: pick('.steps-grid p') };
+    });
+    for (const [name, color, bg] of [['h1', c.h1, c.bg], ['lede', c.lede, c.bg], ['step', c.step, c.bg], ['table', c.td, c.tableBg]])
+      assert.ok(contrast(color, bg) >= 4.5, `${name} ${color} on ${bg}: ${contrast(color, bg).toFixed(2)}`);
+    await ctx.close();
+  });
+
   await browser.close();
   console.log(`\n${passed} passed, ${failed} failed`);
   if (failed) process.exitCode = 1;
