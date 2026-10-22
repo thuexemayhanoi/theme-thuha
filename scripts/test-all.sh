@@ -7,12 +7,14 @@
 # --bootstrap   build a fresh local WordPress (WordPress + SQLite + Yoast) in $RBH_WP_ROOT
 # --integration run the WordPress + browser tests against that local site (127.0.0.1 only)
 # --package     rebuild dist/ and verify the ZIPs (requires a clean, committed tree)
+# --upgrade     after --package: fresh local WordPress in ${RBH_WP_ROOT}-upgrade, install the deployed ZIPs from
+#               dist/previous/, publish + enable /vi/, upgrade in place with the new ZIPs and verify (tests/integration/upgrade.mjs)
 set -euo pipefail
 REPO="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$REPO"
 PHPCS="${PHPCS:-$REPO/vendor/bin/phpcs}"
-INTEGRATION=0; BOOTSTRAP=0; PACKAGE=0
-for arg in "$@"; do case "$arg" in --integration) INTEGRATION=1;; --bootstrap) BOOTSTRAP=1;; --package) PACKAGE=1;; esac; done
+INTEGRATION=0; BOOTSTRAP=0; PACKAGE=0; UPGRADE=0
+for arg in "$@"; do case "$arg" in --integration) INTEGRATION=1;; --bootstrap) BOOTSTRAP=1;; --package) PACKAGE=1;; --upgrade) UPGRADE=1;; esac; done
 
 step() { printf '\n== %s\n' "$*"; }
 
@@ -54,5 +56,18 @@ if [ "$PACKAGE" = 1 ]; then
   step "Package and verify artifacts"
   python3 scripts/package.py
   python3 tests/static/package-test.py | tail -1
+fi
+
+if [ "$UPGRADE" = 1 ]; then
+  : "${RBH_WP_ROOT:?Set RBH_WP_ROOT}"
+  UROOT="${RBH_WP_ROOT}-upgrade"; UPORT=$(( ${RBH_WP_PORT:-8899} - 1 ))
+  step "Upgrade from the deployed ZIPs (dist/previous) to the new ZIPs on a fresh local WordPress"
+  RBH_WP_ROOT="$UROOT" RBH_WP_PORT="$UPORT" tests/integration/bootstrap-wp.sh >/dev/null
+  php -S "127.0.0.1:$UPORT" -t "$UROOT/site" "$UROOT/router.php" >"$UROOT/server.log" 2>&1 &
+  USERVER=$!; sleep 1
+  OLD_THEME=$(ls dist/previous/wp-theme-*.zip); OLD_PLUGIN=$(ls dist/previous/rentbikehanoi-native-vi-*.zip)
+  NEW_THEME=$(ls dist/wp-theme-*.zip); NEW_PLUGIN=$(ls dist/rentbikehanoi-native-vi-*.zip)
+  RBH_WP_ROOT="$UROOT" RBH_WP_PORT="$UPORT" node tests/integration/upgrade.mjs "$OLD_THEME" "$OLD_PLUGIN" "$NEW_THEME" "$NEW_PLUGIN" || { kill $USERVER; exit 1; }
+  kill $USERVER 2>/dev/null || true
 fi
 echo; echo "ALL CHECKS PASSED"
