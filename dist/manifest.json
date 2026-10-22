@@ -1,5 +1,5 @@
 {
-  "generated_from_commit": "b67ced672707b12c1fca989ca4a11ae5fde7a66e",
+  "generated_from_commit": "9c30129e828046f48cd552db6fedae6ba086d156",
   "working_tree_clean": true,
   "deployed_to_production": false,
   "note": "Built locally from git-tracked files. Not installed, activated or published on any WordPress site.",
@@ -278,11 +278,11 @@
       ]
     },
     {
-      "file": "rentbikehanoi-native-vi-1.1.0.zip",
+      "file": "rentbikehanoi-native-vi-1.1.1.zip",
       "type": "plugin",
       "install_folder": "rentbikehanoi-native-vi",
-      "version": "1.1.0",
-      "sha256": "b618d35106ae2f051b408d0a556bad1411449f626f733cb8845e980eb07e789c",
+      "version": "1.1.1",
+      "sha256": "a1e78305ae7cbe29ae1ce1b51a7aab76598be371e80001d588c2f7bd823c4bde",
       "files": [
         {
           "path": "rentbikehanoi-native-vi/config/business.php",
@@ -431,8 +431,8 @@
         {
           "path": "rentbikehanoi-native-vi/includes/class-rbhvi-seo.php",
           "source": "plugins/rentbikehanoi-native-vi/includes/class-rbhvi-seo.php",
-          "sha256": "e1968265d3bb35e8174918999148c03085f1dfd1df5a935dc17cb6fa5c2df460",
-          "bytes": 11494
+          "sha256": "d68ebff7b05f1442e9aca5774fe44336c429dfba04904bf98e0dac093df6ea1c",
+          "bytes": 14895
         },
         {
           "path": "rentbikehanoi-native-vi/includes/class-rbhvi-state.php",
@@ -449,8 +449,14 @@
         {
           "path": "rentbikehanoi-native-vi/includes/class-rbhvi-theme-integration.php",
           "source": "plugins/rentbikehanoi-native-vi/includes/class-rbhvi-theme-integration.php",
-          "sha256": "ebd4a4f423aa0b5f8fa1f10ccdf19cff37817872060e42d8a323faae42cdfb72",
-          "bytes": 11136
+          "sha256": "42e63c1274d7313eda84464d1aea0d9c403270a722f6dea60d5baa913cefe842",
+          "bytes": 12770
+        },
+        {
+          "path": "rentbikehanoi-native-vi/includes/core-strings-vi.php",
+          "source": "plugins/rentbikehanoi-native-vi/includes/core-strings-vi.php",
+          "sha256": "675d0e4aac15d79bafe6b1f99e3f6a417cdd9a2f671f4df8d3e67e96b6867d07",
+          "bytes": 2857
         },
         {
           "path": "rentbikehanoi-native-vi/includes/theme-strings-vi.php",
@@ -461,13 +467,13 @@
         {
           "path": "rentbikehanoi-native-vi/readme.txt",
           "source": "plugins/rentbikehanoi-native-vi/readme.txt",
-          "sha256": "be67411d95a14421f8a6c1f047e69e23cbbd73f2834f5d768d5c0953d95415c2",
-          "bytes": 2483
+          "sha256": "1a6b0cff32173ab3d026a5793570ca3d9d36b4b8c174c8440ca52559acde54fa",
+          "bytes": 3764
         },
         {
           "path": "rentbikehanoi-native-vi/rentbikehanoi-native-vi.php",
           "source": "plugins/rentbikehanoi-native-vi/rentbikehanoi-native-vi.php",
-          "sha256": "a4471a416dfd77be423d4c87ef7fac4e75b0b492a81877b7012968e3a9a4ec61",
+          "sha256": "ce8cdbe35083137cbe9228dad30f36ef8a212d2540bfd2de85d20f80714e962c",
           "bytes": 1974
         },
         {
