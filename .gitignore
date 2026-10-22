@@ -12,3 +12,6 @@ wp-config.php
 /backups/
 node_modules/
 .DS_Store
+composer.lock
+dist/screenshots-local/
+vendor/

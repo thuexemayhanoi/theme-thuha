@@ -1,0 +1,51 @@
+# Checks only. This workflow never deploys, uploads or calls the live website.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main, 'feature/**']
+
+permissions:
+  contents: read
+
+jobs:
+  php74-syntax:
+    name: PHP 7.4 syntax
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+          tools: none
+      - run: find . -name '*.php' -not -path './vendor/*' -print0 | xargs -0 -n1 php -l
+
+  checks:
+    name: Static, WordPress integration and browser tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: pdo_sqlite, sqlite3, gd, dom, mbstring, zip
+          tools: composer
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: composer install --no-interaction --no-progress
+      - run: npm install -g playwright@1.56.1 && npx playwright install --with-deps chromium
+      - name: All checks (fresh local WordPress + Yoast on 127.0.0.1)
+        env:
+          RBH_WP_ROOT: ${{ runner.temp }}/rbh-wp
+          RBH_BASELINE_REF: origin/main
+        run: scripts/test-all.sh --integration --bootstrap
+      - name: Package and verify ZIPs (artifacts kept for review only)
+        run: python3 scripts/package.py && python3 tests/static/package-test.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rentbikehanoi-release-candidate
+          path: dist/
