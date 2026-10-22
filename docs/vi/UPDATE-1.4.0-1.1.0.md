@@ -14,8 +14,8 @@ Trạng thái: **mã, kiểm thử và gói ZIP — chưa cài lên website.** N
 
 | Gói | Tệp | Cài vào |
 | --- | --- | --- |
-| Theme | `dist/wp-theme-1.4.0.zip` | thư mục theme đang hoạt động `wp-theme` (thay bản 1.3.0) |
-| Plugin | `dist/rentbikehanoi-native-vi-1.1.0.zip` | thay plugin `rentbikehanoi-native-vi` 1.0.0 |
+| Theme | `dist/wp-theme-1.4.0.zip` (SHA-256 `05a9b6e3…6a83d6`) | thư mục theme đang hoạt động `wp-theme` (thay bản 1.3.0) |
+| Plugin | `dist/rentbikehanoi-native-vi-1.1.0.zip` (SHA-256 `b618d351…e789c`) | thay plugin `rentbikehanoi-native-vi` 1.0.0 |
 
 Cần **cả hai** để có bố cục mới. Thứ tự nào cũng an toàn: chỉ có theme mới → không có gì thay đổi; chỉ có plugin mới → `/vi/` giữ bố cục trang thường (và đã sửa logo/thanh bên). Mã kiểm tra: `sha256sum -c dist/SHA256SUMS`.
 
