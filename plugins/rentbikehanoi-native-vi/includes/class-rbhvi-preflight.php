@@ -45,6 +45,22 @@ class RBHVI_Preflight {
 	}
 
 	/**
+	 * Whether an active plugin's basename starts with the prefix (single site and network).
+	 *
+	 * @param string $prefix Plugin folder prefix, e.g. "gtranslate/".
+	 * @return bool
+	 */
+	private static function plugin_active( $prefix ) {
+		$active = array_merge( (array) get_option( 'active_plugins', array() ), array_keys( (array) get_site_option( 'active_sitewide_plugins', array() ) ) );
+		foreach ( $active as $plugin ) {
+			if ( 0 === strpos( (string) $plugin, $prefix ) ) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
 	 * All preflight checks.
 	 *
 	 * @return array
@@ -62,10 +78,13 @@ class RBHVI_Preflight {
 				'Polylang'       => defined( 'POLYLANG_VERSION' ),
 				'WPML'           => defined( 'ICL_SITEPRESS_VERSION' ),
 				'TranslatePress' => defined( 'TRP_PLUGIN_VERSION' ),
+				// Machine/outside translation plugins (GTranslate was deactivated on 23 Oct 2026 and must stay off).
+				'GTranslate'     => class_exists( 'GTranslate' ) || self::plugin_active( 'gtranslate/' ),
+				'Weglot'         => defined( 'WEGLOT_VERSION' ) || self::plugin_active( 'weglot/' ),
 			)
 		);
 		$checks[]     = $multilingual
-			? self::row( 'multilingual', 'error', 'Đang bật plugin đa ngôn ngữ khác (' . implode( ', ', array_keys( $multilingual ) ) . '). Hai hệ thống ngôn ngữ cùng lúc sẽ tạo URL và hreflang trùng.' )
+			? self::row( 'multilingual', 'error', 'Đang bật plugin đa ngôn ngữ/dịch tự động khác (' . implode( ', ', array_keys( $multilingual ) ) . '). Hãy tắt plugin đó: hai hệ thống ngôn ngữ cùng lúc sẽ tạo URL, nội dung dịch máy và hreflang trùng.' )
 			: self::row( 'multilingual', 'ok', 'Không có plugin đa ngôn ngữ khác.' );
 
 		$seo_plugins = array_filter(

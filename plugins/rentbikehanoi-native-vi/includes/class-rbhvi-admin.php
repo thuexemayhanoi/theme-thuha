@@ -243,7 +243,12 @@ class RBHVI_Admin {
 	 */
 	public static function handle_settings() {
 		self::guard( 'settings' );
-		RBHVI_State::save_settings( array( 'sitemap_pairs_only' => ! empty( $_POST['sitemap_pairs_only'] ) ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing -- verified in self::guard().
+		RBHVI_State::save_settings(
+			array(
+				'sitemap_pairs_only' => ! empty( $_POST['sitemap_pairs_only'] ), // phpcs:ignore WordPress.Security.NonceVerification.Missing -- verified in self::guard().
+				'home_layout'        => isset( $_POST['home_layout'] ) ? sanitize_key( wp_unslash( $_POST['home_layout'] ) ) : 'landing', // phpcs:ignore WordPress.Security.NonceVerification.Missing -- verified in self::guard().
+			)
+		);
 		self::notice( 'success', 'Đã lưu cài đặt.' );
 		self::back();
 	}
@@ -407,11 +412,12 @@ class RBHVI_Admin {
 
 		// 5. Settings and history.
 		$settings = RBHVI_State::settings();
-		echo '<div class="card"><h2>5. Cài đặt sitemap</h2><form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '"><input type="hidden" name="action" value="rbhvi_settings">';
+		echo '<div class="card"><h2>5. Cài đặt</h2><form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '"><input type="hidden" name="action" value="rbhvi_settings">';
 		wp_nonce_field( 'rbhvi_settings' );
-		echo '<label><input type="checkbox" name="sitemap_pairs_only" value="1" ' . checked( $settings['sitemap_pairs_only'], true, false ) . '> Chỉ đưa bài viết tiếng Việt <strong>đã ghép cặp</strong> vào sitemap (trang tĩnh /vi/ đã xuất bản luôn có trong sitemap).</label> ';
+		echo '<p><label><input type="checkbox" name="sitemap_pairs_only" value="1" ' . checked( $settings['sitemap_pairs_only'], true, false ) . '> Chỉ đưa bài viết tiếng Việt <strong>đã ghép cặp</strong> vào sitemap (trang tĩnh /vi/ đã xuất bản luôn có trong sitemap).</label></p>';
+		echo '<p><strong>Bố cục trang chủ /vi/:</strong><br><label><input type="radio" name="home_layout" value="landing" ' . checked( $settings['home_layout'], 'landing', false ) . '> Giống trang chủ tiếng Anh (ảnh lớn, các loại xe, bảng giá, các bước, hỏi đáp; nội dung trang đang lưu nằm trong mục “Toàn bộ chi tiết”)</label><br><label><input type="radio" name="home_layout" value="page" ' . checked( $settings['home_layout'], 'page', false ) . '> Trang thường (chỉ hiển thị nội dung trang như bản 1.0.0)</label></p><p>';
 		submit_button( 'Lưu', 'secondary', 'submit', false );
-		echo '</form></div>';
+		echo '</p></form></div>';
 		echo '<div class="card"><h2>6. Lịch sử bật/tắt</h2>';
 		if ( ! $history ) {
 			echo '<p>Chưa có.</p>';

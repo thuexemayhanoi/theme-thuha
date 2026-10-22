@@ -55,6 +55,8 @@ class RBHVI_State {
 			array(
 				// Requirement: unpaired Vietnamese posts stay out of the sitemap.
 				'sitemap_pairs_only' => true,
+				// "landing": /vi/ uses the theme's homepage layout; "page": the regular page layout (1.0.0 behaviour).
+				'home_layout'        => 'landing',
 			)
 		);
 	}
@@ -65,7 +67,14 @@ class RBHVI_State {
 	 * @param array $settings Settings.
 	 */
 	public static function save_settings( $settings ) {
-		update_option( self::OPT_SETTINGS, array( 'sitemap_pairs_only' => ! empty( $settings['sitemap_pairs_only'] ) ), false );
+		update_option(
+			self::OPT_SETTINGS,
+			array(
+				'sitemap_pairs_only' => ! empty( $settings['sitemap_pairs_only'] ),
+				'home_layout'        => isset( $settings['home_layout'] ) && 'page' === $settings['home_layout'] ? 'page' : 'landing',
+			),
+			false
+		);
 		self::clear_seo_caches();
 	}
 

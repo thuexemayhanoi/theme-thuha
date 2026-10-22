@@ -30,6 +30,9 @@ class RBHVI_Theme_Integration {
 		add_filter( 'rbh_menu_items', array( __CLASS__, 'menu_items' ), 10, 2 );
 		add_filter( 'rbh_menu_group', array( __CLASS__, 'menu_group' ), 10, 2 );
 		add_filter( 'rbh_home_url', array( __CLASS__, 'home_url' ) );
+		add_filter( 'get_custom_logo', array( __CLASS__, 'custom_logo' ), 20 );
+		add_action( 'widgets_init', array( __CLASS__, 'register_sidebar' ), 20 );
+		add_filter( 'sidebars_widgets', array( __CLASS__, 'sidebars_widgets' ) );
 		add_filter( 'rbh_assistant_enabled', array( __CLASS__, 'assistant_enabled' ) );
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'dequeue_assistant' ), 100 );
 		add_filter( 'body_class', array( __CLASS__, 'body_class' ), 20 );
@@ -182,6 +185,59 @@ class RBHVI_Theme_Integration {
 	 */
 	public static function home_url( $url ) {
 		return 'vi' === RBHVI_Language::current() && RBHVI_State::is_enabled() ? RBHVI_Language::home( 'vi' ) : $url;
+	}
+
+	/**
+	 * The custom logo links to /vi/ on Vietnamese pages (core prints home_url('/')).
+	 *
+	 * @param string $html Logo HTML.
+	 * @return string
+	 */
+	public static function custom_logo( $html ) {
+		if ( 'vi' !== RBHVI_Language::current() || ! RBHVI_State::is_enabled() || '' === $html ) {
+			return $html;
+		}
+		$vi   = esc_url( RBHVI_Language::home( 'vi' ) );
+		$name = esc_attr( RBHVI_Config::business()['name'] );
+		$html = preg_replace( '#(<a\b[^>]*\bhref=)(["\'])[^"\']*\2#i', '${1}${2}' . $vi . '${2}', $html, 1 );
+		// The logo is the link's accessible name: use the Vietnamese brand on Vietnamese pages.
+		return preg_replace( '#(<img\b[^>]*\balt=)(["\'])[^"\']*\2#i', '${1}${2}' . $name . '${2}', $html, 1 );
+	}
+
+	/**
+	 * Separate widget area for Vietnamese pages (same markup as the theme's
+	 * "Article sidebar"). Empty until an administrator adds widgets.
+	 */
+	public static function register_sidebar() {
+		if ( ! function_exists( 'rbh_home_url' ) ) {
+			return;
+		}
+		register_sidebar(
+			array(
+				'name'          => 'Thanh bên bài viết tiếng Việt (/vi/)',
+				'id'            => 'rbhvi-sidebar',
+				'description'   => 'Thay cho "Article sidebar" trên các trang tiếng Việt. Chỉ thêm khối có nội dung tiếng Việt.',
+				'before_widget' => '<section id="%1$s" class="side-panel widget %2$s">',
+				'after_widget'  => '</section>',
+				'before_title'  => '<h2 class="side-title">',
+				'after_title'   => '</h2>',
+			)
+		);
+	}
+
+	/**
+	 * On Vietnamese pages the theme's English widget area shows the
+	 * Vietnamese widget area instead (never English widget text or forms).
+	 *
+	 * @param array $sidebars Sidebar → widget IDs.
+	 * @return array
+	 */
+	public static function sidebars_widgets( $sidebars ) {
+		if ( ! is_array( $sidebars ) || ! isset( $sidebars['rbh-sidebar'] ) || 'vi' !== RBHVI_Language::current() ) {
+			return $sidebars;
+		}
+		$sidebars['rbh-sidebar'] = isset( $sidebars['rbhvi-sidebar'] ) && is_array( $sidebars['rbhvi-sidebar'] ) ? $sidebars['rbhvi-sidebar'] : array();
+		return $sidebars;
 	}
 
 	/**

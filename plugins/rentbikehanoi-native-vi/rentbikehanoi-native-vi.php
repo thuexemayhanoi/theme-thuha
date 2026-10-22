@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Rentbike Hanoi – Tiếng Việt gốc (/vi/)
  * Description:       Phần tiếng Việt viết riêng dưới /vi/ cho rentbikehanoi.com: định tuyến /vi/, ghép cặp Anh–Việt, hreflang, sitemap qua Yoast, nút VI | EN và bộ trang Việt dạng nháp. Không dịch máy, không gọi dịch vụ ngoài.
- * Version:           1.0.0
+ * Version:           1.1.0
  * Requires at least: 6.5
  * Requires PHP:      7.4
  * Author:            Rentbike Hanoi
@@ -15,11 +15,11 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'RBHVI_VERSION', '1.0.0' );
+define( 'RBHVI_VERSION', '1.1.0' );
 define( 'RBHVI_FILE', __FILE__ );
 define( 'RBHVI_DIR', plugin_dir_path( __FILE__ ) );
 
-foreach ( array( 'config', 'state', 'language', 'router', 'query', 'seo', 'switcher', 'theme-integration', 'listing', 'seeder', 'preflight', 'admin' ) as $rbhvi_module ) {
+foreach ( array( 'config', 'state', 'language', 'router', 'query', 'seo', 'switcher', 'theme-integration', 'listing', 'home', 'seeder', 'preflight', 'admin' ) as $rbhvi_module ) {
 	require_once RBHVI_DIR . 'includes/class-rbhvi-' . $rbhvi_module . '.php';
 }
 unset( $rbhvi_module );
@@ -31,6 +31,7 @@ RBHVI_SEO::boot();
 RBHVI_Switcher::boot();
 RBHVI_Theme_Integration::boot();
 RBHVI_Listing::boot();
+RBHVI_Home::boot();
 if ( is_admin() ) {
 	RBHVI_Admin::boot();
 }
