@@ -2,6 +2,32 @@
 
 All notable changes to this repository. Dates use Asia/Ho_Chi_Minh.
 
+## [Theme 1.4.0 + plugin rentbikehanoi-native-vi 1.1.0] — 2026-10-23 — not deployed
+
+Status: code, tests and packages only. According to the latest record (docs/vi/DEPLOYMENT-2026-10-23.md) production runs theme 1.3.0 + plugin 1.0.0; this was not re-verified (no WordPress access).
+Install: docs/vi/UPDATE-1.4.0-1.1.0.md.
+
+### Added
+- Theme `template-parts/landing.php`: data-driven copy of the English homepage layout (same markup/classes as `front-page.php`). The English
+  homepage does not use it; `front-page.php`, CSS and JS are unchanged.
+- Plugin `RBHVI_Home` + `templates/home-vi.php` + `config/home-vi.php`: the managed `/vi/` home page renders in that layout with native
+  Vietnamese copy, reference prices/NAP from `config/business.php`, the English homepage's existing hero and bike photos (Vietnamese alt),
+  three steps, four FAQ excerpts (no extra FAQ schema) and the saved page content in collapsible sections. No database writes.
+- Admin setting "Bố cục trang chủ /vi/" (landing / regular page) for a no-code rollback.
+- Widget area "Thanh bên bài viết tiếng Việt (/vi/)".
+- Preflight also blocks enabling `/vi/` while GTranslate or Weglot is active (GTranslate was deactivated in production and must stay off).
+- Tests: Vietnamese landing structure/data/saved-content checks, logo/brand links, Vietnamese-only interface text and widgets, English output
+  compared with both 1.2.0 (`main`) and the deployed 1.3.0/1.0.0 (`e81fbd7`, plugin ON); browser checks at 320–1280 px incl. dark mode;
+  static checks for the homepage copy; repo check that English templates/CSS/JS equal the deployed release.
+
+### Fixed (Vietnamese pages only)
+- The custom logo linked to the English home page and used the English site name as alt text; it now links to `/vi/` with the Vietnamese brand.
+- The English "Article sidebar" widgets (production: a "Latest Posts" heading block) appeared on Vietnamese pages; they are replaced by the
+  Vietnamese widget area.
+
+### Changed
+- Theme version 1.3.0 → 1.4.0 (style.css, `RBH_VERSION` asset query strings). Plugin 1.0.0 → 1.1.0.
+
 ## [Production deployment] — 2026-10-23
 
 - Owner-installed theme 1.3.0 (`wp-theme`) and custom plugin 1.0.0 verified through authenticated WordPress reads.

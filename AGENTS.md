@@ -11,6 +11,15 @@ Source of the active WordPress theme of https://rentbikehanoi.com (theme "Rentbi
 - Claude must still be assumed to have GitHub-only access to the two project repos, not WordPress or a reliable crawler. The live publishing work was done separately by an authorized administrator. `/thuha-writer` was not modified in this deployment.
 - Follow `docs/vi/ROLLBACK.md` before deactivation. Never substitute a raw `rbhvi_enabled` option write for the plugin's preflight/enable action.
 
+## Pending release — theme 1.4.0 + plugin 1.1.0 (not deployed)
+- Purpose: `/vi/` uses the English homepage's layout (hero, quick links, bike cards, price table, steps, FAQ, collapsible saved content). Details and install steps: docs/vi/UPDATE-1.4.0-1.1.0.md.
+- Theme part `template-parts/landing.php` is presentation only and is used **only** by the plugin for the managed Vietnamese home page (registry key `home`, production ID 3454). `front-page.php`, `inc/content.php`, CSS and JS must stay identical to the deployed release unless the owner asks for an English change; `tests/static/repo-check.mjs` enforces this against `e81fbd7`.
+- Vietnamese homepage copy lives in `plugins/rentbikehanoi-native-vi/config/home-vi.php` (placeholders only for prices/NAP/fees). Photos are reused read-only from the English homepage's existing media (same file-name tokens as `rbh_home_data()`); never upload or invent images.
+- The landing never writes to the database and never replaces `post_content`; the saved page content is rendered in the details area. Setting "Bố cục trang chủ /vi/ → Trang thường" restores the 1.0.0 page layout without code.
+- On Vietnamese pages the custom logo links to `/vi/` with a Vietnamese alt, and the widget area "Thanh bên bài viết tiếng Việt (/vi/)" replaces the English "Article sidebar" (empty until an admin adds Vietnamese widgets).
+- The plugin's preflight refuses to enable `/vi/` while Polylang, WPML, TranslatePress, GTranslate or Weglot is active. Never re-enable GTranslate or add translation APIs.
+- Install order does not matter (each package degrades safely without the other), but both are needed for the new layout.
+
 ## Existing rules (unchanged)
 - Preserve existing posts, menu objects, taxonomy, permalinks, canonicals and redirects. Do not write business content from theme activation hooks.
 - Homepage SEO title, description, Open Graph identity and Site Name are frozen. Changing them requires the owner's specific approval. The SEO audit module must not filter them.
@@ -31,7 +40,7 @@ Source of the active WordPress theme of https://rentbikehanoi.com (theme "Rentbi
 - The `rbh_menu_items` / `rbh_menu_group` filters exist only so the Vietnamese plugin can show a *separate* Vietnamese menu on `/vi/` pages. Never use them to rename, reorder or hide English items.
 
 ## Bilingual architecture (English root, Vietnamese /vi/)
-- Responsibilities — **theme**: presentation only (header, footer, menus, Light/Dark, cards, CSS) plus the hooks `rbh_header_actions`, `rbh_home_url()`, `rbh_menu_items`, `rbh_menu_group`, `rbh_assistant_enabled`, `rbh_language_switch_enabled`. **Plugin** `rentbikehanoi-native-vi`: language detection, `/vi/` routing (core `request` filter, no rewrite flush), pairing, list separation, hreflang, Yoast filters, sitemap exclusions, VI | EN switch, Vietnamese admin screen, draft seeding, ON/OFF/undo. **Yoast SEO**: title, description, canonical, robots, Open Graph, JSON-LD, sitemap.
+- Responsibilities — **theme**: presentation only (header, footer, menus, Light/Dark, cards, CSS, the data-driven `template-parts/landing.php`) plus the hooks `rbh_header_actions`, `rbh_home_url()`, `rbh_menu_items`, `rbh_menu_group`, `rbh_assistant_enabled`, `rbh_language_switch_enabled`. **Plugin** `rentbikehanoi-native-vi`: language detection, `/vi/` routing (core `request` filter, no rewrite flush), pairing, list separation, hreflang, Yoast filters, sitemap exclusions, VI | EN switch, Vietnamese admin screen, draft seeding, ON/OFF/undo. **Yoast SEO**: title, description, canonical, robots, Open Graph, JSON-LD, sitemap.
 - No WPML/Polylang/TranslatePress, translation API, external AI, third-party front-end assets, cookies or JavaScript language switching, and no IP/country/browser-language redirects.
 - Details: docs/vi/ARCHITECTURE.md, docs/vi/PLUGIN.md, docs/vi/SEO-HREFLANG-SITEMAP.md, docs/vi/PAIRING.md.
 
@@ -52,7 +61,7 @@ Single source: `plugins/rentbikehanoi-native-vi/config/business.php` (mirrored f
 
 ## Build, lint, test, package
 - `composer install` (dev tools only), then `scripts/test-all.sh` — runs the AGENTS checks above, repository guardrails, content/business-data tests, WPCS (plugin) and PHPCompatibilityWP 7.4+ (whole repo).
-- Full run with a disposable local WordPress + Yoast (127.0.0.1 only): `RBH_WP_ROOT=/tmp/rbh-wp RBH_BASELINE_REF=main scripts/test-all.sh --integration --bootstrap` (needs PHP 8 with pdo_sqlite/gd, Node 22, Playwright Chromium). `RBH_BASELINE_REF` compares English HTML with the theme at that ref.
+- Full run with a disposable local WordPress + Yoast (127.0.0.1 only): `RBH_WP_ROOT=/tmp/rbh-wp RBH_BASELINE_REF=main,e81fbd7 RBH_DEPLOYED_REF=e81fbd7 scripts/test-all.sh --integration --bootstrap` (needs PHP 8 with pdo_sqlite/gd, Node 22, Playwright Chromium). `RBH_BASELINE_REF` compares English HTML (plugin inactive) with the theme at each ref; `RBH_DEPLOYED_REF` compares English HTML with the plugin ON and Vietnamese content published against the deployed theme+plugin. Update `e81fbd7` when a newer release is recorded as deployed.
 - Package: commit first, then `python3 scripts/package.py && python3 tests/static/package-test.py` → `dist/wp-theme-<ver>.zip`, `dist/rentbikehanoi-native-vi-<ver>.zip`, `dist/manifest.json`, `dist/SHA256SUMS`. ZIPs contain only git-tracked runtime files and are reproducible.
 - Never weaken or delete a test to make CI green. CI (.github/workflows/ci.yml) only checks and builds; it must never deploy.
 

@@ -68,3 +68,19 @@ URL tiếng Anh không đi qua nhánh này nên không bị ảnh hưởng. Nộ
 
 Trang Việt dùng nguyên template của theme (page.php, single.php, index.php, 404.php). Plugin chỉ đổi phần chữ:
 chuỗi giao diện (gettext cho text domain `rentbike-hanoi`), tên/giờ/địa chỉ cửa hàng (bộ lọc `theme_mod_rbh_*` lấy từ `config/business.php`), menu tiếng Việt (vị trí menu `rbhvi_primary`/`rbhvi_footer`, hoặc menu dự phòng tự sinh từ các trang Việt đã xuất bản), định dạng ngày số `d/m/Y`, `lang="vi"`, `og:locale=vi_VN`. Trợ lý website tiếng Anh của theme không hiển thị trên trang Việt.
+
+## Trang chủ tiếng Việt cùng bố cục trang chủ Anh (theme 1.4.0 + plugin 1.1.0, chưa triển khai)
+
+```
+/vi/ (trang quản lý "home", production ID 3454)
+  └─ plugin RBHVI_Home::template()  (template_include, chỉ cho đúng trang này,
+     │                                chỉ khi theme có template-parts/landing.php
+     │                                và cài đặt "Bố cục trang chủ /vi/" = landing)
+     └─ plugins/.../templates/home-vi.php
+          get_header() → get_template_part('template-parts/landing', $data) → get_footer()
+```
+
+- `template-parts/landing.php` (theme) chỉ trình bày, dùng đúng các class của `front-page.php` (`hero`, `quick-links`, `bike-grid`, `rates-section`, `plan-section`, `faq-layout`, `source-sections`, `card-grid`) nên kế thừa toàn bộ CSS, giao diện điện thoại/máy tính và sáng/tối hiện có. Không thêm CSS.
+- `RBHVI_Home::data()` (plugin) chuẩn bị dữ liệu: chữ tiếng Việt từ `config/home-vi.php`; giá, NAP, phí gia hạn từ `config/business.php`; H1 = tiêu đề trang đang lưu; ảnh lớn và 3 ảnh xe **đọc** từ nội dung trang chủ Anh (cùng quy tắc với `rbh_home_data()`: ảnh hero trong Customizer, nếu không có thì ảnh đầu tiên trong nội dung; ảnh xe theo tên tệp `Honda-Vision`, `Honda-Wave`, `Honda-Cub-50cc`); `post_content` đang lưu của trang /vi/ được chia theo H2 thành các mục thu gọn; 3 bài Việt mới nhất (nếu có).
+- Không ghi cơ sở dữ liệu, không đổi `post_content`, không thêm schema (FAQ ngắn trên trang chủ không có FAQPage; FAQPage vẫn chỉ ở `/vi/cau-hoi-thuong-gap/`). Title, mô tả, canonical, hreflang, sitemap vẫn do Yoast/plugin xử lý như trước vì đây vẫn là cùng một trang.
+- Trang chủ Anh vẫn dùng `front-page.php` (không đổi so với bản đã triển khai; kiểm thử so sánh HTML từng byte).

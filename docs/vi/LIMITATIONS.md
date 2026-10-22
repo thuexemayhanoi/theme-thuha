@@ -4,6 +4,13 @@
 
 Người thực hiện **không** có quyền truy cập WordPress production, wp-admin, hosting, cơ sở dữ liệu hay Google Search Console. Vì vậy:
 
+## Bản cập nhật theme 1.4.0 + plugin 1.1.0 (trang chủ /vi/ cùng bố cục)
+
+- Chưa cài lên website; kiểm thử chạy trên WordPress cục bộ với ảnh giả lập có tên tệp giống quy tắc của theme (`Honda-Vision`, `Honda-Wave`, `Honda-Cub-50cc`). Chưa xác minh tên tệp ảnh thật trên production; nếu không khớp, thẻ xe vẫn hiển thị nhưng thiếu ảnh (giống hành vi của trang Anh, nơi khối xe sẽ ẩn).
+- Chú thích ảnh (figcaption) của ảnh lớn được lấy nguyên từ trang chủ Anh (thường là ghi công ảnh) nên có thể là tiếng Anh.
+- Phần "Toàn bộ chi tiết" hiển thị lại nội dung trang đang lưu (có bảng giá và nút liên hệ), nên trang có hai bảng giá, giống cách trang chủ Anh đang làm.
+- Chưa kiểm tra trên điện thoại thật, Safari/Firefox, PageSpeed và cache LiteSpeed thật.
+
 ## Chưa làm / chưa kiểm chứng trên website thật
 
 1. Chưa cài theme 1.3.0 hay plugin lên staging/production; chưa tạo, xuất bản hay ghép trang nào trên website thật.

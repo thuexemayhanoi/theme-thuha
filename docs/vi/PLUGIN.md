@@ -25,7 +25,7 @@ Mã nguồn: `plugins/rentbikehanoi-native-vi/` · Gói cài đặt: `dist/rentb
 
 ## Trang quản trị "Tiếng Việt /vi/" (quyền Quản trị viên)
 
-1. **Trạng thái**: BẬT/TẮT; nút *Bật /vi/ (có kiểm tra trước)*, *Tắt /vi/*, *Hoàn tác lần chuyển gần nhất*; danh sách kiểm tra (đường dẫn tĩnh, xung đột slug `vi` và các trang con, trang trùng, rewrite rule chiếm /vi/, plugin SEO, plugin đa ngôn ngữ khác, phiên bản theme, trang chủ tĩnh, trạng thái trang chủ /vi/).
+1. **Trạng thái**: BẬT/TẮT; nút *Bật /vi/ (có kiểm tra trước)*, *Tắt /vi/*, *Hoàn tác lần chuyển gần nhất*; danh sách kiểm tra (đường dẫn tĩnh, xung đột slug `vi` và các trang con, trang trùng, rewrite rule chiếm /vi/, plugin SEO, plugin đa ngôn ngữ hoặc dịch tự động khác (Polylang, WPML, TranslatePress, GTranslate, Weglot — từ 1.1.0), phiên bản theme, trang chủ tĩnh, trạng thái trang chủ /vi/).
 2. **Bộ trang tiếng Việt**: *Tạo bộ trang Việt (bản nháp)*, *Xác nhận các cặp Anh–Việt được đề xuất*, bảng trạng thái từng trang.
 3. **Ghép cặp**: chọn trang Việt ↔ trang/bài Anh; bỏ ghép. Báo lỗi nếu trang Anh đã ghép với trang Việt khác.
 4. **Kiểm tra nội dung**: thiếu tiêu đề SEO, mô tả, H1, cặp ngôn ngữ; nằm ngoài /vi/; trang pháp lý cần duyệt; liên kết tới trang Việt chưa xuất bản.
@@ -47,3 +47,16 @@ Mọi nút dùng nonce + kiểm tra quyền; thông báo lỗi bằng tiếng Vi
 - Theme action `rbh_header_actions` (nút được gắn ở đây), filter `rbh_language_switch_enabled`.
 - Template tag `rbhvi_language_switcher()`; hàm `rbhvi_current_language()`.
 - Vị trí menu `rbhvi_primary`, `rbhvi_footer` (Giao diện → Menu).
+
+## Bổ sung ở 1.1.0 (chưa triển khai)
+
+| Tệp | Vai trò |
+| --- | --- |
+| `includes/class-rbhvi-home.php` | Chọn bố cục trang chủ cho `/vi/`, chuẩn bị dữ liệu cho `template-parts/landing.php` của theme |
+| `templates/home-vi.php` | Khung trang: header + phần landing của theme + footer |
+| `config/home-vi.php` | Chữ tiếng Việt của trang chủ (chỉ dùng placeholder cho giá/NAP/phí) |
+
+- Cài đặt mới trong *5. Cài đặt*: **Bố cục trang chủ /vi/** — "Giống trang chủ tiếng Anh" (mặc định) hoặc "Trang thường" (như 1.0.0).
+- Vùng widget mới **Thanh bên bài viết tiếng Việt (/vi/)**: thay cho widget của "Article sidebar" trên mọi trang Việt (trống cho tới khi quản trị viên thêm widget tiếng Việt).
+- Logo tùy chỉnh trên trang Việt dẫn về `/vi/`, chữ thay thế (alt) là tên tiếng Việt của cửa hàng.
+- Nâng cấp từ 1.0.0: không cần chạy lại "Tạo bộ trang", không cần bật/tắt lại `/vi/`; cài đặt cũ được giữ.

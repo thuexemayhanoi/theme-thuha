@@ -5,6 +5,22 @@ https://rentbikehanoi.com
 > `rentbikehanoi-native-vi` **1.0.0**. The owner installed both ZIPs; an authenticated administrator then published
 > the 11 Vietnamese core pages and enabled `/vi/`. See [the live deployment record](docs/vi/DEPLOYMENT-2026-10-23.md)
 > for page IDs, measured checks, remaining limitations and rollback. Do not reseed or deploy over these pages blindly.
+>
+> **Pending update (not deployed):** theme **1.4.0** + plugin **1.1.0** on branch `feature/native-vietnamese-section` give `/vi/`
+> the same homepage layout as the English homepage and fix the logo link/alt and sidebar widgets on Vietnamese pages.
+> Install guide (Vietnamese): [docs/vi/UPDATE-1.4.0-1.1.0.md](docs/vi/UPDATE-1.4.0-1.1.0.md). Packages in `dist/`.
+
+## Vietnamese home page layout (theme 1.4.0, plugin 1.1.0 — not deployed)
+
+- `/vi/` (page 3454 in production) renders with the English homepage's design: hero with the existing hero photo, quick links,
+  three bike cards reusing the English homepage's bike photos, reference-price table, three steps, short FAQ, and the saved
+  page content in the collapsible "details" area (as the English homepage does). Copy is native Vietnamese
+  (`plugins/rentbikehanoi-native-vi/config/home-vi.php`); prices/NAP come from `config/business.php`.
+- Theme: new presentation-only part `template-parts/landing.php` (same classes as `front-page.php`); `front-page.php`, CSS and JS
+  are unchanged. Plugin: `RBHVI_Home` loads it only for the managed `/vi/` home page; setting "Bố cục trang chủ /vi/" switches back.
+- Also fixed on all Vietnamese pages: custom logo links to `/vi/` with a Vietnamese alt; a separate Vietnamese widget area replaces
+  the English "Article sidebar" widgets.
+- No database writes, no change to saved content, IDs, URLs, pairs, canonical, hreflang, sitemap or schema.
 
 ## English + Vietnamese (theme 1.3.0, plugin 1.0.0)
 
@@ -27,6 +43,7 @@ https://rentbikehanoi.com
 | Locked business data | [docs/vi/BUSINESS-DATA.md](docs/vi/BUSINESS-DATA.md) |
 | Unverified items and limits | [docs/vi/LIMITATIONS.md](docs/vi/LIMITATIONS.md) |
 | QA report of this release candidate | [dist/QA-REPORT.md](dist/QA-REPORT.md) |
+| Update to theme 1.4.0 + plugin 1.1.0 | [docs/vi/UPDATE-1.4.0-1.1.0.md](docs/vi/UPDATE-1.4.0-1.1.0.md) |
 | Changes | [CHANGELOG.md](CHANGELOG.md) |
 
 ### Test and package
@@ -34,7 +51,8 @@ https://rentbikehanoi.com
 ```bash
 composer install                       # dev tools only (PHPCS, WPCS, PHPCompatibilityWP)
 scripts/test-all.sh                    # static checks
-RBH_WP_ROOT=/tmp/rbh-wp RBH_BASELINE_REF=main scripts/test-all.sh --integration --bootstrap   # local WordPress + Yoast + browser
+RBH_WP_ROOT=/tmp/rbh-wp RBH_BASELINE_REF=main,e81fbd7 RBH_DEPLOYED_REF=e81fbd7 \
+  scripts/test-all.sh --integration --bootstrap   # local WordPress + Yoast + browser; English compared with 1.2.0 and the deployed 1.3.0
 python3 scripts/package.py && python3 tests/static/package-test.py                          # dist/ ZIPs, manifest, SHA256SUMS
 ```
 
