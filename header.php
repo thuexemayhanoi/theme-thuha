@@ -22,13 +22,14 @@
 		<div class="site-branding"><?php rbh_brand(); ?></div>
 		<nav class="desktop-nav" aria-label="<?php esc_attr_e( 'Primary navigation', 'rentbike-hanoi' ); ?>"><?php rbh_primary_navigation(); ?></nav>
 		<div class="header-actions">
-				<?php if ( rbh_upgrade_enabled( 'quick_search' ) ) : ?><a class="rbh-search-trigger" data-rbh-search href="<?php echo esc_url( home_url( '/?s=' ) ); ?>" aria-label="<?php esc_attr_e( 'Search', 'rentbike-hanoi' ); ?>"><span aria-hidden="true">⌕</span><span class="rbh-search-label"><?php esc_html_e( 'Search', 'rentbike-hanoi' ); ?></span></a><?php endif; ?>
+				<?php if ( rbh_upgrade_enabled( 'quick_search' ) ) : ?><a class="rbh-search-trigger" data-rbh-search href="<?php echo esc_url( rbh_home_url() . '?s=' ); ?>" aria-label="<?php esc_attr_e( 'Search', 'rentbike-hanoi' ); ?>"><span aria-hidden="true">⌕</span><span class="rbh-search-label"><?php esc_html_e( 'Search', 'rentbike-hanoi' ); ?></span></a><?php endif; ?>
 			<label class="appearance-toggle icon-button" title="<?php esc_attr_e( 'Toggle light / dark mode', 'rentbike-hanoi' ); ?>">
 				<input id="rbh-dark-mode" class="appearance-input" type="checkbox" role="switch" aria-label="<?php esc_attr_e( 'Dark mode', 'rentbike-hanoi' ); ?>" <?php checked( 'dark', rbh_setting( 'appearance' ) ); ?>>
 				<svg class="icon-moon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20.7 13A9 9 0 0 1 11 3.3 9 9 0 1 0 20.7 13Z"/></svg>
 				<svg class="icon-sun" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
 			</label>
 			<script>document.getElementById('rbh-dark-mode').checked=document.documentElement.dataset.theme==='dark';</script>
+			<?php do_action( 'rbh_header_actions' ); // Language switch (VI | EN) sits next to the Light/Dark toggle. ?>
 			<div class="desktop-cta"><?php rbh_cta( __( 'Book a bike', 'rentbike-hanoi' ), 'button button-small' ); ?></div>
 			<button class="menu-trigger icon-button" type="button" popovertarget="site-menu" aria-controls="site-menu" aria-expanded="false"><span class="hamburger" aria-hidden="true"></span><span><?php esc_html_e( 'Menu', 'rentbike-hanoi' ); ?></span></button>
 		</div>

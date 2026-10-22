@@ -8,7 +8,7 @@
 				<?php if ( rbh_setting( 'address' ) ) : ?><address><?php echo esc_html( rbh_setting( 'address' ) ); ?></address><?php endif; ?>
 				<?php if ( rbh_setting( 'hours' ) ) : ?><p><?php echo esc_html( rbh_setting( 'hours' ) ); ?></p><?php endif; ?>
 				<div class="contact-links">
-					<?php foreach ( array( 'phone' => 'Call', 'whatsapp' => 'WhatsApp', 'zalo' => 'Zalo' ) as $channel => $label ) : if ( ! rbh_contact_url( $channel ) ) { continue; } ?>
+					<?php foreach ( array( 'phone' => __( 'Call', 'rentbike-hanoi' ), 'whatsapp' => 'WhatsApp', 'zalo' => 'Zalo' ) as $channel => $label ) : if ( ! rbh_contact_url( $channel ) ) { continue; } ?>
 					<a href="<?php echo esc_url( rbh_contact_url( $channel ) ); ?>"><?php echo esc_html( $label ); ?> <span aria-hidden="true">↗</span></a>
 					<?php endforeach; ?>
 				</div>

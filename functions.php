@@ -1,6 +1,6 @@
 <?php
 defined( 'ABSPATH' ) || exit;
-define( 'RBH_VERSION', '1.2.0' );
+define( 'RBH_VERSION', '1.3.0' );
 foreach ( array( 'settings', 'navigation', 'content', 'components', 'upgrade', 'assistant', 'seo' ) as $rbh_module ) {
 	require_once get_template_directory() . '/inc/' . $rbh_module . '.php';
 }
@@ -46,6 +46,10 @@ function rbh_assets() {
 	wp_add_inline_script( 'rbh-main', 'window.rbhLabels=' . wp_json_encode( array( 'light' => __( 'Light', 'rentbike-hanoi' ), 'dark' => __( 'Dark', 'rentbike-hanoi' ), 'auto' => __( 'Auto', 'rentbike-hanoi' ) ) ) . ';', 'before' );
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
+	}
+	// Only loaded while a language plugin shows the VI | EN switch; English-only pages are unchanged.
+	if ( apply_filters( 'rbh_language_switch_enabled', false ) ) {
+		wp_enqueue_style( 'rbh-language-switch', get_template_directory_uri() . '/assets/css/language-switch.css', array( 'rbh-main' ), RBH_VERSION );
 	}
 	$accent = sanitize_hex_color( rbh_setting( 'accent' ) );
 	if ( $accent ) {
