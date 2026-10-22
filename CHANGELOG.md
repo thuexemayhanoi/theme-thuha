@@ -2,9 +2,17 @@
 
 All notable changes to this repository. Dates use Asia/Ho_Chi_Minh.
 
+## [Production deployment] — 2026-10-23
+
+- Owner-installed theme 1.3.0 (`wp-theme`) and custom plugin 1.0.0 verified through authenticated WordPress reads.
+- Published 11 existing native Vietnamese drafts, confirmed nine valid English pairs, and enabled `/vi/` through the plugin's guarded admin action.
+- Changed the signed-in owner's admin-profile language to Vietnamese without changing the public English locale.
+- Deactivated legacy GTranslate; kept Yoast, LiteSpeed and all English content/URLs unchanged.
+- Verified public HTTP responses, language metadata, homepage SEO identity preservation, reciprocal switching, sitemap and FAQ schema JSON. See `docs/vi/DEPLOYMENT-2026-10-23.md`; this is not a claim of Google indexing or complete mobile/performance/legal validation.
+
 ## [Theme 1.3.0 + plugin rentbikehanoi-native-vi 1.0.0] — 2026-10-22 — not deployed
 
-Status: code, tests and release candidates only. **Not installed, activated or published on https://rentbikehanoi.com.**
+Historical status on 22 October: code, tests and release candidates only, not deployed at that time. Superseded by the production deployment record above.
 
 ### Added
 - Plugin `plugins/rentbikehanoi-native-vi/` (custom, no WPML/Polylang/TranslatePress):

@@ -1,9 +1,10 @@
 # wp-theme
 https://rentbikehanoi.com
 
-> **Deployment status (22 Oct 2026):** theme 1.3.0 and the plugin `rentbikehanoi-native-vi` 1.0.0 on branch
-> `feature/native-vietnamese-section` are **not deployed**. They exist as source, tests and release candidates in `dist/` only.
-> According to docs/publish-qa-2026-10-20.json, production runs theme 1.2.0 (published 20 Oct 2026). Install only through docs/vi/INSTALL-STAGING.md.
+> **Deployment status (23 Oct 2026, Asia/Ho_Chi_Minh):** production runs theme **1.3.0** in `wp-theme` and the custom plugin
+> `rentbikehanoi-native-vi` **1.0.0**. The owner installed both ZIPs; an authenticated administrator then published
+> the 11 Vietnamese core pages and enabled `/vi/`. See [the live deployment record](docs/vi/DEPLOYMENT-2026-10-23.md)
+> for page IDs, measured checks, remaining limitations and rollback. Do not reseed or deploy over these pages blindly.
 
 ## English + Vietnamese (theme 1.3.0, plugin 1.0.0)
 
@@ -15,6 +16,7 @@ https://rentbikehanoi.com
 | Topic | Document |
 | --- | --- |
 | Rules for agents | [AGENTS.md](AGENTS.md) |
+| Current production state | [docs/vi/DEPLOYMENT-2026-10-23.md](docs/vi/DEPLOYMENT-2026-10-23.md) |
 | Architecture | [docs/vi/ARCHITECTURE.md](docs/vi/ARCHITECTURE.md) |
 | Plugin | [docs/vi/PLUGIN.md](docs/vi/PLUGIN.md) |
 | Install, staging, production checks | [docs/vi/INSTALL-STAGING.md](docs/vi/INSTALL-STAGING.md) |

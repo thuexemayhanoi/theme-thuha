@@ -1,7 +1,15 @@
 # Theme maintenance — rentbikehanoi.com
 
 ## Purpose of this repository
-Source of the active WordPress theme of https://rentbikehanoi.com (theme "Rentbike Hanoi", active stylesheet folder `wp-theme`) and, since 1.3.0, of the project's own bilingual plugin `plugins/rentbikehanoi-native-vi/`. English stays at the site root; native Vietnamese lives under `/vi/`. Nothing in this repository has been deployed to production by the agents that wrote it unless a dated publication record in `docs/` says so (the 1.3.0 / plugin 1.0.0 work has **no** such record yet).
+Source of the active WordPress theme of https://rentbikehanoi.com (theme "Rentbike Hanoi", active stylesheet folder `wp-theme`) and, since 1.3.0, of the project's own bilingual plugin `plugins/rentbikehanoi-native-vi/`. English stays at the site root; native Vietnamese lives under `/vi/`. Production status is recorded in dated publication records in `docs/`; see `docs/vi/DEPLOYMENT-2026-10-23.md` for the live theme 1.3.0, plugin 1.0.0, published page IDs and enabled Vietnamese section.
+
+## Current live bilingual state — 23 October 2026
+- The 11 Vietnamese core pages already exist and are published (IDs 3454–3464); `/vi/` is enabled. Do not recreate, overwrite or republish seed content over owner edits.
+- Nine English–Vietnamese pairs were confirmed. The Vietnamese terms page is deliberately unpaired because the English terms cover a broader rental-service scope. The empty Vietnamese blog is noindex and excluded from the sitemap.
+- Legacy GTranslate was deactivated; use only the custom bilingual plugin for the language section. Yoast and LiteSpeed remain in place.
+- The owner's authenticated admin-profile language was changed to Vietnamese; the public English site's default language was not changed.
+- Claude must still be assumed to have GitHub-only access to the two project repos, not WordPress or a reliable crawler. The live publishing work was done separately by an authorized administrator. `/thuha-writer` was not modified in this deployment.
+- Follow `docs/vi/ROLLBACK.md` before deactivation. Never substitute a raw `rbhvi_enabled` option write for the plugin's preflight/enable action.
 
 ## Existing rules (unchanged)
 - Preserve existing posts, menu objects, taxonomy, permalinks, canonicals and redirects. Do not write business content from theme activation hooks.

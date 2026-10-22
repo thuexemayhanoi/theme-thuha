@@ -1,5 +1,7 @@
 # Giới hạn và những điều chưa kiểm chứng
 
+> **Cập nhật 23/10/2026:** nội dung dưới đây ghi lại giới hạn của người viết mã tại thời điểm bàn giao, không còn là toàn bộ trạng thái production hiện tại. Theme 1.3.0, plugin 1.0.0 và 11 trang Việt đã được cài/xuất bản, `/vi/` đã bật. Xem `DEPLOYMENT-2026-10-23.md` để biết kiểm tra thực tế và những việc vẫn chưa kiểm chứng. Claude vẫn không có kết nối WordPress.
+
 Người thực hiện **không** có quyền truy cập WordPress production, wp-admin, hosting, cơ sở dữ liệu hay Google Search Console. Vì vậy:
 
 ## Chưa làm / chưa kiểm chứng trên website thật
