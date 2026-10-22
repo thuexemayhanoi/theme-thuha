@@ -1,0 +1,58 @@
+Bạn cần một chiếc xe máy để đi lại ở Hà Nội vài ngày, vài tuần hay cả tháng? **{{name}}** cho thuê xe số, xe ga, xe điện và xe 50cc tại {{address}}. Trang này tóm tắt những gì bạn cần biết trước khi gọi hoặc nhắn tin cho cửa hàng.
+
+{{contact_buttons}}
+
+## Các loại xe cho thuê
+
+Bảng giá của cửa hàng hiện chia thành các nhóm xe dưới đây. Mẫu xe cụ thể còn trống hay không thay đổi theo từng ngày, vì vậy hãy hỏi trước khi đến.
+
+- **Xe số:** phù hợp nếu bạn đã quen sang số.
+- **Xe ga:** không cần sang số, thuận tiện khi đi trong phố; có các mẫu như Honda Vision và Honda Air Blade. Xem thêm trang [thuê xe ga Hà Nội]({{link:scooter}}).
+- **Xe điện:** giá ngày tùy mẫu, hỏi cửa hàng trước khi chọn.
+- **Xe 50cc:** dành cho người cần xe phân khối nhỏ; hỏi cửa hàng về mẫu xe đang có.
+
+## Giá thuê tham khảo theo ngày, tuần, tháng
+
+Thuê càng dài, giá quy ra mỗi ngày thường càng mềm. Đây là giá tham khảo, cần được cửa hàng xác nhận cho đúng mẫu xe và thời gian bạn thuê.
+
+{{price_table}}
+
+Phí gia hạn: {{extension_fee}}. Chi tiết về cách tính giá và các câu hỏi nên đặt ra có ở trang [bảng giá thuê xe máy Hà Nội]({{link:prices}}).
+
+## Địa chỉ và giờ mở cửa
+
+- Địa chỉ: {{address}}.
+- Giờ mở cửa: {{hours}}.
+- Điện thoại, Zalo, WhatsApp: {{phone_display}} (gọi từ nước ngoài: {{phone_intl}}).
+- [Xem vị trí cửa hàng trên bản đồ]({{map_url}}).
+
+Nếu muốn nhận xe ở nơi khác thay vì đến cửa hàng, hãy đọc trang [giao nhận xe máy]({{link:delivery}}) trước khi hỏi.
+
+## Liên hệ thế nào cho nhanh?
+
+Gọi điện là cách nhanh nhất khi bạn cần xe trong ngày. Nếu muốn gửi ảnh giấy tờ hoặc ghi rõ yêu cầu, hãy nhắn qua [Zalo]({{zalo_url}}) hoặc [WhatsApp]({{whatsapp_url}}) theo số {{phone_display}}. Tin nhắn nên có:
+
+- Loại xe hoặc mẫu xe bạn muốn.
+- Ngày nhận, ngày trả dự kiến và hình thức thuê (ngày, tuần hay tháng).
+- Nơi bạn muốn nhận xe.
+
+## Những điều cần xác nhận trước khi thuê
+
+Cửa hàng sẽ trả lời cụ thể cho từng trường hợp. Trước khi chốt, bạn nên hỏi rõ:
+
+1. Mẫu xe và giá thuê áp dụng cho đúng khoảng thời gian của bạn.
+2. Giấy tờ cần mang theo khi nhận xe.
+3. Có cần đặt cọc không, mức cọc và cách hoàn cọc khi trả xe.
+4. Giờ nhận, giờ trả và cách tính khi trả muộn hoặc muốn gia hạn.
+5. Nơi nhận xe và chi phí nếu cần giao nhận.
+
+Trang [thủ tục thuê xe máy]({{link:procedure}}) giải thích từng bước, còn [câu hỏi thường gặp]({{link:faq}}) trả lời nhanh các thắc mắc phổ biến.
+
+## Xem tiếp
+
+- [Bảng giá thuê xe máy Hà Nội]({{link:prices}})
+- [Thuê xe ga: Honda Vision, Air Blade và xe điện]({{link:scooter}})
+- [Thủ tục thuê xe máy]({{link:procedure}})
+- [Giao nhận xe máy]({{link:delivery}})
+- [Câu hỏi thường gặp]({{link:faq}})
+- [Liên hệ cửa hàng]({{link:contact}})

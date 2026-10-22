@@ -1,0 +1,25 @@
+Trang này giải thích cách website của {{name}} xử lý thông tin khi bạn đọc trang, tìm kiếm hoặc liên hệ với cửa hàng. Nội dung chỉ mô tả những gì website đang làm; nếu có thay đổi, trang này sẽ được cập nhật.
+
+## Khi bạn đọc website
+
+Như phần lớn website, máy chủ có thể ghi nhận thông tin kỹ thuật cơ bản của lượt truy cập (ví dụ địa chỉ IP, loại trình duyệt, thời điểm truy cập) để vận hành và bảo vệ website.
+
+Lựa chọn giao diện sáng hoặc tối được lưu ngay trong trình duyệt của bạn (bộ nhớ cục bộ của trình duyệt) để lần sau website hiển thị đúng lựa chọn đó. Thông tin này không được gửi về cửa hàng.
+
+## Khi bạn tìm kiếm trên website
+
+Từ khóa bạn nhập vào ô tìm kiếm được dùng để tìm nội dung trên chính website này. Phần tiếng Việt của website không dùng dịch vụ trí tuệ nhân tạo hay dịch vụ dịch thuật bên ngoài.
+
+## Khi bạn liên hệ cửa hàng
+
+Khi bạn gọi điện, nhắn Zalo hoặc WhatsApp tới số {{phone_display}}, cửa hàng nhận được những thông tin bạn chủ động cung cấp (ví dụ tên, số điện thoại, ngày thuê, nơi nhận xe) để trả lời và sắp xếp việc thuê xe. Các cuộc trò chuyện qua Zalo và WhatsApp còn chịu chính sách riêng của những ứng dụng đó.
+
+Chỉ gửi giấy tờ cá nhân khi cửa hàng yêu cầu cho việc thuê xe và qua kênh bạn tin cậy.
+
+## Quyền của bạn
+
+Bạn có thể đề nghị cửa hàng cho biết, sửa hoặc xóa thông tin bạn đã cung cấp, trong phạm vi pháp luật cho phép, bằng cách liên hệ số {{phone_display}}.
+
+## Liên hệ
+
+{{name}} — {{address}}. Điện thoại / Zalo / WhatsApp: {{phone_display}}. Xem thêm [điều khoản sử dụng website]({{link:terms}}).

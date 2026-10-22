@@ -1,0 +1,29 @@
+Khi sử dụng website của {{name}}, bạn đồng ý với các điều khoản dưới đây. Điều khoản này áp dụng cho việc đọc và sử dụng thông tin trên website; điều kiện thuê xe cụ thể được cửa hàng thỏa thuận trực tiếp với từng khách.
+
+## Thông tin trên website là thông tin tham khảo
+
+Giá thuê, loại xe và nội dung hướng dẫn trên website nhằm giúp bạn chuẩn bị trước khi liên hệ. Giá đăng trên website là giá tham khảo và cần được cửa hàng xác nhận trước khi đặt. Website không xác nhận xe còn trống và không thay thế thỏa thuận thuê xe giữa bạn và cửa hàng.
+
+## Đặt xe và điều kiện thuê
+
+Website không nhận đặt xe hay thanh toán trực tuyến. Việc đặt xe, giá cuối cùng, giấy tờ, đặt cọc, giờ nhận và trả xe được thống nhất trực tiếp qua điện thoại, Zalo, WhatsApp hoặc tại cửa hàng.
+
+## Trách nhiệm khi đi xe
+
+Người thuê tự chịu trách nhiệm tuân thủ luật giao thông, có giấy phép lái xe phù hợp và đội mũ bảo hiểm. Các bài hướng dẫn trên website chỉ mang tính tham khảo, không thay thế quy định pháp luật hay hướng dẫn trực tiếp của cửa hàng.
+
+## Liên kết tới dịch vụ khác
+
+Website có liên kết tới Zalo, WhatsApp và bản đồ. Các dịch vụ này do bên thứ ba vận hành và có điều khoản riêng.
+
+## Nội dung của website
+
+Nội dung tiếng Việt và tiếng Anh trên website được viết riêng cho từng nhóm người đọc. Vui lòng không sao chép nội dung để sử dụng cho mục đích thương mại khi chưa được cửa hàng đồng ý.
+
+## Thay đổi điều khoản
+
+Điều khoản có thể được cập nhật khi website thay đổi. Phiên bản đăng trên trang này là phiên bản đang áp dụng.
+
+## Liên hệ
+
+Nếu có câu hỏi về điều khoản, hãy [liên hệ cửa hàng]({{link:contact}}) hoặc đọc [chính sách bảo mật]({{link:privacy}}).

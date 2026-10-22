@@ -1,0 +1,10 @@
+Những câu hỏi khách thường hỏi trước khi thuê xe tại {{name}} được trả lời ngắn gọn dưới đây. Nếu trường hợp của bạn khác, hãy gọi hoặc nhắn số {{phone_display}} để cửa hàng trả lời trực tiếp.
+
+{{faq}}
+
+## Chưa thấy câu trả lời bạn cần?
+
+- Giá chi tiết theo từng loại xe: [bảng giá thuê xe máy Hà Nội]({{link:prices}}).
+- Các bước và câu hỏi về giấy tờ, đặt cọc: [thủ tục thuê xe]({{link:procedure}}).
+- Nhận xe ở nơi khác: [giao nhận xe máy]({{link:delivery}}).
+- Hỏi trực tiếp: [liên hệ cửa hàng]({{link:contact}}).

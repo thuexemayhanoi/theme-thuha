@@ -1,0 +1,36 @@
+Bạn có thể nhận xe trực tiếp tại cửa hàng {{name}} hoặc hỏi phương án giao nhận xe tới địa điểm khác ở Hà Nội. Khu vực giao, giờ giao và chi phí giao nhận phụ thuộc vào địa điểm và thời gian bạn cần, vì vậy luôn cần cửa hàng xác nhận trước.
+
+## Nhận xe tại cửa hàng
+
+Cửa hàng ở {{address}}, mở cửa {{hours}}. Vị trí này thuận tiện nếu bạn vừa đến Hà Nội bằng xe khách tới Bến xe Gia Lâm. [Xem bản đồ đường đến cửa hàng]({{map_url}}).
+
+Nên gọi hoặc nhắn trước khi đến để cửa hàng chuẩn bị đúng mẫu xe bạn cần.
+
+## Hỏi giao xe tận nơi
+
+Khi muốn nhận xe ở khách sạn, nhà riêng hay nơi làm việc, hãy gửi cho cửa hàng:
+
+- Địa chỉ đầy đủ hoặc vị trí trên bản đồ.
+- Ngày và khung giờ bạn muốn nhận xe.
+- Mẫu xe, số ngày thuê và ngày trả dự kiến.
+- Bạn muốn trả xe tại cùng địa điểm hay mang xe về cửa hàng.
+
+Cửa hàng sẽ cho biết có giao được tới địa điểm đó không, chi phí giao nhận (nếu có) và giấy tờ cần chuẩn bị khi nhận xe.
+
+## Lưu ý
+
+- Cửa hàng không giao xe tới sân bay Nội Bài.
+- Giờ giao xe cần được hẹn trước; đừng coi giờ hẹn là chắc chắn khi chưa nhận được xác nhận.
+- Khi nhận xe ở bất kỳ đâu, hãy kiểm tra xe và chụp ảnh tình trạng xe như khi nhận tại cửa hàng (xem [thủ tục thuê xe]({{link:procedure}})).
+
+## Trả xe
+
+Nơi trả xe và giờ trả được thống nhất từ lúc đặt. Nếu muốn đổi nơi trả hoặc trả muộn hơn, hãy báo sớm để cửa hàng sắp xếp; phí gia hạn là {{extension_fee}}.
+
+## Liên hệ hỏi giao nhận
+
+Gọi hoặc nhắn Zalo, WhatsApp số {{phone_display}}.
+
+{{contact_buttons}}
+
+Xem thêm: [bảng giá thuê xe]({{link:prices}}) · [câu hỏi thường gặp]({{link:faq}}).

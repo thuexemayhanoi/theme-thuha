@@ -1,0 +1,47 @@
+Thuê xe máy ở Hà Nội không phức tạp nếu bạn hỏi đủ thông tin trước. Trang này mô tả các bước khi thuê xe tại {{name}} và danh sách câu hỏi nên đặt ra. Giấy tờ cần mang, tiền đặt cọc và cách hoàn cọc được cửa hàng xác nhận cho từng trường hợp, nên website không liệt kê thay.
+
+## Các bước thuê xe
+
+1. **Liên hệ cửa hàng** qua điện thoại, Zalo hoặc WhatsApp số {{phone_display}}, trong giờ mở cửa {{hours}}.
+2. **Cho biết nhu cầu:** loại xe hoặc mẫu xe, ngày nhận, ngày trả, nơi nhận xe.
+3. **Nhận báo giá và điều kiện thuê:** giá cho đúng mẫu xe và thời gian thuê, giấy tờ cần mang, điều kiện đặt cọc.
+4. **Hẹn giờ nhận xe** tại cửa hàng ({{address}}) hoặc hỏi phương án [giao nhận xe]({{link:delivery}}).
+5. **Nhận và kiểm tra xe** trước khi đi; nếu thấy điểm nào chưa ổn, báo ngay cho cửa hàng.
+6. **Trả xe đúng hẹn** hoặc báo sớm nếu muốn gia hạn.
+
+## Câu hỏi nên hỏi trước khi chốt thuê
+
+### Về giấy tờ
+
+- Tôi cần mang theo những giấy tờ gì khi nhận xe?
+- Giấy tờ có được giữ lại trong thời gian thuê không, hay chỉ cần xuất trình?
+
+### Về đặt cọc
+
+- Có cần đặt cọc không? Nếu có thì mức cọc bao nhiêu và trả bằng hình thức nào?
+- Tiền cọc được hoàn khi nào và trong trường hợp nào có thể bị trừ?
+
+Website không quảng cáo thuê xe không cần cọc. Hãy để cửa hàng trả lời cụ thể và giữ lại tin nhắn xác nhận.
+
+### Về thời gian thuê
+
+- Giờ nhận và giờ trả xe là mấy giờ?
+- Nếu trả muộn thì tính thế nào? Phí gia hạn hiện là {{extension_fee}}.
+
+## Điều kiện để tự lái xe
+
+Người lái phải có giấy phép lái xe phù hợp với loại xe theo quy định hiện hành và luôn đội mũ bảo hiểm khi đi xe máy. Nếu bạn chưa chắc loại xe mình được phép lái, hãy hỏi cửa hàng trước khi chọn xe, đặc biệt khi cân nhắc giữa xe 50cc và các xe phân khối lớn hơn.
+
+## Khi nhận xe
+
+- Kiểm tra phanh trước, phanh sau, đèn, còi, gương và lốp.
+- Chụp ảnh hoặc quay video tình trạng xe, đồng hồ xăng và các vết xước có sẵn.
+- Hỏi cách liên hệ cửa hàng nếu xe gặp sự cố trong lúc thuê.
+
+## Khi trả xe
+
+Trả xe tại nơi đã hẹn, cùng cửa hàng đối chiếu tình trạng xe và nhận lại tiền cọc (nếu có) theo đúng điều kiện đã thống nhất từ đầu.
+
+## Cần trợ giúp?
+
+Xem [bảng giá thuê xe máy]({{link:prices}}), [câu hỏi thường gặp]({{link:faq}}) hoặc [liên hệ cửa hàng]({{link:contact}}) để hỏi trực tiếp.
