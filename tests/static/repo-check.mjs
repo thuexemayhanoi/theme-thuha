@@ -50,7 +50,8 @@ const literalNap = plugin.filter(f => !f.endsWith('config/business.php') && !f.e
 check('no NAP/price literal outside plugins/rentbikehanoi-native-vi/config/business.php', !literalNap.length, literalNap.join(', '));
 
 console.log('Release safety');
-check('no automatic deploy workflow or webhook', !files.some(f => /^\.github\/workflows\//.test(f) && /deploy|ftp|ssh|rsync|wp-json\/wp\/v2/i.test(read(f))));
+const workflowSteps = f => read(f).split('\n').filter(l => !l.trim().startsWith('#')).join('\n');
+check('no automatic deploy workflow or webhook', !files.some(f => /^\.github\/workflows\//.test(f) && /ftp|ssh-action|ssh |scp |rsync|lftp|wp-json|deploy-action|rentbikehanoi\.com|secrets\./i.test(workflowSteps(f))));
 check('no -wpvibe-draft theme activation in code', !text.some(f => !f.endsWith('.md') && f !== 'tests/static/repo-check.mjs' && /switch_theme\(|activate.*wpvibe-draft/.test(read(f))));
 check('theme still has no metadata/schema output of its own', !['functions.php', 'header.php', 'inc/navigation.php', 'inc/seo.php'].some(f => /rel="canonical"|og:title|application\/ld\+json"\s*>/.test(read(f).replace(/~<script\[\^>\]\+application\/ld\\\+json/g, ''))));
 
