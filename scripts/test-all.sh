@@ -66,7 +66,8 @@ if [ "$UPGRADE" = 1 ]; then
   php -S "127.0.0.1:$UPORT" -t "$UROOT/site" "$UROOT/router.php" >"$UROOT/server.log" 2>&1 &
   USERVER=$!; sleep 1
   OLD_THEME=$(ls dist/previous/wp-theme-*.zip); OLD_PLUGIN=$(ls dist/previous/rentbikehanoi-native-vi-*.zip)
-  NEW_THEME=$(ls dist/wp-theme-*.zip); NEW_PLUGIN=$(ls dist/rentbikehanoi-native-vi-*.zip)
+  # The ZIPs just built (named in the manifest), not any older version still lying in dist/.
+  read -r NEW_THEME NEW_PLUGIN < <(python3 -c "import json; print(*('dist/' + a['file'] for a in json.load(open('dist/manifest.json'))['artifacts']))")
   RBH_WP_ROOT="$UROOT" RBH_WP_PORT="$UPORT" node tests/integration/upgrade.mjs "$OLD_THEME" "$OLD_PLUGIN" "$NEW_THEME" "$NEW_PLUGIN" || { kill $USERVER; exit 1; }
   kill $USERVER 2>/dev/null || true
 fi

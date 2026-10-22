@@ -290,7 +290,7 @@ const graphTypes = p => p.jsonld.flatMap(d => (d['@graph'] || [d]).map(n => [].c
     } finally { wp('eval-file', path.join(REPO, 'tests/integration/fixture-logo.php'), 'remove'); }
   });
   await check('Vietnamese pages show no English interface text, widget or English search form', async () => {
-    const english = ['Skip to content', 'Primary navigation', 'Book a bike', 'Search guides', 'Search this site', 'Back to top', 'Back to homepage', 'Go to homepage', 'Nothing found yet', 'Read guide', 'Related guides', 'Share this guide', 'Copy link', 'Previous article', 'Next article', 'Quick contact', 'Close menu', 'Toggle light', 'Dark mode', 'Rental essentials', 'Plan your ride', 'Find what you need', 'Have a question', 'Latest Posts', 'Recent Posts', 'Website assistant', 'Contact options', 'Explore Hanoi', 'The reading room', 'This road ends here', 'Motorbike Nguyen Ha', 'Your next ride'];
+    const english = ['Skip to content', 'Primary navigation', 'Book a bike', 'Search guides', 'Search this site', 'Back to top', 'Back to homepage', 'Go to homepage', 'Nothing found yet', 'Read guide', 'Related guides', 'Share this guide', 'Copy link', 'Previous article', 'Next article', 'Quick contact', 'Close menu', 'Toggle light', 'Dark mode', 'Rental essentials', 'Plan your ride', 'Find what you need', 'Have a question', 'Latest Posts', 'Recent Posts', 'Website assistant', 'Contact options', 'Explore Hanoi', 'The reading room', 'This road ends here', 'Motorbike Nguyen Ha', 'Your next ride', 'You searched for', 'Page not found', 'Error 404', 'Archives', 'Posts pagination', 'Posts navigation'];
     for (const p of [...VI_PATHS.map(p => `/vi/${p ? p + '/' : ''}`), '/vi/?s=xe', '/vi/?s=khongcoketqua', '/vi/khong-ton-tai/']) {
       const r = await get(p); const text = visibleText(r.html);
       for (const e of english) assert.ok(!text.includes(e), `${p}: "${e}"`);
@@ -374,6 +374,55 @@ const graphTypes = p => p.jsonld.flatMap(d => (d['@graph'] || [d]).map(n => [].c
       assert.deepEqual(diffSnap(deployed, await snapshot()), []);
     });
   }
+  await check('Vietnamese search, 404, category and paged titles/breadcrumbs/schema are Vietnamese; English ones unchanged', async () => {
+    const want = {
+      '/vi/?s=xe': ['Kết quả tìm kiếm cho “xe” | Thuê xe máy Nguyễn Hà', 'Kết quả tìm kiếm: “xe”'],
+      '/vi/page/2/?s=xe': ['Kết quả tìm kiếm cho “xe” – Trang 2 | Thuê xe máy Nguyễn Hà', 'Kết quả tìm kiếm: “xe” » Trang 2'],
+      '/vi/khong-ton-tai/': ['Không tìm thấy trang | Thuê xe máy Nguyễn Hà', null],
+      '/vi/chuyen-muc/kinh-nghiem/': ['Kinh nghiệm | Thuê xe máy Nguyễn Hà', 'Kinh nghiệm'],
+      '/vi/chuyen-muc/kinh-nghiem/page/2/': ['Kinh nghiệm – Trang 2 | Thuê xe máy Nguyễn Hà', 'Kinh nghiệm » Trang 2'],
+    };
+    const meta = (html, re) => (html.match(re) || [])[1];
+    for (const [u, [title, crumb]] of Object.entries(want)) {
+      const r = await get(u); const x = parse(r.html);
+      assert.equal(x.title, title, u); assert.equal(x.titles, 1, u);
+      // Yoast prints twitter:title only where og:title does not cover it (search results); when present it must match.
+      const twitter = meta(r.html, /<meta name="twitter:title" content="([^"]*)"/);
+      if (twitter !== undefined) assert.equal(twitter, title, `${u} twitter:title`);
+      if (crumb) {
+        const nav = (r.html.match(/<nav class="breadcrumbs"[\s\S]*?<\/nav>/) || [''])[0].replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+        assert.ok(nav.startsWith('Trang chủ') && nav.endsWith(crumb), `${u}: ${nav}`);
+        assert.equal(meta(r.html, /<meta property="og:title" content="([^"]*)"/), title, `${u} og:title`);
+        const page = x.jsonld[0]['@graph'].find(n => [].concat(n['@type']).some(t => /Page$/.test(t)));
+        assert.equal(page.name, title, `${u} schema name`);
+      }
+      assert.doesNotMatch(r.html, /You searched for|Page not found|Archives|Page \d+ of \d+/, u);
+    }
+    assert.ok(meta((await get('/vi/?s=xe')).html, /<meta name="twitter:title" content="([^"]*)"/), 'search results keep a twitter:title, as in English');
+    // A search term with markup is escaped exactly as Yoast escapes it in the English title; nothing raw reaches the page.
+    const q = encodeURIComponent('</script><b>x"\'&');
+    const viQ = await get(`/vi/?s=${q}`); const enTitle = parse((await get(`/?s=${q}`)).html).title;
+    const escaped = enTitle.replace(/^You searched for /, '').replace(/ - Motorbike Nguyen Ha$/, '');
+    assert.ok(escaped.includes('&lt;/script&gt;&lt;b&gt;'), enTitle);
+    assert.equal(parse(viQ.html).title, `Kết quả tìm kiếm cho “${escaped}” | Thuê xe máy Nguyễn Hà`);
+    assert.ok(!viQ.html.includes('<b>x') && !viQ.html.includes('<\\/script><b>'), 'search term never printed unescaped');
+    assert.equal(parse(viQ.html).jsonld.length, 1, 'JSON-LD still parses');
+    // English stays exactly as Yoast renders it.
+    assert.equal(parse((await get('/?s=rental')).html).title, 'You searched for rental - Motorbike Nguyen Ha');
+    assert.equal(parse((await get('/nope/')).html).title, 'Page not found - Motorbike Nguyen Ha');
+  });
+  await check('comment form and navigation on Vietnamese posts are Vietnamese; an installed translation wins over the fallback', async () => {
+    const h = (await get('/vi/meo-di-xe-5/')).html;
+    for (const t of ['Để lại bình luận', 'Gửi bình luận', 'Email của bạn sẽ không được hiển thị công khai.', '<label for="comment">Bình luận']) assert.ok(h.includes(t), t);
+    for (const t of ['Leave a Reply', 'Post Comment', 'Your email address will not be published', 'Post navigation']) assert.ok(!visibleText(h).includes(t), t);
+    const en = (await get('/english-rental-tip-5/')).html;
+    assert.ok(en.includes('Leave a Reply') && en.includes('Post Comment') && !en.includes('Để lại bình luận'), 'English comment form unchanged');
+    const mu = path.join(process.env.RBH_WP_ROOT, 'site/wp-content/mu-plugins');
+    fs.mkdirSync(mu, { recursive: true });
+    fs.writeFileSync(path.join(mu, 'rbh-test-installed-vi.php'), "<?php add_filter('gettext_default', function ($t, $text) { return 'Leave a Reply' === $text && 'vi' === determine_locale() ? 'BẢN DỊCH ĐÃ CÀI' : $t; }, 5, 2);\n");
+    try { assert.ok((await get('/vi/meo-di-xe-5/')).html.includes('BẢN DỊCH ĐÃ CÀI'), 'installed translation kept'); }
+    finally { fs.rmSync(path.join(mu, 'rbh-test-installed-vi.php')); }
+  });
   await check('page views do not write to the database', async () => {
     const before = tableHash();
     for (const u of [...ENGLISH, ...VI_PATHS.map(p => `/vi/${p ? p + '/' : ''}`), '/vi/blog/page/2/', '/vi/?s=xe', '/vi/meo-di-xe-3/', '/vi/x/']) await get(u);

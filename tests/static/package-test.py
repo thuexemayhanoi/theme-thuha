@@ -46,7 +46,8 @@ REQUIRED = {
               'assets/css/language-switch.css', 'assets/js/assistant-seo-20261019.js', 'template-parts/menu.php', 'template-parts/landing.php'],
     'plugin': ['rentbikehanoi-native-vi.php', 'uninstall.php', 'readme.txt', 'config/business.php', 'config/pages.php',
                'includes/class-rbhvi-router.php', 'includes/class-rbhvi-admin.php', 'content/home.txt', 'content/faq-items.php',
-               'includes/class-rbhvi-home.php', 'config/home-vi.php', 'templates/home-vi.php'],
+               'includes/class-rbhvi-home.php', 'config/home-vi.php', 'templates/home-vi.php', 'includes/theme-strings-vi.php',
+               'includes/core-strings-vi.php'],
 }
 
 for artifact in manifest['artifacts']:

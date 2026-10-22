@@ -186,5 +186,22 @@ preg_match_all( "/(?:esc_html_e|esc_html__|esc_attr_e|esc_attr__|__)\( '((?:[^'\
 $missing = array_diff( array_unique( $m[1] ), array_keys( $strings ) );
 check( 'every front-end template string has a Vietnamese translation', ! $missing, implode( ', ', $missing ) );
 
+echo "Translation maps keep placeholders and markup\n";
+foreach ( array( 'theme-strings-vi.php', 'core-strings-vi.php' ) as $map_file ) {
+	$map = require RBHVI_DIR . 'includes/' . $map_file;
+	foreach ( $map as $key => $vi ) {
+		$en    = false !== strpos( $key, "\x04" ) ? substr( $key, strpos( $key, "\x04" ) + 1 ) : $key;
+		$marks = function ( $str ) {
+			preg_match_all( '/%(?:\d+\$)?[sd]|<\/?[a-z]+/', $str, $m );
+			sort( $m[0] );
+			return $m[0];
+		};
+		if ( $marks( $en ) !== $marks( $vi ) || '' === trim( $vi ) ) {
+			check( "$map_file: \"$en\" keeps %s/%d placeholders and tags", false, $vi );
+		}
+	}
+	check( "$map_file: every translation keeps placeholders and tags", true );
+}
+
 echo "\n$passes passed, $failures failed\n";
 exit( $failures ? 1 : 0 );

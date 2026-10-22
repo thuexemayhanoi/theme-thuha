@@ -4,8 +4,8 @@
   python3 scripts/package.py
 
 Produces:
-  dist/wp-theme-1.3.0.zip                 theme (top folder "wp-theme" = active stylesheet)
-  dist/rentbikehanoi-native-vi-1.0.0.zip  plugin (top folder "rentbikehanoi-native-vi")
+  dist/wp-theme-<version>.zip                 theme (top folder "wp-theme" = active stylesheet)
+  dist/rentbikehanoi-native-vi-<version>.zip  plugin (top folder "rentbikehanoi-native-vi")
   dist/manifest.json                      every packaged file with its SHA-256
   dist/SHA256SUMS                         checksums of the ZIP files
 

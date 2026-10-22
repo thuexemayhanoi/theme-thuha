@@ -3,12 +3,13 @@
 // only the /vi/ home layout changed. Local site only (127.0.0.1); needs a freshly bootstrapped RBH_WP_ROOT
 // served on RBH_WP_PORT.
 //   RBH_WP_ROOT=... RBH_WP_PORT=8898 node tests/integration/upgrade.mjs dist/previous/wp-theme-1.3.0.zip \
-//     dist/previous/rentbikehanoi-native-vi-1.0.0.zip dist/wp-theme-1.4.0.zip dist/rentbikehanoi-native-vi-1.1.0.zip
+//     dist/previous/rentbikehanoi-native-vi-1.0.0.zip dist/wp-theme-1.4.0.zip dist/rentbikehanoi-native-vi-1.1.1.zip
 import { wp, php, phpJson, get, parse, normalize, check, summary, assert, vi } from './lib.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 
 const [oldTheme, oldPlugin, newTheme, newPlugin] = process.argv.slice(2).map(p => path.resolve(p));
+const zipVersion = f => path.basename(f).match(/-(\d+\.\d+\.\d+)\.zip$/)[1];
 const site = path.join(process.env.RBH_WP_ROOT, 'site/wp-content');
 const ENGLISH = ['/', '/about-us/', '/contact-us/', '/faq/', '/terms-of-use/', '/motorbike-rental-prices-in-hanoi/', '/hanoi-scooter-rental/',
   '/blog/', '/blog/tips-resources/motorbike-rental-guides/', '/?s=rental', '/nope/', '/feed/', '/sitemap_index.xml', '/page-sitemap.xml', '/post-sitemap.xml'];
@@ -39,12 +40,18 @@ const state = () => phpJson(`global $wpdb; $ids = RBHVI_State::registry(); $o = 
   const before = { state: state(), english: await snap(ENGLISH), vi: Object.fromEntries(await Promise.all(VI.map(async p => [p, head((await get(`/vi/${p ? p + '/' : ''}`)).html)]))) };
   const oldHome = (await get('/vi/')).html;
 
-  console.log('Upgrade in place from ZIP (theme 1.4.0 + plugin 1.1.0)');
+  // [title, twitter:title] of Vietnamese system pages (Yoast prints twitter:title on search results only).
+  const viSystem = async () => Object.fromEntries(await Promise.all(['/vi/?s=xe', '/vi/khong-ton-tai/'].map(async u => {
+    const h = (await get(u)).html; return [u, [parse(h).title, (h.match(/<meta name="twitter:title" content="([^"]*)"/) || [])[1] || null]];
+  })));
+  const oldSystem = await viSystem();
+
+  console.log(`Upgrade in place from ZIP (theme ${zipVersion(newTheme)} + plugin ${zipVersion(newPlugin)})`);
   wp('theme', 'install', newTheme, '--force');
   wp('plugin', 'install', newPlugin, '--force');
   await check('new versions installed; theme and plugin still active', () => {
-    assert.equal(wp('theme', 'get', 'wp-theme', '--field=version'), '1.4.0');
-    assert.equal(wp('plugin', 'get', 'rentbikehanoi-native-vi', '--field=version'), '1.1.0');
+    assert.equal(wp('theme', 'get', 'wp-theme', '--field=version'), zipVersion(newTheme));
+    assert.equal(wp('plugin', 'get', 'rentbikehanoi-native-vi', '--field=version'), zipVersion(newPlugin));
     assert.equal(wp('theme', 'list', '--status=active', '--field=name'), 'wp-theme');
     assert.equal(wp('plugin', 'get', 'rentbikehanoi-native-vi', '--field=status'), 'active');
   });
@@ -69,6 +76,14 @@ const state = () => phpJson(`global $wpdb; $ids = RBHVI_State::registry(); $o = 
   await check('logo on Vietnamese pages now links to /vi/ (was the English home in 1.0.0)', () => {
     assert.match(oldHome, /<a href="http:\/\/127\.0\.0\.1:\d+\/" class="custom-logo-link"/);
     assert.ok(afterHome.includes(`<a href="${vi('')}" class="custom-logo-link"`));
+  });
+  await check('Vietnamese search and 404 titles (incl. twitter:title) switch from Yoast\'s English defaults to Vietnamese', async () => {
+    assert.match(oldSystem['/vi/?s=xe'][0], /^You searched for xe/); assert.match(oldSystem['/vi/?s=xe'][1], /^You searched for xe/);
+    assert.match(oldSystem['/vi/khong-ton-tai/'][0], /^Page not found/); assert.equal(oldSystem['/vi/khong-ton-tai/'][1], null);
+    assert.deepEqual(await viSystem(), {
+      '/vi/?s=xe': ['Kết quả tìm kiếm cho “xe” | Thuê xe máy Nguyễn Hà', 'Kết quả tìm kiếm cho “xe” | Thuê xe máy Nguyễn Hà'],
+      '/vi/khong-ton-tai/': ['Không tìm thấy trang | Thuê xe máy Nguyễn Hà', null],
+    });
   });
   await check('settings without home_layout default to the new layout; "page" switches back', async () => {
     assert.equal(php(`echo RBHVI_State::settings()['home_layout'];`), 'landing');
