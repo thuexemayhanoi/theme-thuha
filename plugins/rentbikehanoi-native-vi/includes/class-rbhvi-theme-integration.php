@@ -23,6 +23,13 @@ class RBHVI_Theme_Integration {
 	private static $strings;
 
 	/**
+	 * Core fallback strings map.
+	 *
+	 * @var array|null
+	 */
+	private static $core_strings;
+
+	/**
 	 * Register hooks.
 	 */
 	public static function boot() {
@@ -38,6 +45,8 @@ class RBHVI_Theme_Integration {
 		add_filter( 'body_class', array( __CLASS__, 'body_class' ), 20 );
 		add_filter( 'gettext_rentbike-hanoi', array( __CLASS__, 'gettext' ), 10, 2 );
 		add_filter( 'ngettext_rentbike-hanoi', array( __CLASS__, 'ngettext' ), 10, 4 );
+		add_filter( 'gettext_default', array( __CLASS__, 'core_gettext' ), 10, 2 );
+		add_filter( 'gettext_with_context_default', array( __CLASS__, 'core_gettext_context' ), 10, 3 );
 		add_filter( 'option_date_format', array( __CLASS__, 'date_format' ) );
 		foreach ( array_keys( self::theme_mods() ) as $key ) {
 			add_filter( 'theme_mod_rbh_' . $key, array( __CLASS__, 'theme_mod' ) );
@@ -321,6 +330,48 @@ class RBHVI_Theme_Integration {
 		$strings = self::strings();
 		$text    = 1 === (int) $number ? $single : $plural;
 		return isset( $strings[ $text ] ) ? $strings[ $text ] : $translation;
+	}
+
+	/**
+	 * Vietnamese fallback for core front-end strings (comment form, navigation)
+	 * when WordPress has no Vietnamese translation installed.
+	 *
+	 * @param string $translation Translation.
+	 * @param string $text        Original.
+	 * @return string
+	 */
+	public static function core_gettext( $translation, $text ) {
+		return self::core_fallback( $translation, $text, $text );
+	}
+
+	/**
+	 * Context variant (e.g. _x( 'Comment', 'noun' )).
+	 *
+	 * @param string $translation Translation.
+	 * @param string $text        Original.
+	 * @param string $context     Context.
+	 * @return string
+	 */
+	public static function core_gettext_context( $translation, $text, $context ) {
+		return self::core_fallback( $translation, $text, $context . "\x04" . $text );
+	}
+
+	/**
+	 * Shared fallback lookup: cheap key check first, then language.
+	 *
+	 * @param string $translation Translation.
+	 * @param string $text        Original text.
+	 * @param string $key         Map key.
+	 * @return string
+	 */
+	private static function core_fallback( $translation, $text, $key ) {
+		if ( null === self::$core_strings ) {
+			self::$core_strings = require RBHVI_DIR . 'includes/core-strings-vi.php';
+		}
+		if ( ! isset( self::$core_strings[ $key ] ) || $translation !== $text || 'vi' !== RBHVI_Language::current() ) {
+			return $translation;
+		}
+		return self::$core_strings[ $key ];
 	}
 
 	/**

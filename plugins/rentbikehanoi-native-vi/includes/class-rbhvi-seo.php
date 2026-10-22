@@ -32,6 +32,12 @@ class RBHVI_SEO {
 		add_filter( 'wpseo_breadcrumb_links', array( __CLASS__, 'breadcrumbs' ), 30 );
 		add_filter( 'wpseo_canonical', array( __CLASS__, 'canonical' ), 20 );
 		add_filter( 'wpseo_title', array( __CLASS__, 'paged_title' ), 20 );
+		// Yoast stores "You searched for", "Page not found", "… Archives" in its options in English:
+		// Vietnamese search, 404 and category pages get Vietnamese titles instead.
+		add_filter( 'wpseo_title', array( __CLASS__, 'vi_system_title' ), 21 );
+		add_filter( 'wpseo_opengraph_title', array( __CLASS__, 'vi_system_title' ), 21 );
+		add_filter( 'wpseo_twitter_title', array( __CLASS__, 'vi_twitter_title' ), 21 );
+		add_filter( 'wpseo_schema_webpage', array( __CLASS__, 'vi_system_schema' ), 21 );
 		add_filter( 'wpseo_robots', array( __CLASS__, 'robots' ), 20 );
 		add_filter( 'wpseo_exclude_from_sitemap_by_post_ids', array( __CLASS__, 'sitemap_exclude_posts' ) );
 		add_filter( 'wpseo_exclude_from_sitemap_by_term_ids', array( __CLASS__, 'sitemap_exclude_terms' ) );
@@ -167,6 +173,17 @@ class RBHVI_SEO {
 			}
 			$result[] = $link;
 		}
+		$last = count( $result ) - 1;
+		// Yoast's "Page N" crumb comes last on paged lists; the search crumb is then the one before it.
+		if ( $last > 0 && is_paged() && empty( $result[ $last ]['url'] ) && empty( $result[ $last ]['id'] ) && preg_match( '/(\d+)\s*$/', (string) $result[ $last ]['text'], $page ) ) {
+			$result[ $last ]['text'] = 'Trang ' . $page[1];
+			--$last;
+		}
+		if ( $last > 0 && is_search() ) {
+			$result[ $last ]['text'] = 'Kết quả tìm kiếm: “' . esc_html( get_search_query( false ) ) . '”';
+		} elseif ( $last > 0 && is_404() ) {
+			$result[ $last ]['text'] = 'Không tìm thấy trang';
+		}
 		$blog_id = RBHVI_State::page_id( 'blog' );
 		if ( is_singular( 'post' ) && $blog_id && 'publish' === get_post_status( $blog_id ) ) {
 			array_splice(
@@ -183,6 +200,80 @@ class RBHVI_SEO {
 			);
 		}
 		return $result;
+	}
+
+	/**
+	 * Vietnamese title for Vietnamese search results, 404 and Vietnamese
+	 * category archives (unless the category has its own Yoast title).
+	 * Returns '' when the current page is not one of those.
+	 *
+	 * @return string
+	 */
+	public static function vi_system_title_text() {
+		if ( 'vi' !== RBHVI_Language::current() ) {
+			return '';
+		}
+		$name   = RBHVI_Config::business()['name'];
+		$paged  = max( 1, (int) get_query_var( 'paged' ) );
+		$suffix = $paged > 1 ? ' – Trang ' . $paged : '';
+		if ( is_search() ) {
+			// Escaped like Yoast's own %%searchphrase%%, so the title, og:title and schema name match the English behaviour.
+			return 'Kết quả tìm kiếm cho “' . esc_html( get_search_query( false ) ) . '”' . $suffix . ' | ' . $name;
+		}
+		if ( is_404() ) {
+			return 'Không tìm thấy trang | ' . $name;
+		}
+		if ( is_category() && RBHVI_Language::term_is_vi( get_queried_object_id() ) && ! self::term_has_custom_title( get_queried_object_id() ) ) {
+			return single_term_title( '', false ) . $suffix . ' | ' . $name;
+		}
+		return '';
+	}
+
+	/**
+	 * Whether a category has its own Yoast SEO title (kept as is).
+	 *
+	 * @param int $term_id Term ID.
+	 * @return bool
+	 */
+	private static function term_has_custom_title( $term_id ) {
+		$meta = get_option( 'wpseo_taxonomy_meta', array() );
+		return ! empty( $meta['category'][ $term_id ]['wpseo_title'] );
+	}
+
+	/**
+	 * Yoast title / og:title filter.
+	 *
+	 * @param string $title Title.
+	 * @return string
+	 */
+	public static function vi_system_title( $title ) {
+		$vi = self::vi_system_title_text();
+		return '' !== $vi ? $vi : $title;
+	}
+
+	/**
+	 * Yoast prints twitter:title only where og:title does not already cover it
+	 * (e.g. on search results); keep it absent where Yoast leaves it empty.
+	 *
+	 * @param string $title Title.
+	 * @return string
+	 */
+	public static function vi_twitter_title( $title ) {
+		return '' === trim( (string) $title ) ? $title : self::vi_system_title( $title );
+	}
+
+	/**
+	 * Same Vietnamese name in Yoast's WebPage schema piece.
+	 *
+	 * @param array $data WebPage data.
+	 * @return array
+	 */
+	public static function vi_system_schema( $data ) {
+		$vi = self::vi_system_title_text();
+		if ( '' !== $vi && is_array( $data ) ) {
+			$data['name'] = $vi;
+		}
+		return $data;
 	}
 
 	/**

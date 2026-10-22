@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Rentbike Hanoi – Tiếng Việt gốc (/vi/)
  * Description:       Phần tiếng Việt viết riêng dưới /vi/ cho rentbikehanoi.com: định tuyến /vi/, ghép cặp Anh–Việt, hreflang, sitemap qua Yoast, nút VI | EN và bộ trang Việt dạng nháp. Không dịch máy, không gọi dịch vụ ngoài.
- * Version:           1.1.0
+ * Version:           1.1.1
  * Requires at least: 6.5
  * Requires PHP:      7.4
  * Author:            Rentbike Hanoi
@@ -15,7 +15,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'RBHVI_VERSION', '1.1.0' );
+define( 'RBHVI_VERSION', '1.1.1' );
 define( 'RBHVI_FILE', __FILE__ );
 define( 'RBHVI_DIR', plugin_dir_path( __FILE__ ) );
 
