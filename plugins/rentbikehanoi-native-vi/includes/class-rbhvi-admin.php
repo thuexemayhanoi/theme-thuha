@@ -181,8 +181,8 @@ class RBHVI_Admin {
 	 */
 	public static function handle_pair() {
 		self::guard( 'pair' );
-		$vi_id = isset( $_POST['vi_id'] ) ? absint( $_POST['vi_id'] ) : 0;
-		$en_id = isset( $_POST['en_id'] ) ? absint( $_POST['en_id'] ) : 0;
+		$vi_id = isset( $_POST['vi_id'] ) ? absint( $_POST['vi_id'] ) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Missing -- verified in self::guard().
+		$en_id = isset( $_POST['en_id'] ) ? absint( $_POST['en_id'] ) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Missing -- verified in self::guard().
 		$error = self::pair_error( $vi_id, $en_id );
 		if ( $error ) {
 			self::notice( 'error', $error );
@@ -199,7 +199,7 @@ class RBHVI_Admin {
 	 */
 	public static function handle_unpair() {
 		self::guard( 'unpair' );
-		$vi_id = isset( $_POST['vi_id'] ) ? absint( $_POST['vi_id'] ) : 0;
+		$vi_id = isset( $_POST['vi_id'] ) ? absint( $_POST['vi_id'] ) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Missing -- verified in self::guard().
 		if ( $vi_id && RBHVI_Language::is_vi( $vi_id ) ) {
 			delete_post_meta( $vi_id, RBHVI_Language::META_PAIR );
 			RBHVI_State::clear_seo_caches();
@@ -243,7 +243,7 @@ class RBHVI_Admin {
 	 */
 	public static function handle_settings() {
 		self::guard( 'settings' );
-		RBHVI_State::save_settings( array( 'sitemap_pairs_only' => ! empty( $_POST['sitemap_pairs_only'] ) ) );
+		RBHVI_State::save_settings( array( 'sitemap_pairs_only' => ! empty( $_POST['sitemap_pairs_only'] ) ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing -- verified in self::guard().
 		self::notice( 'success', 'Đã lưu cài đặt.' );
 		self::back();
 	}
@@ -348,7 +348,7 @@ class RBHVI_Admin {
 			array(
 				'post_type'      => RBHVI_Language::POST_TYPES,
 				'post_status'    => array( 'publish', 'draft', 'pending', 'future', 'private' ),
-				'posts_per_page' => 500,
+				'posts_per_page' => 500, // phpcs:ignore WordPress.WP.PostsPerPage.posts_per_page_posts_per_page -- admin screen, bounded.
 				'orderby'        => 'title',
 				'order'          => 'ASC',
 				'rbhvi_skip'     => true,
@@ -359,7 +359,7 @@ class RBHVI_Admin {
 			array(
 				'post_type'      => RBHVI_Language::POST_TYPES,
 				'post_status'    => 'publish',
-				'posts_per_page' => 1000,
+				'posts_per_page' => 1000, // phpcs:ignore WordPress.WP.PostsPerPage.posts_per_page_posts_per_page -- admin pairing list, bounded.
 				'orderby'        => 'title',
 				'order'          => 'ASC',
 				'rbhvi_skip'     => true,
@@ -431,13 +431,13 @@ class RBHVI_Admin {
 	 *
 	 * @param string $action   Action.
 	 * @param string $label    Label.
-	 * @param string $class    Button class.
+	 * @param string $css      Button class.
 	 * @param bool   $disabled Disabled.
 	 */
-	private static function button( $action, $label, $class, $disabled = false ) {
+	private static function button( $action, $label, $css, $disabled = false ) {
 		echo '<form class="inline" method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '"><input type="hidden" name="action" value="rbhvi_' . esc_attr( $action ) . '">';
 		wp_nonce_field( 'rbhvi_' . $action );
-		submit_button( $label, $class, 'submit', false, $disabled ? array( 'disabled' => 'disabled' ) : array() );
+		submit_button( $label, $css, 'submit', false, $disabled ? array( 'disabled' => 'disabled' ) : array() );
 		echo '</form>';
 	}
 
@@ -641,7 +641,7 @@ class RBHVI_Admin {
 			return;
 		}
 		$want = ! empty( $_POST['rbhvi_term_vi'] );
-		if ( $want === RBHVI_Language::term_is_vi( $term_id ) ) {
+		if ( RBHVI_Language::term_is_vi( $term_id ) === $want ) {
 			return;
 		}
 		if ( $want ) {

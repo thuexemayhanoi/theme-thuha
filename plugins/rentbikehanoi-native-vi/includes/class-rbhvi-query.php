@@ -79,7 +79,14 @@ class RBHVI_Query {
 			'include_children' => false,
 		);
 		$existing = $query->get( 'tax_query' );
-		$query->set( 'tax_query', is_array( $existing ) && $existing ? array( 'relation' => 'AND', $existing, $clause ) : array( $clause ) ); // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
+		$query->set(
+			'tax_query',
+			is_array( $existing ) && $existing ? array(
+				'relation' => 'AND',
+				$existing,
+				$clause,
+			) : array( $clause )
+		); // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
 	}
 
 	/**
@@ -119,7 +126,7 @@ class RBHVI_Query {
 		if ( ! in_array( 'category', (array) $taxonomies, true ) || ! RBHVI_Language::is_frontend() || ! empty( $args['object_ids'] ) || ! empty( $args['include'] ) || ! empty( $args['slug'] ) || ! empty( $args['name'] ) || ! RBHVI_Language::has_vi_terms() ) {
 			return $args;
 		}
-		$clause             = 'vi' === RBHVI_Language::current()
+		$clause   = 'vi' === RBHVI_Language::current()
 			? array(
 				'key'   => RBHVI_Language::TERM_META,
 				'value' => 'vi',
@@ -128,8 +135,13 @@ class RBHVI_Query {
 				'key'     => RBHVI_Language::TERM_META,
 				'compare' => 'NOT EXISTS',
 			);
-		$existing           = isset( $args['meta_query'] ) && is_array( $args['meta_query'] ) ? $args['meta_query'] : array();
-		$args['meta_query'] = $existing ? array( 'relation' => 'AND', $existing, $clause ) : array( $clause ); // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
+		$existing = isset( $args['meta_query'] ) && is_array( $args['meta_query'] ) ? $args['meta_query'] : array();
+		// Small termmeta lookup, only once a Vietnamese category exists.
+		$args['meta_query'] = $existing ? array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
+			'relation' => 'AND',
+			$existing,
+			$clause,
+		) : array( $clause ); // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
 		return $args;
 	}
 }

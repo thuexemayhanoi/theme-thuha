@@ -79,9 +79,9 @@ class RBHVI_Seeder {
 			}
 			return self::result( 'conflict', $found->ID, 'Đã có một trang khác ở /' . $path . '/. Không tạo trang mới để tránh trùng lặp.' );
 		}
-		$parent = 'home' === $key ? 0 : RBHVI_State::page_id( 'home' );
-		$slug   = '' === $page['path'] ? 'vi' : $page['path'];
-		$meta   = array(
+		$parent     = 'home' === $key ? 0 : RBHVI_State::page_id( 'home' );
+		$slug       = '' === $page['path'] ? 'vi' : $page['path'];
+		$meta       = array(
 			RBHVI_Language::META_KEY   => $key,
 			RBHVI_Language::META_TITLE => RBHVI_Config::render( $page['seo_title'] ),
 			RBHVI_Language::META_DESC  => RBHVI_Config::render( $page['seo_desc'] ),

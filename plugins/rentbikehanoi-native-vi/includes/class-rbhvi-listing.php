@@ -104,7 +104,12 @@ class RBHVI_Listing {
 			return $content;
 		}
 		$paged = max( 1, (int) get_query_var( 'rbhvi_paged' ) );
-		$query = new WP_Query( self::args() + array( 'posts_per_page' => self::PER_PAGE, 'paged' => $paged ) );
+		$query = new WP_Query(
+			self::args() + array(
+				'posts_per_page' => self::PER_PAGE,
+				'paged'          => $paged,
+			)
+		);
 		if ( ! $query->have_posts() ) {
 			return $content . '<p class="rbhvi-empty">Chưa có bài viết tiếng Việt nào được xuất bản. Trong lúc chờ, bạn có thể xem <a href="' . esc_url( RBHVI_Config::page_url( 'prices' ) ) . '">bảng giá</a> hoặc <a href="' . esc_url( RBHVI_Config::page_url( 'faq' ) ) . '">câu hỏi thường gặp</a>.</p>';
 		}

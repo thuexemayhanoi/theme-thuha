@@ -12,22 +12,22 @@
 defined( 'ABSPATH' ) || exit;
 
 return array(
-	'name'           => 'Thuê xe máy Nguyễn Hà',
-	'address'        => 'Ngõ 5 Nguyễn Văn Cừ, Bồ Đề, Long Biên, Hà Nội (gần Bến xe Gia Lâm)',
+	'name'              => 'Thuê xe máy Nguyễn Hà',
+	'address'           => 'Ngõ 5 Nguyễn Văn Cừ, Bồ Đề, Long Biên, Hà Nội (gần Bến xe Gia Lâm)',
 	// Short form for meta descriptions; must stay consistent with 'address'.
-	'address_short'  => 'Ngõ 5 Nguyễn Văn Cừ, Bồ Đề, Long Biên',
-	'phone_display'  => '0334 699 969',
-	'phone_intl'     => '+84 334 699 969',
-	'phone_href'     => 'tel:+84334699969',
-	'zalo_url'       => 'https://zalo.me/0334699969',
-	'whatsapp_url'   => 'https://wa.me/84334699969',
+	'address_short'     => 'Ngõ 5 Nguyễn Văn Cừ, Bồ Đề, Long Biên',
+	'phone_display'     => '0334 699 969',
+	'phone_intl'        => '+84 334 699 969',
+	'phone_href'        => 'tel:+84334699969',
+	'zalo_url'          => 'https://zalo.me/0334699969',
+	'whatsapp_url'      => 'https://wa.me/84334699969',
 	// Existing public map link already used by the theme's contact panel.
-	'map_url'        => 'https://share.google/pJ2KSOJcrYDJYM42M',
-	'hours'          => '09:00–21:00 hằng ngày',
+	'map_url'           => 'https://share.google/pJ2KSOJcrYDJYM42M',
+	'hours'             => '09:00–21:00 hằng ngày',
 	// Owner-confirmed in AGENTS.md (wp-writer business-facts → extension_policy).
-	'extension_fee'  => '20.000đ/giờ; gia hạn quá 6 giờ được tính là một ngày thuê',
+	'extension_fee'     => '20.000đ/giờ; gia hạn quá 6 giờ được tính là một ngày thuê',
 	// Reference prices. "null" means the owner has not set a public price: never invent one.
-	'prices'         => array(
+	'prices'            => array(
 		array(
 			'key'   => 'xe-so',
 			'label' => 'Xe số',

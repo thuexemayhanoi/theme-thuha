@@ -96,9 +96,9 @@ class RBHVI_Config {
 		$data = self::business();
 		return preg_replace_callback(
 			'/\{\{([a-z_]+)(?::([a-z0-9_-]+))?\}\}/',
-			function ( $match ) use ( $data ) {
-				$name = $match[1];
-				$arg  = isset( $match[2] ) ? $match[2] : '';
+			function ( $found ) use ( $data ) {
+				$name = $found[1];
+				$arg  = isset( $found[2] ) ? $found[2] : '';
 				if ( 'link' === $name && self::page( $arg ) ) {
 					return esc_url( self::page_url( $arg ) );
 				}
@@ -111,7 +111,7 @@ class RBHVI_Config {
 							return esc_html( null === $price[ $field[1] ] ? $data['price_day_unknown'] : $price[ $field[1] ] );
 						}
 					}
-					return $match[0];
+					return $found[0];
 				}
 				if ( 'contact_buttons' === $name ) {
 					return self::contact_buttons();
@@ -122,7 +122,7 @@ class RBHVI_Config {
 				if ( isset( $data[ $name ] ) && is_string( $data[ $name ] ) ) {
 					return esc_html( $data[ $name ] );
 				}
-				return $match[0];
+				return $found[0];
 			},
 			$text
 		);
@@ -160,7 +160,7 @@ class RBHVI_Config {
 			array( $data['zalo_url'], 'Nhắn Zalo' ),
 			array( $data['whatsapp_url'], 'Nhắn WhatsApp' ),
 		);
-		$html = '<!-- wp:buttons --><div class="wp-block-buttons">';
+		$html    = '<!-- wp:buttons --><div class="wp-block-buttons">';
 		foreach ( $buttons as $button ) {
 			$html .= '<!-- wp:button --><div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="' . esc_url( $button[0] ) . '">' . esc_html( $button[1] ) . '</a></div><!-- /wp:button -->';
 		}

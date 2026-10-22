@@ -18,7 +18,7 @@ Chỉ gửi giấy tờ cá nhân khi cửa hàng yêu cầu cho việc thuê xe
 
 ## Quyền của bạn
 
-Bạn có thể đề nghị cửa hàng cho biết, sửa hoặc xóa thông tin bạn đã cung cấp, trong phạm vi pháp luật cho phép, bằng cách liên hệ số {{phone_display}}.
+Bạn có thể đề nghị cửa hàng cho biết, sửa hoặc xóa thông tin bạn đã cung cấp, trong phạm vi pháp luật cho phép, bằng cách [liên hệ cửa hàng]({{link:contact}}) qua số {{phone_display}}.
 
 ## Liên hệ
 

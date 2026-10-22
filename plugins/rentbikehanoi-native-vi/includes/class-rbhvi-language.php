@@ -14,15 +14,15 @@ defined( 'ABSPATH' ) || exit;
  */
 class RBHVI_Language {
 
-	const TAX         = 'rbhvi_language';
-	const TERM        = 'vi';
-	const META_PAIR   = '_rbhvi_pair';
-	const META_SUGG   = '_rbhvi_pair_suggested';
-	const META_KEY    = '_rbhvi_managed';
-	const META_TITLE  = '_rbhvi_seo_title';
-	const META_DESC   = '_rbhvi_seo_desc';
-	const TERM_META   = '_rbhvi_lang';
-	const POST_TYPES  = array( 'post', 'page' );
+	const TAX        = 'rbhvi_language';
+	const TERM       = 'vi';
+	const META_PAIR  = '_rbhvi_pair';
+	const META_SUGG  = '_rbhvi_pair_suggested';
+	const META_KEY   = '_rbhvi_managed';
+	const META_TITLE = '_rbhvi_seo_title';
+	const META_DESC  = '_rbhvi_seo_desc';
+	const TERM_META  = '_rbhvi_lang';
+	const POST_TYPES = array( 'post', 'page' );
 
 	/**
 	 * Per-request lookup memo (never persisted, so it cannot go stale).
@@ -227,8 +227,8 @@ class RBHVI_Language {
 	 */
 	public static function vi_ids() {
 		if ( ! isset( self::$memo['vi_ids'] ) ) {
-			$term = self::term_id();
-			$ids  = $term ? get_objects_in_term( $term, self::TAX ) : array();
+			$term                 = self::term_id();
+			$ids                  = $term ? get_objects_in_term( $term, self::TAX ) : array();
 			self::$memo['vi_ids'] = is_array( $ids ) ? array_map( 'intval', $ids ) : array();
 		}
 		return self::$memo['vi_ids'];

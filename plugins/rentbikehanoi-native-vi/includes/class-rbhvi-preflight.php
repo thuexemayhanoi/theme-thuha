@@ -59,8 +59,8 @@ class RBHVI_Preflight {
 
 		$multilingual = array_filter(
 			array(
-				'Polylang'      => defined( 'POLYLANG_VERSION' ),
-				'WPML'          => defined( 'ICL_SITEPRESS_VERSION' ),
+				'Polylang'       => defined( 'POLYLANG_VERSION' ),
+				'WPML'           => defined( 'ICL_SITEPRESS_VERSION' ),
 				'TranslatePress' => defined( 'TRP_PLUGIN_VERSION' ),
 			)
 		);
@@ -126,7 +126,12 @@ class RBHVI_Preflight {
 		foreach ( array_keys( RBHVI_Config::pages() ) as $key ) {
 			$path  = RBHVI_Config::page_path( $key );
 			$found = get_page_by_path( $path, OBJECT, 'page' );
-			if ( $found && 'trash' !== $found->post_status && (int) $found->ID !== RBHVI_State::page_id( $key ) && get_post_meta( $found->ID, RBHVI_Language::META_KEY, true ) !== $key ) {
+			if ( ! $found || 'trash' === $found->post_status ) {
+				continue;
+			}
+			$managed_id  = RBHVI_State::page_id( $key );
+			$managed_key = (string) get_post_meta( $found->ID, RBHVI_Language::META_KEY, true );
+			if ( $managed_id !== (int) $found->ID && $managed_key !== $key ) {
 				$rows[] = self::row( 'slug_' . $key, 'error', 'Trang "' . $found->post_title . '" (ID ' . $found->ID . ') đã dùng /' . $path . '/ nhưng không do plugin quản lý. Đổi đường dẫn trang đó hoặc liên hệ người quản trị.' );
 			}
 		}
