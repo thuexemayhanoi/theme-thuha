@@ -7,6 +7,7 @@ Trạng thái: **mã, kiểm thử và gói ZIP — chưa cài lên website.** N
 - Trang chủ tiếng Việt `/vi/` (ID 3454) có **cùng bố cục với trang chủ tiếng Anh**: ảnh lớn đầu trang (dùng lại ảnh đang có của trang chủ Anh), nút Gọi / Nhắn Zalo, các liên kết nhanh, 3 thẻ xe (dùng lại ảnh xe đang có), bảng giá tham khảo, 3 bước thuê, 4 câu hỏi nhanh và toàn bộ nội dung trang đang lưu trong mục "Toàn bộ chi tiết ở một nơi" (thu gọn như trang Anh).
 - Logo trên mọi trang Việt dẫn về `/vi/` (trước đây về trang chủ Anh) và có tên tiếng Việt cho trình đọc màn hình.
 - Trang Việt không còn hiện widget tiếng Anh của thanh bên (ví dụ tiêu đề "Latest Posts"); có vùng widget riêng "Thanh bên bài viết tiếng Việt (/vi/)".
+- Trên điện thoại, dải màu tối đầu trang (giờ mở cửa, số điện thoại) nay hiện trên trang Việt giống trang Anh (bản 1.0.0 bị mất dải này khi ẩn trợ lý tiếng Anh).
 - Không đổi: trang chủ và nội dung tiếng Anh, nhãn menu Anh, SEO đã đóng băng, 11 URL Việt, ID trang, nội dung đã lưu, cặp Anh–Việt, canonical, hreflang, sitemap, schema. Không ghi gì vào cơ sở dữ liệu khi cài.
 
 ## Cần cài gói nào

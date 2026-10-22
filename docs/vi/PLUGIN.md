@@ -59,4 +59,5 @@ Mọi nút dùng nonce + kiểm tra quyền; thông báo lỗi bằng tiếng Vi
 - Cài đặt mới trong *5. Cài đặt*: **Bố cục trang chủ /vi/** — "Giống trang chủ tiếng Anh" (mặc định) hoặc "Trang thường" (như 1.0.0).
 - Vùng widget mới **Thanh bên bài viết tiếng Việt (/vi/)**: thay cho widget của "Article sidebar" trên mọi trang Việt (trống cho tới khi quản trị viên thêm widget tiếng Việt).
 - Logo tùy chỉnh trên trang Việt dẫn về `/vi/`, chữ thay thế (alt) là tên tiếng Việt của cửa hàng.
+- Trên trang Việt chỉ gỡ script của trợ lý tiếng Anh; giữ `assistant.css` của theme vì tệp này chứa quy tắc hiển thị dải giờ/điện thoại trên điện thoại.
 - Nâng cấp từ 1.0.0: không cần chạy lại "Tạo bộ trang", không cần bật/tắt lại `/vi/`; cài đặt cũ được giữ.

@@ -24,6 +24,9 @@ Install: docs/vi/UPDATE-1.4.0-1.1.0.md.
 - The custom logo linked to the English home page and used the English site name as alt text; it now links to `/vi/` with the Vietnamese brand.
 - The English "Article sidebar" widgets (production: a "Latest Posts" heading block) appeared on Vietnamese pages; they are replaced by the
   Vietnamese widget area.
+- On phones (≤ 760 px) the dark hours/phone utility bar was missing on Vietnamese pages because 1.0.0 dequeued the theme's
+  `assistant.css`, which also holds the mobile utility-bar rules. Only the assistant's script is removed now; the English assistant
+  markup is still not rendered on Vietnamese pages.
 
 ### Changed
 - Theme version 1.3.0 → 1.4.0 (style.css, `RBH_VERSION` asset query strings). Plugin 1.0.0 → 1.1.0.

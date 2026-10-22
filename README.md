@@ -19,7 +19,7 @@ https://rentbikehanoi.com
 - Theme: new presentation-only part `template-parts/landing.php` (same classes as `front-page.php`); `front-page.php`, CSS and JS
   are unchanged. Plugin: `RBHVI_Home` loads it only for the managed `/vi/` home page; setting "Bố cục trang chủ /vi/" switches back.
 - Also fixed on all Vietnamese pages: custom logo links to `/vi/` with a Vietnamese alt; a separate Vietnamese widget area replaces
-  the English "Article sidebar" widgets.
+  the English "Article sidebar" widgets; the mobile hours/phone utility bar is shown as on English pages.
 - No database writes, no change to saved content, IDs, URLs, pairs, canonical, hreflang, sitemap or schema.
 
 ## English + Vietnamese (theme 1.3.0, plugin 1.0.0)
