@@ -24,7 +24,7 @@ Quy định: giá là giá tham khảo, phải xác nhận trước khi đặt; 
 
 | Dữ liệu | Nguồn trong repo | Dùng ở |
 | --- | --- | --- |
-| Phí gia hạn 20.000đ/giờ; quá 6 giờ tính một ngày | AGENTS.md (owner-confirmed, wp-writer `extension_policy`) và `assets/js/assistant-seo-20261019.js` | Trang chủ Việt, bảng giá, thủ tục, giao nhận, FAQ |
+| Phí gia hạn 20.000đ/giờ; quá 6 giờ tính một ngày | Chủ cửa hàng xác nhận lại ngày 23/10/2026; config/business.php; dữ liệu cùng website trong thuha-writer | Trang chủ Việt, bảng giá, thủ tục, giao nhận, FAQ |
 | Không giao xe tới sân bay Nội Bài | `assets/js/assistant-seo-20261019.js` | Giao nhận, FAQ |
 | Liên kết bản đồ `https://share.google/pJ2KSOJcrYDJYM42M` | `template-parts/assistant.php` | Trang chủ Việt, giao nhận, liên hệ |
 

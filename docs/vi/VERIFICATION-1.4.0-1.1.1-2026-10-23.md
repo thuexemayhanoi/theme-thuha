@@ -33,9 +33,22 @@ Schema trang chủ Việt và Anh đọc được dưới dạng JSON-LD hợp l
 - Đã kiểm tra trực quan ở viewport desktop 1363px; không thấy cuộn ngang trên các trang vừa mở. Chưa kiểm tra thiết bị di động thật.
 - Lần đọc sitemap XML qua trình duyệt bị timeout; công cụ đọc công khai cũng không truy cập được. Không suy ra sitemap hỏng hoặc đã đạt.
   Kết quả sitemap trong bản ghi triển khai trước là lịch sử, chưa xác minh lại ở lần này.
-- Nội dung phí gia hạn đang khác nhau: trang chủ Anh hiển thị 30.000đ/giờ cho 1-5 giờ; bản Việt dùng 20.000đ/giờ từ config.
-  Chưa đổi giá hoặc chính sách; cần chủ cửa hàng xác nhận mức hiện tại trước khi đồng bộ.
+- Điểm phí gia hạn phát hiện ban đầu đã được xử lý sau khi chủ cửa hàng xác nhận; xem mục tiếp theo.
 - Không tuyên bố đã kiểm tra Search Console, Core Web Vitals, mọi liên kết ngoài, thủ tục/chính sách hoặc form bình luận của bài Việt.
 - Không cài thêm plugin publisher, không sửa `/thuha-writer`, không merge `main`, không gọi webhook triển khai.
 
 Các ZIP gốc, manifest và mã băm không đổi; tài liệu này không phải bản phát hành runtime mới.
+
+## Chủ cửa hàng xác nhận phí gia hạn và đồng bộ nội dung
+
+Ngày 23/10/2026, chủ website xác nhận: **20.000đ/giờ; quá 6 giờ tính một ngày thuê**.
+Giữ điều kiện `>6`, không đổi thành từ 6 giờ trở lên.
+
+Đã sửa đúng đoạn phí gia hạn trong nội dung WordPress đang xuất bản: IDs **67, 211, 274, 278, 283, 289**.
+Mỗi lần sửa là thay thế đoạn khớp duy nhất qua API nội dung, giữ nguyên phần khác, URL và metadata.
+Bỏ giới hạn giờ cũ 1-5 và câu yêu cầu xác nhận riêng cho đúng 6 giờ. Các giá 30.000đ không liên quan (vé, xăng, ăn uống...) không bị thay thế hàng loạt.
+Đọc lại cả sáu ID: vẫn `publish`, có 20,000 VND per hour, điều kiện more than 6 hours và không còn câu exactly 6 hours cũ.
+Quét nội dung post/page đã xuất bản bằng mẫu 30.000/30,000 gần đơn vị giờ: không còn kết quả. Đã xóa cache LiteSpeed/object cache.
+
+Bản Việt và config plugin vốn đã đúng 20.000đ nên không sửa runtime, không cần ZIP hoặc cài lại.
+Đồng bộ facts và hướng dẫn của repo writer; không viết lại tài liệu nguồn bất biến hoặc giả biên nhận xuất bản của factory.

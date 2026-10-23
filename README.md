@@ -16,6 +16,9 @@ https://rentbikehanoi.com
 
 ## Vietnamese home page layout (theme 1.4.0, plugin 1.1.1 — installed)
 
+- Owner-confirmed extension fee (23 October): **20,000 VND/hour; more than 6 hours is charged as one rental day**.
+  English content has been aligned with the Vietnamese config; no reinstall is needed for that content correction.
+
 - `/vi/` (page 3454 in production) renders with the English homepage's design: hero with the existing hero photo, quick links,
   three bike cards reusing the English homepage's bike photos, reference-price table, three steps, short FAQ, and the saved
   page content in the collapsible "details" area (as the English homepage does). Copy is native Vietnamese

@@ -8,8 +8,8 @@ Source of the active WordPress theme of https://rentbikehanoi.com (theme "Rentbi
   See `docs/vi/VERIFICATION-1.4.0-1.1.1-2026-10-23.md`. The earlier deployment record is historical, not the current installed version.
   Old guest HTML survived the upgrade in LiteSpeed; a native cache purge restored the landing, images and VI logo destination.
   Eleven VI pages, two sampled category archives, search, 404 and the VI/EN, dark-mode and FAQ interactions were checked live.
-  Sitemap retrieval and live mobile verification are not claimed. Existing EN extension text (30k/hour) differs from VI (20k/hour);
-  request the owner's correct current rate before reconciling either side. No price or policy was changed in this verification.
+  Sitemap retrieval and live mobile verification are not claimed. The owner subsequently confirmed 20,000 VND/hour;
+  more than 6 hours is charged as one rental day. Six EN page/post bodies were corrected and read back; the VI rate already matched.
 - The 11 Vietnamese core pages already exist and are published (IDs 3454–3464); `/vi/` is enabled. Do not recreate, overwrite or republish seed content over owner edits.
 - Nine English–Vietnamese pairs were confirmed. The Vietnamese terms page is deliberately unpaired because the English terms cover a broader rental-service scope. The empty Vietnamese blog is noindex and excluded from the sitemap.
 - Legacy GTranslate was deactivated; use only the custom bilingual plugin for the language section. Yoast and LiteSpeed remain in place.
@@ -31,7 +31,7 @@ Source of the active WordPress theme of https://rentbikehanoi.com (theme "Rentbi
 ## Existing rules (unchanged)
 - Preserve existing posts, menu objects, taxonomy, permalinks, canonicals and redirects. Do not write business content from theme activation hooks.
 - Homepage SEO title, description, Open Graph identity and Site Name are frozen. Changing them requires the owner's specific approval. The SEO audit module must not filter them.
-- Owner-confirmed extension fee: 20,000 VND/hour; more than 6 hours is charged as one rental day. Do not reinterpret the threshold. Workflow source: lucynguyen777/wp-writer/config/business-facts.json → extension_policy.
+- Owner reconfirmed on 23 October 2026: extension fee 20,000 VND/hour; more than 6 hours is charged as one rental day. Do not reinterpret `>6` as `>=6`. Source: the owner's explicit confirmation; native VI config already matches. The corresponding facts are recorded in the same website's `thuha-writer/config/business-facts.json`.
 - Yoast remains the sole source of metadata/schema. Extend it with scoped public filters; do not emit a second schema graph.
 - Keep assistant searches public, same-origin, bounded and on demand. No whole-site JSON index in initial HTML; no external AI service, booking or payment actions.
 - Use the WPVibe draft/preview/publish workflow. Inspect an existing draft before changing it; never activate a -wpvibe-draft theme directly. Publication follows the owner preview/approval and recent-backup check required by the tool workflow.

@@ -4,6 +4,10 @@ All notable changes to this repository. Dates use Asia/Ho_Chi_Minh.
 
 ## Installation verification — 2026-10-23
 
+Owner subsequently confirmed the extension fee: 20,000 VND/hour; more than 6 hours is charged as one rental day.
+Corrected the stale 30,000/hour passages in WordPress bodies 67, 211, 274, 278, 283 and 289, removed the old exact-six-hour
+ambiguity, read back all six and purged cache. Native VI config already matched; runtime code and ZIPs are unchanged.
+
 The owner installed theme 1.4.0 and plugin 1.1.1; authenticated WordPress reads confirm both active.
 Purged stale LiteSpeed/object cache and verified the Vietnamese landing, five image loads, logo destination,
 VI/EN switching, dark mode, FAQ, eleven VI pages, search/404 and two sampled category archives.
