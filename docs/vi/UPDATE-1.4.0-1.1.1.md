@@ -1,6 +1,6 @@
 # Cập nhật: theme 1.4.0 + plugin rentbikehanoi-native-vi 1.1.1
 
-Trạng thái: **mã, kiểm thử và gói ZIP — chưa cài lên website.** Người viết mã chỉ có quyền GitHub; theo bản ghi `DEPLOYMENT-2026-10-23.md`, website đang chạy theme 1.3.0 + plugin 1.0.0 (chưa kiểm chứng lại). Plugin 1.1.1 thay cho bản 1.1.0 chưa từng được cài; cài thẳng từ 1.0.0 lên 1.1.1.
+Trạng thái: **chủ website đã cài theme 1.4.0 + plugin 1.1.1; cả hai đang hoạt động, được đọc lại qua kết nối WordPress ngày 23/10/2026.** Bản ghi `DEPLOYMENT-2026-10-23.md` là lịch sử cài đặt 1.3.0/1.0.0 ban đầu. Xem kết quả kiểm tra hiện tại ở `VERIFICATION-1.4.0-1.1.1-2026-10-23.md`. Plugin 1.1.1 thay cho bản 1.1.0 chưa từng được cài; không cần cài lại hay tạo lại trang.
 
 ## Bản cập nhật làm gì
 

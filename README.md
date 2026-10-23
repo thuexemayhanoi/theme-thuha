@@ -1,17 +1,20 @@
 # wp-theme
 https://rentbikehanoi.com
 
-> **Deployment status (23 Oct 2026, Asia/Ho_Chi_Minh):** production runs theme **1.3.0** in `wp-theme` and the custom plugin
-> `rentbikehanoi-native-vi` **1.0.0**. The owner installed both ZIPs; an authenticated administrator then published
-> the 11 Vietnamese core pages and enabled `/vi/`. See [the live deployment record](docs/vi/DEPLOYMENT-2026-10-23.md)
-> for page IDs, measured checks, remaining limitations and rollback. Do not reseed or deploy over these pages blindly.
+> **Deployment status (23 Oct 2026, Asia/Ho_Chi_Minh):** the owner installed theme **1.4.0** in `wp-theme` and the custom plugin
+> `rentbikehanoi-native-vi` **1.1.1**. Both are active, confirmed through the authenticated WordPress connection.
+> The 11 published Vietnamese core pages remain enabled. The old LiteSpeed HTML cache was purged; the new Vietnamese landing,
+> images, logo destination, language switch, dark mode and FAQ were checked live.
+> See [the current verification record](docs/vi/VERIFICATION-1.4.0-1.1.1-2026-10-23.md) for results and open items.
+> The [initial deployment record](docs/vi/DEPLOYMENT-2026-10-23.md) preserves page IDs and the original 1.3.0/1.0.0 installation history.
+> Do not reseed or deploy over these pages blindly.
 >
-> **Pending update (not deployed):** theme **1.4.0** + plugin **1.1.1** on branch `feature/native-vietnamese-section` give `/vi/`
+> **Installed update:** theme **1.4.0** + plugin **1.1.1** on branch `feature/native-vietnamese-section` give `/vi/`
 > the same homepage layout as the English homepage and fix the logo link/alt, sidebar widgets, search/404/category titles and
 > breadcrumbs, and the comment form on Vietnamese pages.
 > Install guide (Vietnamese): [docs/vi/UPDATE-1.4.0-1.1.1.md](docs/vi/UPDATE-1.4.0-1.1.1.md). Packages in `dist/`.
 
-## Vietnamese home page layout (theme 1.4.0, plugin 1.1.1 — not deployed)
+## Vietnamese home page layout (theme 1.4.0, plugin 1.1.1 — installed)
 
 - `/vi/` (page 3454 in production) renders with the English homepage's design: hero with the existing hero photo, quick links,
   three bike cards reusing the English homepage's bike photos, reference-price table, three steps, short FAQ, and the saved

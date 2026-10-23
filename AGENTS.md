@@ -4,6 +4,12 @@
 Source of the active WordPress theme of https://rentbikehanoi.com (theme "Rentbike Hanoi", active stylesheet folder `wp-theme`) and, since 1.3.0, of the project's own bilingual plugin `plugins/rentbikehanoi-native-vi/`. English stays at the site root; native Vietnamese lives under `/vi/`. Production status is recorded in dated publication records in `docs/`; see `docs/vi/DEPLOYMENT-2026-10-23.md` for the live theme 1.3.0, plugin 1.0.0, published page IDs and enabled Vietnamese section.
 
 ## Current live bilingual state — 23 October 2026
+- Latest authenticated verification: theme `wp-theme` **1.4.0**, native VI plugin **1.1.1**, both active after the owner's ZIP installation.
+  See `docs/vi/VERIFICATION-1.4.0-1.1.1-2026-10-23.md`. The earlier deployment record is historical, not the current installed version.
+  Old guest HTML survived the upgrade in LiteSpeed; a native cache purge restored the landing, images and VI logo destination.
+  Eleven VI pages, two sampled category archives, search, 404 and the VI/EN, dark-mode and FAQ interactions were checked live.
+  Sitemap retrieval and live mobile verification are not claimed. Existing EN extension text (30k/hour) differs from VI (20k/hour);
+  request the owner's correct current rate before reconciling either side. No price or policy was changed in this verification.
 - The 11 Vietnamese core pages already exist and are published (IDs 3454–3464); `/vi/` is enabled. Do not recreate, overwrite or republish seed content over owner edits.
 - Nine English–Vietnamese pairs were confirmed. The Vietnamese terms page is deliberately unpaired because the English terms cover a broader rental-service scope. The empty Vietnamese blog is noindex and excluded from the sitemap.
 - Legacy GTranslate was deactivated; use only the custom bilingual plugin for the language section. Yoast and LiteSpeed remain in place.
@@ -11,7 +17,7 @@ Source of the active WordPress theme of https://rentbikehanoi.com (theme "Rentbi
 - Claude must still be assumed to have GitHub-only access to the two project repos, not WordPress or a reliable crawler. The live publishing work was done separately by an authorized administrator. `/thuha-writer` was not modified in this deployment.
 - Follow `docs/vi/ROLLBACK.md` before deactivation. Never substitute a raw `rbhvi_enabled` option write for the plugin's preflight/enable action.
 
-## Pending release — theme 1.4.0 + plugin 1.1.1 (not deployed)
+## Installed release — theme 1.4.0 + plugin 1.1.1
 - Purpose: `/vi/` uses the English homepage's layout (hero, quick links, bike cards, price table, steps, FAQ, collapsible saved content). Details and install steps: docs/vi/UPDATE-1.4.0-1.1.1.md. Plugin 1.1.0 was never installed and is superseded by 1.1.1.
 - Theme part `template-parts/landing.php` is presentation only and is used **only** by the plugin for the managed Vietnamese home page (registry key `home`, production ID 3454). `front-page.php`, `inc/content.php`, CSS and JS must stay identical to the deployed release unless the owner asks for an English change; `tests/static/repo-check.mjs` enforces this against `e81fbd7`.
 - Vietnamese homepage copy lives in `plugins/rentbikehanoi-native-vi/config/home-vi.php` (placeholders only for prices/NAP/fees). Photos are reused read-only from the English homepage's existing media (same file-name tokens as `rbh_home_data()`); never upload or invent images.

@@ -2,9 +2,17 @@
 
 All notable changes to this repository. Dates use Asia/Ho_Chi_Minh.
 
-## [Plugin rentbikehanoi-native-vi 1.1.1 + theme 1.4.0] — 2026-10-23 — not deployed
+## Installation verification — 2026-10-23
 
-Status: code, tests and packages only. Supersedes plugin 1.1.0 (never installed; its ZIP was removed from `dist/`). Theme 1.4.0 is
+The owner installed theme 1.4.0 and plugin 1.1.1; authenticated WordPress reads confirm both active.
+Purged stale LiteSpeed/object cache and verified the Vietnamese landing, five image loads, logo destination,
+VI/EN switching, dark mode, FAQ, eleven VI pages, search/404 and two sampled category archives.
+English homepage title, description, canonical, H1 and header/footer navigation matched the pre-purge snapshot.
+No runtime code, content, prices, SEO metadata or routing was changed. See docs/vi/VERIFICATION-1.4.0-1.1.1-2026-10-23.md.
+
+## [Plugin rentbikehanoi-native-vi 1.1.1 + theme 1.4.0] — 2026-10-23 — installed
+
+Status: installed by the owner and checked live; original packages unchanged. Supersedes plugin 1.1.0 (never installed; its ZIP was removed from `dist/`). Theme 1.4.0 is
 unchanged (same files, same ZIP checksum). Install from 1.0.0 directly: docs/vi/UPDATE-1.4.0-1.1.1.md.
 
 ### Fixed (Vietnamese pages only)
