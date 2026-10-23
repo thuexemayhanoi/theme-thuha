@@ -1,6 +1,9 @@
 # wp-theme
 https://rentbikehanoi.com
 
+Mobile utility-bar correction applied through WordPress Additional CSS (no reinstall):
+[production setting and verification limits](docs/vi/UTILITY-MOBILE-2026-10-23.md).
+
 > **Deployment status (23 Oct 2026, Asia/Ho_Chi_Minh):** the owner installed theme **1.4.0** in `wp-theme` and the custom plugin
 > `rentbikehanoi-native-vi` **1.1.1**. Both are active, confirmed through the authenticated WordPress connection.
 > The 11 published Vietnamese core pages remain enabled. The old LiteSpeed HTML cache was purged; the new Vietnamese landing,

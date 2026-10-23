@@ -1,0 +1,36 @@
+/* rentbikehanoi: stable mobile utility bar, VI and EN, 2026-10-23 */
+@media (max-width: 760px) {
+  .utility-bar .utility-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: center;
+    justify-content: stretch;
+    gap: 0;
+    min-height: 68px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+  .utility-bar .utility-inner > span {
+    display: block;
+    min-width: 0;
+    line-height: 20px;
+  }
+  .utility-bar .utility-inner > div {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) max-content;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    width: 100%;
+  }
+  .utility-bar .utility-inner > div > span {
+    line-height: 20px;
+  }
+  .utility-bar .utility-inner a[href^="tel:"] {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    min-height: 44px;
+    white-space: nowrap;
+  }
+}

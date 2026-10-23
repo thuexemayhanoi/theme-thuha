@@ -4,6 +4,7 @@
 Source of the active WordPress theme of https://rentbikehanoi.com (theme "Rentbike Hanoi", active stylesheet folder `wp-theme`) and, since 1.3.0, of the project's own bilingual plugin `plugins/rentbikehanoi-native-vi/`. English stays at the site root; native Vietnamese lives under `/vi/`. Production status is recorded in dated publication records in `docs/`; see `docs/vi/DEPLOYMENT-2026-10-23.md` for the live theme 1.3.0, plugin 1.0.0, published page IDs and enabled Vietnamese section.
 
 ## Current live bilingual state — 23 October 2026
+- Mobile utility-bar wrapping was corrected using core Additional CSS for `wp-theme` (post 3484); preserve this setting. Source and verification limits: `docs/vi/UTILITY-MOBILE-2026-10-23.md`. This is not included in the theme ZIP and has not been tested on physical iPhone Safari.
 - Latest authenticated verification: theme `wp-theme` **1.4.0**, native VI plugin **1.1.1**, both active after the owner's ZIP installation.
   See `docs/vi/VERIFICATION-1.4.0-1.1.1-2026-10-23.md`. The earlier deployment record is historical, not the current installed version.
   Old guest HTML survived the upgrade in LiteSpeed; a native cache purge restored the landing, images and VI logo destination.
