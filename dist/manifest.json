@@ -1,0 +1,494 @@
+{
+  "generated_from_commit": "9c30129e828046f48cd552db6fedae6ba086d156",
+  "working_tree_clean": true,
+  "deployed_to_production": false,
+  "note": "Built locally from git-tracked files. Not installed, activated or published on any WordPress site.",
+  "artifacts": [
+    {
+      "file": "wp-theme-1.4.0.zip",
+      "type": "theme",
+      "install_folder": "wp-theme",
+      "version": "1.4.0",
+      "sha256": "05a9b6e3f3213928a6c6b5c0119f57cdfaf0da5619b1c95d1f2e99b2dc6a83d6",
+      "files": [
+        {
+          "path": "wp-theme/404.php",
+          "source": "404.php",
+          "sha256": "441d393db6a95fabc0c89d9f02ba4bfeb25b26e2822b2da6a2725846a4d5b9c4",
+          "bytes": 592
+        },
+        {
+          "path": "wp-theme/README.txt",
+          "source": "README.txt",
+          "sha256": "90ac62d286d1b09919f6d01084a7785694e3ba0efbbd43203ace4fda4cc43cb1",
+          "bytes": 6382
+        },
+        {
+          "path": "wp-theme/archive.php",
+          "source": "archive.php",
+          "sha256": "37bc16bcfd6e6b2143400c72f6add74ce921cb5a22d88a2237b3ce9ec6c1e78f",
+          "bytes": 85
+        },
+        {
+          "path": "wp-theme/assets/css/assistant.css",
+          "source": "assets/css/assistant.css",
+          "sha256": "0f50d93b61814f86406aca7d04e904f9d938d73acdc97258680aea377f8195c4",
+          "bytes": 5174
+        },
+        {
+          "path": "wp-theme/assets/css/editor.css",
+          "source": "assets/css/editor.css",
+          "sha256": "ef3b5dceb829b77c7ca7c0243f07d3a06b21019d2e54fdaeb577cdd6b4b6301e",
+          "bytes": 583
+        },
+        {
+          "path": "wp-theme/assets/css/language-switch.css",
+          "source": "assets/css/language-switch.css",
+          "sha256": "0a133eca1aadfc06dad848406152314bac1f58d2ebebd524051776303abdf61c",
+          "bytes": 1673
+        },
+        {
+          "path": "wp-theme/assets/css/main.css",
+          "source": "assets/css/main.css",
+          "sha256": "161edccb68863548bcf5c10f63c837b3f3a9a7b1e3a37196bf1de43ec9bb4004",
+          "bytes": 31503
+        },
+        {
+          "path": "wp-theme/assets/css/tokens.css",
+          "source": "assets/css/tokens.css",
+          "sha256": "8d62117edb3a70f49db806cfe3db751e3f7352d26885db7c70b37b86047a36b9",
+          "bytes": 2905
+        },
+        {
+          "path": "wp-theme/assets/css/upgrade.css",
+          "source": "assets/css/upgrade.css",
+          "sha256": "e513488536debe58acc6ae50058eb7fef8351b0e31ea1381e669ff86f52967d1",
+          "bytes": 3662
+        },
+        {
+          "path": "wp-theme/assets/js/assistant-seo-20261019.js",
+          "source": "assets/js/assistant-seo-20261019.js",
+          "sha256": "242a48f9e584b179f279a1606127c0f29a14d34430e0a0d4104ac1e1d6e632cf",
+          "bytes": 13744
+        },
+        {
+          "path": "wp-theme/assets/js/assistant.js",
+          "source": "assets/js/assistant.js",
+          "sha256": "a20d1a79d3e94aeda9274f58e65f74941e625c099c2af574a041645482c12b63",
+          "bytes": 12150
+        },
+        {
+          "path": "wp-theme/assets/js/main.js",
+          "source": "assets/js/main.js",
+          "sha256": "08bfee5218bc54f07f695d24bb5a6fe62fbe00e5fea6b9c386acf62e6acc03d1",
+          "bytes": 4795
+        },
+        {
+          "path": "wp-theme/assets/js/upgrade.js",
+          "source": "assets/js/upgrade.js",
+          "sha256": "3038c347a041d5168117103150630b980be6f5da8c38dcf483a2c3c0999841ec",
+          "bytes": 5006
+        },
+        {
+          "path": "wp-theme/category.php",
+          "source": "category.php",
+          "sha256": "37bc16bcfd6e6b2143400c72f6add74ce921cb5a22d88a2237b3ce9ec6c1e78f",
+          "bytes": 85
+        },
+        {
+          "path": "wp-theme/comments.php",
+          "source": "comments.php",
+          "sha256": "fbce2c59660a59fc413076a2e5b7970536c11dc471fc01a37c5a3c2123989fd7",
+          "bytes": 587
+        },
+        {
+          "path": "wp-theme/footer.php",
+          "source": "footer.php",
+          "sha256": "a5b10aa67a34e48562c925d9eb717732fa2ad884d91f709416b2a9dd0486f850",
+          "bytes": 1952
+        },
+        {
+          "path": "wp-theme/front-page.php",
+          "source": "front-page.php",
+          "sha256": "0a1507333538710cfdb7116471d9b541264fc32fec804e12bae864d40bd1cdcf",
+          "bytes": 8332
+        },
+        {
+          "path": "wp-theme/functions.php",
+          "source": "functions.php",
+          "sha256": "89282bd0d78d95e7f84f58fd5fed12ae1c9c2ff86463368b5a32da2bc348d359",
+          "bytes": 6254
+        },
+        {
+          "path": "wp-theme/header.php",
+          "source": "header.php",
+          "sha256": "00e4de3ecf7566c2b75ac366aa70dcb5471dfc556e20816d4b3315188925151c",
+          "bytes": 3376
+        },
+        {
+          "path": "wp-theme/home.php",
+          "source": "home.php",
+          "sha256": "37bc16bcfd6e6b2143400c72f6add74ce921cb5a22d88a2237b3ce9ec6c1e78f",
+          "bytes": 85
+        },
+        {
+          "path": "wp-theme/inc/assistant.php",
+          "source": "inc/assistant.php",
+          "sha256": "a89872b7fe653ae21fae3e852f3ed73c4d9d6fe06cb8389e5d36e37dd58c8403",
+          "bytes": 4483
+        },
+        {
+          "path": "wp-theme/inc/components.php",
+          "source": "inc/components.php",
+          "sha256": "8d2978ec1633a4e752d9ce262164598459cc32f4f8022661a128a1fe99d45297",
+          "bytes": 5539
+        },
+        {
+          "path": "wp-theme/inc/content.php",
+          "source": "inc/content.php",
+          "sha256": "6fae6165f5a548ed00f18e3f7783f298e058adf0f46fa51326c4622669ae2cb5",
+          "bytes": 5791
+        },
+        {
+          "path": "wp-theme/inc/navigation.php",
+          "source": "inc/navigation.php",
+          "sha256": "9139f12fa56338f74fc594192a77eae449383fe173a35468945346ca2d03528e",
+          "bytes": 5605
+        },
+        {
+          "path": "wp-theme/inc/seo.php",
+          "source": "inc/seo.php",
+          "sha256": "87bd233cecc13f6142a3cbbd3a6b9404ee9fbb408a376f91bba3d2d2aec5b34c",
+          "bytes": 11965
+        },
+        {
+          "path": "wp-theme/inc/settings.php",
+          "source": "inc/settings.php",
+          "sha256": "72a31f72612b6a6e986ede9b3581ccd77cfa28f4e15eabae828e0702ad054492",
+          "bytes": 11001
+        },
+        {
+          "path": "wp-theme/inc/upgrade.php",
+          "source": "inc/upgrade.php",
+          "sha256": "8eb18f47222f98ce1bc24130cd7184b7633e77baa8d5826e87d4d93ea5aafd52",
+          "bytes": 5519
+        },
+        {
+          "path": "wp-theme/index.php",
+          "source": "index.php",
+          "sha256": "feb4bd7e6e470e997063bf16f5f6f16c79ea76359e621f779537afc2754cf074",
+          "bytes": 2021
+        },
+        {
+          "path": "wp-theme/page.php",
+          "source": "page.php",
+          "sha256": "c22c53dcd4b4656657d68d937fd7aeb776c22a6bad5309d8355eefb1f85ca5fb",
+          "bytes": 581
+        },
+        {
+          "path": "wp-theme/search.php",
+          "source": "search.php",
+          "sha256": "37bc16bcfd6e6b2143400c72f6add74ce921cb5a22d88a2237b3ce9ec6c1e78f",
+          "bytes": 85
+        },
+        {
+          "path": "wp-theme/searchform.php",
+          "source": "searchform.php",
+          "sha256": "de9a19cd260eca1bee6a782576d0b20a63de1e455f67a7cdc664e0990b00d47a",
+          "bytes": 778
+        },
+        {
+          "path": "wp-theme/sidebar.php",
+          "source": "sidebar.php",
+          "sha256": "bc2fd9190cb4b60df0242005b10a8cce3784444f03c66659da9eaecde0b8449f",
+          "bytes": 1118
+        },
+        {
+          "path": "wp-theme/single.php",
+          "source": "single.php",
+          "sha256": "8e2557b8f2f3d857150023f80d5d760fa4cd1c5a363ddc79e64896f4efe09bb1",
+          "bytes": 1455
+        },
+        {
+          "path": "wp-theme/style.css",
+          "source": "style.css",
+          "sha256": "3c645c6039693704bef99f81cd982917a8d6dbaaf7eded6d3f97363f2b131af7",
+          "bytes": 525
+        },
+        {
+          "path": "wp-theme/template-parts/assistant.php",
+          "source": "template-parts/assistant.php",
+          "sha256": "2add914beceff2085ac981e860ac4d80d1aec308de8b6026789d8a18dc891cf2",
+          "bytes": 3331
+        },
+        {
+          "path": "wp-theme/template-parts/banner.php",
+          "source": "template-parts/banner.php",
+          "sha256": "ed7af7b44f44ed1af51eac5e11b7e29b5bec28d26f743231f10428b530662175",
+          "bytes": 688
+        },
+        {
+          "path": "wp-theme/template-parts/card.php",
+          "source": "template-parts/card.php",
+          "sha256": "95feecc29e372041ae1db97ff8926925a8af1b9af233077009ef5b921e637be1",
+          "bytes": 1330
+        },
+        {
+          "path": "wp-theme/template-parts/contact-dock.php",
+          "source": "template-parts/contact-dock.php",
+          "sha256": "484673602934dc3d81dfc71b98ca4fa5d54c8d9202e40719f788a4fbd6dc6afb",
+          "bytes": 1078
+        },
+        {
+          "path": "wp-theme/template-parts/context-links.php",
+          "source": "template-parts/context-links.php",
+          "sha256": "f90ee427c44910a38335f9adeece5d19c51b7a2182ed582ae9643570a9a7092b",
+          "bytes": 386
+        },
+        {
+          "path": "wp-theme/template-parts/cta.php",
+          "source": "template-parts/cta.php",
+          "sha256": "3902d48198bc8c4f0f4a1d4eba2a82621b04dc449459303c0a3b2b9d878cef43",
+          "bytes": 819
+        },
+        {
+          "path": "wp-theme/template-parts/landing.php",
+          "source": "template-parts/landing.php",
+          "sha256": "a665b993f894da6eb11940f3c7d16d9286fe95d87d8c343ed8c73b37dc5428f6",
+          "bytes": 7398
+        },
+        {
+          "path": "wp-theme/template-parts/menu.php",
+          "source": "template-parts/menu.php",
+          "sha256": "1ab02e02d81bee3f8f78771357b1f42d94c74ed4b9e269d11a55475725d8c7b5",
+          "bytes": 1037
+        },
+        {
+          "path": "wp-theme/template-parts/related.php",
+          "source": "template-parts/related.php",
+          "sha256": "63acc64c9f22c6d71284130b451bdc4364335f845c5eb0473cbe0986b1afa8bf",
+          "bytes": 694
+        },
+        {
+          "path": "wp-theme/theme.json",
+          "source": "theme.json",
+          "sha256": "5f2d8dc35f7587e00af56f9232cff206e918f1e79d689538a2040f2c297f158b",
+          "bytes": 758
+        }
+      ]
+    },
+    {
+      "file": "rentbikehanoi-native-vi-1.1.1.zip",
+      "type": "plugin",
+      "install_folder": "rentbikehanoi-native-vi",
+      "version": "1.1.1",
+      "sha256": "a1e78305ae7cbe29ae1ce1b51a7aab76598be371e80001d588c2f7bd823c4bde",
+      "files": [
+        {
+          "path": "rentbikehanoi-native-vi/config/business.php",
+          "source": "plugins/rentbikehanoi-native-vi/config/business.php",
+          "sha256": "1f080cc36aec5e7dab0319646c55ea6feebc9b0873e0d0b480fec26582f88f52",
+          "bytes": 2608
+        },
+        {
+          "path": "rentbikehanoi-native-vi/config/home-vi.php",
+          "source": "plugins/rentbikehanoi-native-vi/config/home-vi.php",
+          "sha256": "086f40b474cdf42a52136e14ae92b1bed3b97c631613edb304e503269dad0554",
+          "bytes": 4128
+        },
+        {
+          "path": "rentbikehanoi-native-vi/config/pages.php",
+          "source": "plugins/rentbikehanoi-native-vi/config/pages.php",
+          "sha256": "6160971bc7ba249e7c37312f091a38fcc051614706eb8be67385b41a3f276749",
+          "bytes": 7614
+        },
+        {
+          "path": "rentbikehanoi-native-vi/content/about.txt",
+          "source": "plugins/rentbikehanoi-native-vi/content/about.txt",
+          "sha256": "967d39f94e8c45b20c9c49028c7f10a2e8e75f6b77c3954c9e8752439c58ad11",
+          "bytes": 2304
+        },
+        {
+          "path": "rentbikehanoi-native-vi/content/blog.txt",
+          "source": "plugins/rentbikehanoi-native-vi/content/blog.txt",
+          "sha256": "fb1074694d3d973388dea1a10c049bb7ba45fe77762ab85e8822ecb8c4e01a5a",
+          "bytes": 643
+        },
+        {
+          "path": "rentbikehanoi-native-vi/content/contact.txt",
+          "source": "plugins/rentbikehanoi-native-vi/content/contact.txt",
+          "sha256": "c816f1a302326667d5c2374b31e962e84a90e158b16561619eb19bafc57fb28a",
+          "bytes": 1298
+        },
+        {
+          "path": "rentbikehanoi-native-vi/content/delivery.txt",
+          "source": "plugins/rentbikehanoi-native-vi/content/delivery.txt",
+          "sha256": "128a476cc691adff8705dfd45a24275c6095584f636ceffa6b5104460663540b",
+          "bytes": 2039
+        },
+        {
+          "path": "rentbikehanoi-native-vi/content/faq-items.php",
+          "source": "plugins/rentbikehanoi-native-vi/content/faq-items.php",
+          "sha256": "8b56a4d3b47fafa5e5a3f7da4aa47f000c4fa2bb17073d005fa0e82db9c4ae5e",
+          "bytes": 2548
+        },
+        {
+          "path": "rentbikehanoi-native-vi/content/faq.txt",
+          "source": "plugins/rentbikehanoi-native-vi/content/faq.txt",
+          "sha256": "9f3fbbd0b424ac49111feb5d72adf182c1a1a3e7a9e77ce3434bb712ba4bc163",
+          "bytes": 659
+        },
+        {
+          "path": "rentbikehanoi-native-vi/content/home.txt",
+          "source": "plugins/rentbikehanoi-native-vi/content/home.txt",
+          "sha256": "7bcf2b339b50f4446adfcadee031336bc1ef18243d0926baa78b429ed7f3e6c0",
+          "bytes": 3300
+        },
+        {
+          "path": "rentbikehanoi-native-vi/content/prices.txt",
+          "source": "plugins/rentbikehanoi-native-vi/content/prices.txt",
+          "sha256": "6dbbbdf63ef4376f19ffc5b052b04ad924b73c46f90c4d776a60cf6e1dae8f05",
+          "bytes": 2524
+        },
+        {
+          "path": "rentbikehanoi-native-vi/content/privacy.txt",
+          "source": "plugins/rentbikehanoi-native-vi/content/privacy.txt",
+          "sha256": "966757ad5791546638f0ab55a17890018ba20e397212a47bcda49b8ff129070b",
+          "bytes": 2030
+        },
+        {
+          "path": "rentbikehanoi-native-vi/content/procedure.txt",
+          "source": "plugins/rentbikehanoi-native-vi/content/procedure.txt",
+          "sha256": "470f01394c9a99ae7c2d518070b633042cab6dff7a80e3d5c755b4df6339a247",
+          "bytes": 2907
+        },
+        {
+          "path": "rentbikehanoi-native-vi/content/scooter.txt",
+          "source": "plugins/rentbikehanoi-native-vi/content/scooter.txt",
+          "sha256": "291f0774334c6afc6559144f507bedce4adb9aa351c7960e30f42fb5740d4ed5",
+          "bytes": 2810
+        },
+        {
+          "path": "rentbikehanoi-native-vi/content/terms.txt",
+          "source": "plugins/rentbikehanoi-native-vi/content/terms.txt",
+          "sha256": "70201face6ab03d914be66e97477913d66417dcb58ccb7d2e6cf72b2089df79b",
+          "bytes": 2140
+        },
+        {
+          "path": "rentbikehanoi-native-vi/includes/class-rbhvi-admin.php",
+          "source": "plugins/rentbikehanoi-native-vi/includes/class-rbhvi-admin.php",
+          "sha256": "41dd63574c6489d70f80d77293d1d66205a53c79886b2fa95bad8681adadde53",
+          "bytes": 30856
+        },
+        {
+          "path": "rentbikehanoi-native-vi/includes/class-rbhvi-config.php",
+          "source": "plugins/rentbikehanoi-native-vi/includes/class-rbhvi-config.php",
+          "sha256": "f776466fac9169a9beb90c81ff3444c2b36365806a0ed689ce62d8267fa733d9",
+          "bytes": 8772
+        },
+        {
+          "path": "rentbikehanoi-native-vi/includes/class-rbhvi-home.php",
+          "source": "plugins/rentbikehanoi-native-vi/includes/class-rbhvi-home.php",
+          "sha256": "bdca36c493333426cf0c30a414e9554eb94e6ea39db658a8d2df45fcd74b3b97",
+          "bytes": 9874
+        },
+        {
+          "path": "rentbikehanoi-native-vi/includes/class-rbhvi-language.php",
+          "source": "plugins/rentbikehanoi-native-vi/includes/class-rbhvi-language.php",
+          "sha256": "2a090c98e62e98b0895d35ad47b9471fbd89bf98e22be9c5028037e0c0f05b96",
+          "bytes": 9544
+        },
+        {
+          "path": "rentbikehanoi-native-vi/includes/class-rbhvi-listing.php",
+          "source": "plugins/rentbikehanoi-native-vi/includes/class-rbhvi-listing.php",
+          "sha256": "9d09e5358e643c2cfe9add0907a7d81ea862425ef9501db08a14606fb99d0571",
+          "bytes": 4002
+        },
+        {
+          "path": "rentbikehanoi-native-vi/includes/class-rbhvi-preflight.php",
+          "source": "plugins/rentbikehanoi-native-vi/includes/class-rbhvi-preflight.php",
+          "sha256": "8622408283599ffb55c90c165b3e06e72e20d9d80ae37536c9a61de1d64635a0",
+          "bytes": 11721
+        },
+        {
+          "path": "rentbikehanoi-native-vi/includes/class-rbhvi-query.php",
+          "source": "plugins/rentbikehanoi-native-vi/includes/class-rbhvi-query.php",
+          "sha256": "3e81036ca4b760d6d0d65c563f878749c77162f937c4d126f493f62fc5c7ab02",
+          "bytes": 5202
+        },
+        {
+          "path": "rentbikehanoi-native-vi/includes/class-rbhvi-router.php",
+          "source": "plugins/rentbikehanoi-native-vi/includes/class-rbhvi-router.php",
+          "sha256": "530c4b899bb998c64563a1c87a1ffc8553f2953f973f077c8788c980531c93c1",
+          "bytes": 7526
+        },
+        {
+          "path": "rentbikehanoi-native-vi/includes/class-rbhvi-seeder.php",
+          "source": "plugins/rentbikehanoi-native-vi/includes/class-rbhvi-seeder.php",
+          "sha256": "0513f10481ca97373a5c0b10e14219ff53affb366354dd707547074169c2ad5a",
+          "bytes": 4603
+        },
+        {
+          "path": "rentbikehanoi-native-vi/includes/class-rbhvi-seo.php",
+          "source": "plugins/rentbikehanoi-native-vi/includes/class-rbhvi-seo.php",
+          "sha256": "d68ebff7b05f1442e9aca5774fe44336c429dfba04904bf98e0dac093df6ea1c",
+          "bytes": 14895
+        },
+        {
+          "path": "rentbikehanoi-native-vi/includes/class-rbhvi-state.php",
+          "source": "plugins/rentbikehanoi-native-vi/includes/class-rbhvi-state.php",
+          "sha256": "141d70c796c9c53bae5c55c0e6f9fa1827d1145c6de8f33d74b75bbb87043d03",
+          "bytes": 5956
+        },
+        {
+          "path": "rentbikehanoi-native-vi/includes/class-rbhvi-switcher.php",
+          "source": "plugins/rentbikehanoi-native-vi/includes/class-rbhvi-switcher.php",
+          "sha256": "d9b188d6d15fbc9bf028e847a1ee68b450cc540f7e7139cdedc63d62d5f16c8c",
+          "bytes": 2143
+        },
+        {
+          "path": "rentbikehanoi-native-vi/includes/class-rbhvi-theme-integration.php",
+          "source": "plugins/rentbikehanoi-native-vi/includes/class-rbhvi-theme-integration.php",
+          "sha256": "42e63c1274d7313eda84464d1aea0d9c403270a722f6dea60d5baa913cefe842",
+          "bytes": 12770
+        },
+        {
+          "path": "rentbikehanoi-native-vi/includes/core-strings-vi.php",
+          "source": "plugins/rentbikehanoi-native-vi/includes/core-strings-vi.php",
+          "sha256": "675d0e4aac15d79bafe6b1f99e3f6a417cdd9a2f671f4df8d3e67e96b6867d07",
+          "bytes": 2857
+        },
+        {
+          "path": "rentbikehanoi-native-vi/includes/theme-strings-vi.php",
+          "source": "plugins/rentbikehanoi-native-vi/includes/theme-strings-vi.php",
+          "sha256": "9a7f3159b11a30138dfc935f84d938deeb35c3082213d9c75b55a5c59db83324",
+          "bytes": 7599
+        },
+        {
+          "path": "rentbikehanoi-native-vi/readme.txt",
+          "source": "plugins/rentbikehanoi-native-vi/readme.txt",
+          "sha256": "1a6b0cff32173ab3d026a5793570ca3d9d36b4b8c174c8440ca52559acde54fa",
+          "bytes": 3764
+        },
+        {
+          "path": "rentbikehanoi-native-vi/rentbikehanoi-native-vi.php",
+          "source": "plugins/rentbikehanoi-native-vi/rentbikehanoi-native-vi.php",
+          "sha256": "ce8cdbe35083137cbe9228dad30f36ef8a212d2540bfd2de85d20f80714e962c",
+          "bytes": 1974
+        },
+        {
+          "path": "rentbikehanoi-native-vi/templates/home-vi.php",
+          "source": "plugins/rentbikehanoi-native-vi/templates/home-vi.php",
+          "sha256": "6c1e392306972a362f4bf0b9ac23ee8669204c98d0e2b523d8fc47719eb91884",
+          "bytes": 376
+        },
+        {
+          "path": "rentbikehanoi-native-vi/uninstall.php",
+          "source": "plugins/rentbikehanoi-native-vi/uninstall.php",
+          "sha256": "5b7f4b0c9a79cf0033fbecc9b6a2da3c88b6813006e300f6895f7e74ce893000",
+          "bytes": 576
+        }
+      ]
+    }
+  ]
+}

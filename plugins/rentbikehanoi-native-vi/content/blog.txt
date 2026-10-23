@@ -1,0 +1,9 @@
+Đây là nơi tập hợp các bài viết tiếng Việt của {{name}}: kinh nghiệm chọn xe, chuẩn bị trước khi nhận xe, đi xe máy an toàn trong thành phố và những điều nên hỏi cửa hàng cho thuê. Mỗi bài được viết riêng cho người đọc Việt, không phải bản dịch của blog tiếng Anh.
+
+## Bắt đầu từ đâu?
+
+- Muốn biết chi phí: xem [bảng giá thuê xe máy Hà Nội]({{link:prices}}).
+- Đang phân vân chọn xe: đọc [thuê xe ga Hà Nội]({{link:scooter}}).
+- Lần đầu thuê xe: đọc [thủ tục thuê xe máy]({{link:procedure}}).
+
+## Bài viết mới

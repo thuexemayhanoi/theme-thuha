@@ -1,0 +1,38 @@
+Dưới đây là bảng giá thuê xe máy tham khảo của {{name}} tại Long Biên, Hà Nội. Giá được chia theo loại xe và thời gian thuê để bạn ước lượng chi phí trước khi liên hệ. Giá chính xác cho mẫu xe và lịch thuê của bạn cần được cửa hàng xác nhận trước khi đặt.
+
+## Bảng giá tham khảo
+
+{{price_table}}
+
+Một vài lưu ý khi đọc bảng giá:
+
+- Khoảng giá (ví dụ {{price_day:xe-so}}/ngày với xe số) thay đổi theo mẫu xe cụ thể trong cùng một nhóm.
+- **Xe điện** chưa có giá ngày cố định trên website vì giá tùy mẫu; hãy hỏi trực tiếp.
+- Honda Vision và Honda Air Blade có giá riêng trong bảng giá của cửa hàng, ngoài khoảng giá chung của nhóm xe ga.
+
+## Thuê ngày, tuần hay tháng thì lợi hơn?
+
+Nếu bạn cần xe từ khoảng một tuần trở lên, hãy so sánh giá tuần và giá tháng với việc thuê lẻ từng ngày. Ví dụ với xe số, giá tuần tham khảo là {{price_week:xe-so}}, thường thấp hơn so với cộng bảy ngày lẻ ở mức {{price_day:xe-so}}/ngày. Khi hỏi giá, hãy nói rõ tổng số ngày bạn cần để cửa hàng báo phương án phù hợp.
+
+## Phí gia hạn khi trả xe muộn
+
+Nếu cần giữ xe lâu hơn lịch đã hẹn, phí gia hạn là {{extension_fee}}. Hãy báo cửa hàng sớm khi muốn gia hạn để thống nhất giờ trả mới.
+
+## Những khoản cần hỏi thêm ngoài giá thuê
+
+Bảng giá chỉ thể hiện tiền thuê xe. Trước khi chốt, hãy hỏi cửa hàng:
+
+1. Có cần đặt cọc không, mức cọc bao nhiêu và hoàn cọc khi nào.
+2. Giá đã gồm những gì khi nhận xe (ví dụ mũ bảo hiểm đi kèm hay không).
+3. Chi phí giao nhận nếu bạn không đến cửa hàng nhận xe.
+4. Cách tính tiền khi trả xe sớm hơn hoặc muộn hơn lịch hẹn.
+
+Website không quảng cáo thuê xe không cần cọc; điều kiện cọc do cửa hàng xác nhận cho từng trường hợp.
+
+## Hỏi giá chính xác
+
+Gửi cho cửa hàng mẫu xe, ngày nhận, ngày trả và nơi nhận xe qua số {{phone_display}} (điện thoại, Zalo hoặc WhatsApp). Cửa hàng mở cửa {{hours}}.
+
+{{contact_buttons}}
+
+Muốn chọn giữa các mẫu xe ga trước khi hỏi giá? Xem trang [thuê xe ga Hà Nội]({{link:scooter}}). Lần đầu thuê xe? Đọc [thủ tục thuê xe máy]({{link:procedure}}).

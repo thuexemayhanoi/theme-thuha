@@ -17,7 +17,7 @@
 		<div>
 			<?php if ( have_posts() ) : ?><div class="archive-grid"><?php while ( have_posts() ) : the_post(); get_template_part( 'template-parts/card' ); endwhile; ?></div>
 			<?php the_posts_pagination( array( 'mid_size' => 1, 'prev_text' => __( 'Previous', 'rentbike-hanoi' ), 'next_text' => __( 'Next', 'rentbike-hanoi' ) ) ); ?>
-			<?php else : ?><section class="empty-state"><h2><?php esc_html_e( 'Nothing found yet.', 'rentbike-hanoi' ); ?></h2><p><?php esc_html_e( 'Try another word, or explore the rental links below.', 'rentbike-hanoi' ); ?></p><?php if ( ! is_search() ) { get_search_form(); } ?><a class="button button-outline" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Go to homepage', 'rentbike-hanoi' ); ?></a></section><?php endif; ?>
+			<?php else : ?><section class="empty-state"><h2><?php esc_html_e( 'Nothing found yet.', 'rentbike-hanoi' ); ?></h2><p><?php esc_html_e( 'Try another word, or explore the rental links below.', 'rentbike-hanoi' ); ?></p><?php if ( ! is_search() ) { get_search_form(); } ?><a class="button button-outline" href="<?php echo esc_url( rbh_home_url() ); ?>"><?php esc_html_e( 'Go to homepage', 'rentbike-hanoi' ); ?></a></section><?php endif; ?>
 		</div>
 		<?php if ( rbh_setting( 'sidebar' ) ) { get_sidebar(); } ?>
 	</div>

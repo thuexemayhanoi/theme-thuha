@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) || exit;
 
 // Keep the widget shell; its public searches use WordPress's built-in search API.
 remove_action( 'wp_footer', 'rbh_assistant_render', 8 );
-add_action( 'wp_footer', function() { get_template_part( 'template-parts/assistant' ); }, 8 );
+add_action( 'wp_footer', function() { if ( apply_filters( 'rbh_assistant_enabled', true ) ) { get_template_part( 'template-parts/assistant' ); } }, 8 );
 add_action( 'wp_enqueue_scripts', function() {
     // A new asset filename also refreshes caches that strip version query strings.
     wp_dequeue_script( 'rbh-assistant' );

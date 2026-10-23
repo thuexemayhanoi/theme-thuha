@@ -1,0 +1,31 @@
+**{{name}}** là cửa hàng cho thuê xe máy ở quận Long Biên, Hà Nội. Cửa hàng nằm tại {{address}}, mở cửa {{hours}}. Trang này giới thiệu cách cửa hàng làm việc với khách thuê để bạn biết điều gì sẽ diễn ra trước khi liên hệ.
+
+## Cửa hàng cho thuê những gì?
+
+Khách có thể thuê xe theo ngày, theo tuần hoặc theo tháng. Các nhóm xe trong bảng giá gồm xe số, xe ga (trong đó có Honda Vision và Honda Air Blade), xe điện và xe 50cc. Giá từng nhóm được ghi ở trang [bảng giá]({{link:prices}}); mẫu xe còn trống được cửa hàng báo khi bạn hỏi.
+
+## Cách cửa hàng làm việc
+
+### Báo giá trước, xác nhận rõ ràng
+
+Giá đăng trên website là giá tham khảo. Khi bạn cho biết mẫu xe, ngày nhận và ngày trả, cửa hàng sẽ báo giá cụ thể và các điều kiện đi kèm. Bạn chỉ nên chốt thuê khi đã rõ giá, tiền cọc (nếu có) và giờ trả xe.
+
+### Trao đổi qua kênh bạn quen dùng
+
+Bạn có thể gọi điện, nhắn Zalo hoặc WhatsApp theo cùng một số {{phone_display}}. Nhắn tin tiện khi bạn muốn giữ lại nội dung đã thống nhất; gọi điện nhanh hơn khi cần xe gấp.
+
+### Nhận xe tại cửa hàng hoặc hỏi phương án giao nhận
+
+Cửa hàng ở gần Bến xe Gia Lâm, thuận tiện nếu bạn vừa đến Hà Nội bằng xe khách. Nếu bạn muốn nhận xe ở địa điểm khác, hãy xem trang [giao nhận xe máy]({{link:delivery}}) và hỏi cửa hàng trước.
+
+## Điều website này không hứa hẹn
+
+Để tránh hiểu nhầm, website không tự cam kết thay cho cửa hàng:
+
+- Không khẳng định mẫu xe nào chắc chắn còn trống khi bạn chưa hỏi.
+- Không quảng cáo thuê xe không cần đặt cọc.
+- Không thay cửa hàng trả lời về giấy tờ cụ thể hay cách hoàn cọc; những điều này được trao đổi trực tiếp.
+
+## Bước tiếp theo
+
+Nếu bạn đã biết mình cần xe gì, hãy [liên hệ cửa hàng]({{link:contact}}). Nếu đây là lần đầu thuê xe máy ở Hà Nội, trang [thủ tục thuê xe]({{link:procedure}}) sẽ giúp bạn chuẩn bị đủ câu hỏi.

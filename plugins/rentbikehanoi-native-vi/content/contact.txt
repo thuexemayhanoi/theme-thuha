@@ -1,0 +1,28 @@
+Cách nhanh nhất để hỏi xe còn trống, giá thuê và điều kiện thuê là gọi hoặc nhắn tin trực tiếp cho {{name}}.
+
+## Thông tin liên hệ
+
+- **Điện thoại / Zalo / WhatsApp:** {{phone_display}}
+- **Gọi từ nước ngoài:** {{phone_intl}}
+- **Địa chỉ:** {{address}}
+- **Giờ mở cửa:** {{hours}}
+- **Bản đồ:** [mở vị trí cửa hàng]({{map_url}})
+
+{{contact_buttons}}
+
+## Nên nhắn gì để được trả lời nhanh?
+
+Một tin nhắn đủ thông tin giúp cửa hàng báo giá ngay mà không phải hỏi lại nhiều lần:
+
+1. Loại xe hoặc mẫu xe bạn muốn (xe số, xe ga, xe điện, xe 50cc, Honda Vision, Air Blade…).
+2. Ngày nhận và ngày trả dự kiến.
+3. Bạn đến cửa hàng nhận xe hay cần hỏi phương án giao nhận.
+4. Câu hỏi về giấy tờ hoặc đặt cọc, nếu có.
+
+Website chỉ cung cấp thông tin. Việc đặt xe, giá cuối cùng và điều kiện thuê luôn được cửa hàng xác nhận trực tiếp với bạn.
+
+## Đến cửa hàng
+
+Cửa hàng ở {{address}}. Nên liên hệ trước khi đến để được chuẩn bị xe.
+
+Trước khi liên hệ, bạn có thể xem [bảng giá]({{link:prices}}) và [câu hỏi thường gặp]({{link:faq}}).

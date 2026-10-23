@@ -1,0 +1,42 @@
+Xe ga không cần sang số, có cốp để đồ và dễ làm quen nếu bạn mới đi xe máy trong thành phố. Trang này giúp bạn chọn giữa các lựa chọn xe ga đang có trong bảng giá của {{name}}: Honda Vision, Honda Air Blade, các mẫu xe ga khác và xe điện.
+
+## Giá thuê xe ga tham khảo
+
+{{price_table:xe-ga-and-honda-vision-and-honda-air-blade-and-xe-dien}}
+
+Giá trên là giá tham khảo. Cửa hàng sẽ xác nhận mẫu xe còn trống và giá chính xác khi bạn hỏi. Bảng giá đầy đủ của mọi loại xe có ở trang [bảng giá thuê xe máy]({{link:prices}}).
+
+## Nên chọn mẫu nào?
+
+### Honda Vision
+
+Vision là mẫu xe ga nhỏ gọn, phổ biến ở Việt Nam. Nếu bạn chủ yếu đi trong nội thành, cần xe dễ dắt, dễ để ở chỗ gửi xe đông, đây là lựa chọn đáng cân nhắc. Giá tham khảo: {{price_day:honda-vision}}/ngày, {{price_week:honda-vision}}/tuần, {{price_month:honda-vision}}/tháng.
+
+### Honda Air Blade
+
+Air Blade là mẫu xe ga cỡ lớn hơn Vision. Nếu bạn thường chở thêm người hoặc đi quãng đường dài hơn trong ngày, hãy hỏi cửa hàng về Air Blade. Giá tham khảo: {{price_day:honda-air-blade}}/ngày, {{price_week:honda-air-blade}}/tuần, {{price_month:honda-air-blade}}/tháng.
+
+### Các mẫu xe ga khác
+
+Ngoài hai mẫu trên, nhóm xe ga có khoảng giá {{price_day:xe-ga}}/ngày, {{price_week:xe-ga}}/tuần và {{price_month:xe-ga}}/tháng tùy mẫu. Hãy hỏi cửa hàng mẫu nào đang có vào ngày bạn cần.
+
+### Xe điện
+
+Xe điện có giá tuần {{price_week:xe-dien}} và giá tháng {{price_month:xe-dien}}; giá ngày tùy mẫu nên cần hỏi trực tiếp. Trước khi chọn xe điện, hãy hỏi về quãng đường đi được sau mỗi lần sạc và cách sạc khi bạn đang thuê.
+
+## Thuê xe ga theo tháng
+
+Nếu bạn ở Hà Nội để làm việc hoặc học tập, thuê theo tháng thường hợp lý hơn thuê lẻ từng ngày. Hãy cho cửa hàng biết ngày bắt đầu, thời gian dự kiến và nhu cầu đi lại hằng ngày để được tư vấn mẫu xe phù hợp.
+
+## Trước khi nhận xe ga
+
+- Hỏi rõ giấy tờ cần mang và điều kiện đặt cọc (xem [thủ tục thuê xe]({{link:procedure}})).
+- Kiểm tra phanh, đèn, còi và gương khi nhận xe.
+- Chụp ảnh tình trạng xe lúc nhận để hai bên cùng đối chiếu khi trả.
+- Hỏi loại xăng phù hợp và mức xăng lúc giao xe.
+
+## Hỏi xe ga còn trống
+
+Gọi hoặc nhắn Zalo, WhatsApp số {{phone_display}}, cho biết mẫu xe bạn thích, ngày nhận và ngày trả. Cửa hàng ở {{address}}, mở cửa {{hours}}.
+
+{{contact_buttons}}
