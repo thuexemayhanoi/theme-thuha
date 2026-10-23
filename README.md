@@ -19,6 +19,8 @@ Mobile utility-bar correction applied through WordPress Additional CSS (no reins
 
 ## Vietnamese home page layout (theme 1.4.0, plugin 1.1.1 — installed)
 
+- Owner indexing preference (23 October): published Vietnamese articles should be eligible for indexing immediately on publication, without waiting for a batch or an English counterpart (`sitemap_pairs_only=false`). Preserve index eligibility for temporarily empty VI categories; do not apply the audit's proposed blanket noindex. The current plugin's empty `/vi/blog/` noindex condition ends when a first public VI post exists. Google decides whether and when to index; publishing alone is not proof of indexing. External writers must assign the native VI language and categories.
+
 - Owner-confirmed extension fee (23 October): **20,000 VND/hour; more than 6 hours is charged as one rental day**.
   English content has been aligned with the Vietnamese config; no reinstall is needed for that content correction.
 
