@@ -87,3 +87,12 @@ docs/vi/ROLLBACK.md: (A) "Tắt /vi/" in the plugin screen, (B) undo last transi
 
 ## What cannot be verified without the real WordPress
 See docs/vi/LIMITATIONS.md (real content/plugins/cache/Yoast configuration, Search Console, real devices, performance on production, legal-page approval, facts taken from the repo that the owner should reconfirm).
+
+## Live Vietnamese article display — 24 October 2026
+- See docs/vi/EDITORIAL-DISPLAY-2026-10-24.md. The Vietnamese blog now has published articles; do not restore its old empty-blog introduction/state.
+- Core Additional CSS post 3484 (stylesheet wp-theme) retains the earlier mobile utility fix and adds docs/vi/fixes/article-listing.css. Preserve both when editing Additional CSS. Blog page 3462 content is mirrored in docs/vi/fixes/blog-intro.html; never hardcode article IDs into its listing.
+- The native plugin already supplies nine posts per blog page, three latest posts on the Vietnamese homepage, localized cards, language filtering and self-canonical pagination. Do not duplicate those queries or add client-side translation.
+- The existing WPVibe draft still contains historical 1.2.0 functions while production is 1.4.0. It was inspected but not edited/published here. Never publish it as an update without reconciling it against production and preserving prior draft work.
+
+## Vietnamese content update — 24 October 2026
+See docs/vi/CONTENT-ARCHITECTURE-2026-10-24.md and docs/vi/content-2026-10-24/. Home/About/FAQ and 27 category descriptions were updated live. Keep the 18-question Yoast FAQ block intact and preserve current content; do not reseed. Article length counts are not quality approval. Privacy/Terms still require the operational facts listed in the record before any claim of completeness.

@@ -1,6 +1,9 @@
 # wp-theme
 https://rentbikehanoi.com
 
+Vietnamese article display is live through WordPress Additional CSS and blog page content:
+[24 October presentation record and rollback](docs/vi/EDITORIAL-DISPLAY-2026-10-24.md).
+
 Mobile utility-bar correction applied through WordPress Additional CSS (no reinstall):
 [production setting and verification limits](docs/vi/UTILITY-MOBILE-2026-10-23.md).
 
@@ -93,3 +96,5 @@ No deploy workflow or webhook was configured by this migration. Do not enable au
 ## SEO update, published 20 October 2026
 
 See [SEO implementation and verification](docs/SEO-2026-10-19.md). The current active stylesheet is `wp-theme`; the earlier migration folder note above is historical. Do not change the active theme folder during this update. Published to the existing wp-theme stylesheet on 20 October 2026 after owner approval and confirmation of weekly hosting backups. Preserve frozen homepage SEO identity. See the implementation report for post-publication checks and remaining follow-up.
+
+Vietnamese content and topic-cluster updates applied to WordPress: [content record and remaining verification](docs/vi/CONTENT-ARCHITECTURE-2026-10-24.md).
