@@ -2,6 +2,14 @@
 
 All notable changes to this repository. Dates use Asia/Ho_Chi_Minh.
 
+## Vietnamese article display — 2026-10-24
+
+Cleared stale LiteSpeed HTML that still showed an empty Vietnamese blog. Updated only
+the Vietnamese blog introduction/category navigation and scoped Additional CSS: wider
+two-column desktop cards, one-column mobile breakpoint, readable card typography,
+six Vietnamese topic links and accessible pagination targets. Runtime theme/plugin
+files, article bodies and English settings were not changed. See the dated record.
+
 ## Installation verification — 2026-10-23
 
 Owner subsequently confirmed the extension fee: 20,000 VND/hour; more than 6 hours is charged as one rental day.

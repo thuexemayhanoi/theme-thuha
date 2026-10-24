@@ -1,6 +1,9 @@
 # wp-theme
 https://rentbikehanoi.com
 
+Vietnamese article display is live through WordPress Additional CSS and blog page content:
+[24 October presentation record and rollback](docs/vi/EDITORIAL-DISPLAY-2026-10-24.md).
+
 Mobile utility-bar correction applied through WordPress Additional CSS (no reinstall):
 [production setting and verification limits](docs/vi/UTILITY-MOBILE-2026-10-23.md).
 
